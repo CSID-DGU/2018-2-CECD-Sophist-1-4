@@ -1,6 +1,6 @@
 # Pulling-Polling [2018 DGU Capstone Design]
 
-An hybrid application for help conduct online vote and survey.
+An hybrid application for helping conduct online vote and survey.
 
 ## Developers
 
