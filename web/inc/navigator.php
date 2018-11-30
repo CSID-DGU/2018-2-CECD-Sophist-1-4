@@ -42,17 +42,16 @@
 <!--  Main navigation  -->
 <ul class="main-nav nav navbar-nav navbar-right">
     <li><a href="index.php">홈</a></li>
-    <li><a href="#">About</a></li>
-    <li><a href="#">Portfolio</a></li>
-    <li><a href="#">Services</a></li>
-    <li><a href="#">Prices</a></li>
-    <li><a href="#">Team</a></li>
+    <li><a href="#">투표</a></li>
+    <li><a href="#">설문</a></li>
+    <li><a href="#">그룹</a></li>
     <li><a href="faq.php">FAQ</a></li>
     <? if(AuthUtil::isLoggedIn()){ ?>
-        <li class="has-dropdown"><a href="#blog">마이페이지</a>
+        <li class="has-dropdown"><a href="#">마이페이지</a>
             <ul class="dropdown">
-                <li><a href="profile.php" class="">로그아웃</a></li>
-                <li><a href="#" class="jLogout">로그아웃</a></li>
+                <li><a href="profile.php" class=""><i class="fa fa-dashboard"> </i> 대시보드</a></li>
+                <li><a href="profile.php" class=""><i class="fa fa-user"> </i> 내 정보</a></li>
+                <li><a href="#" class="jLogout"><i class="fa fa-sign-out"> </i> 로그아웃</a></li>
             </ul>
         </li>
     <?}else{?>

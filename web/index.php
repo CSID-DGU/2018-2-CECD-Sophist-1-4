@@ -1,5 +1,4 @@
 <? include_once $_SERVER["DOCUMENT_ROOT"]."/eVote/web/inc/header.php"; ?>
-
 <script>
     $(document).ready(function(){
     });

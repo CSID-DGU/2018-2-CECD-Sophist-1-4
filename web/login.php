@@ -5,8 +5,13 @@
     }
 ?>
 <script>
+
     $(document).ready(function(){
         $(".jLog").click(function(){
+            if($(".jEmailTxt").val() == "" || $(".jPasswordTxt").val() == ""){
+                alert("회원 정보를 입력하세요.");
+                return;
+            }
             callJson(
                 "/eVote/shared/public/route.php?F=UserAuthRoute.requestLogin",
                 {
@@ -57,11 +62,9 @@
 								<input class="input jPasswordTxt" type="password" placeholder="패스워드" />
                                 <br/>
                                 <div class="btn-group" role="group" aria-label="Basic example">
-                                    <button type="button" class="btn btn-default jLog"><i class="fa fa-envelope"></i> 이메일로 로그인</button>
-                                    <button type="button" class="btn bg-primary jLog"><i class="fa fa-facebook"></i> Facebook으로 로그인</button>
+                                    <button type="button" class="btn btn-default jLog"><i class="fa fa-sign-in"></i> 로그인</button>
+                                    <button type="button" class="btn bg-primary jJoin"><i class="fa fa-pencil"></i> 회원가입</button>
                                 </div>
-                                <br/><br/>
-                                <a href="https://colorlib.com" style="color:#333;text-decoration: none;"><u>회원가입</u></a>
 							</form>
 						</div>
 						<!-- /reply form -->
