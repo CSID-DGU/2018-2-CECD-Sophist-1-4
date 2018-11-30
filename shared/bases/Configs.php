@@ -1,5 +1,5 @@
 <?php
-include_once "Const.php";
+include_once $_SERVER["DOCUMENT_ROOT"]."/eVote/shared/bases/Const.php";
 /**
  * @description : A Class for Defining constants and Setting Conduction Mode
  * @author : PickleCode

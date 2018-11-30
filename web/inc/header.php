@@ -1,4 +1,5 @@
 <?
+    include_once $_SERVER["DOCUMENT_ROOT"]."/eVote/shared/bases/utils/AuthUtil.php";
     $CONST_PROJECT_NAME = "풀링폴링";
     $CONST_TITLE_POSTFIX = " :: 깨끗하고 빠른 의견수렴 서비스";
 ?>

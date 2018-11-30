@@ -1,28 +1,32 @@
-<? include_once $_SERVER["DOCUMENT_ROOT"]."/eVote/shared/bases/Databases.php"; ?>
-<?php
-
+<?
+/**
+ * Class AuthUtil
+ */
 class AuthUtil {
 
-    static function doWebLogin($row){
+    static function requestLogin($row){
         if ($row != null) {
             $cookieStr = json_encode($row);
-            $cookieStr = bin2hex($cookieStr); // 16진수로 암호화
-            setcookie("webUserMap", $cookieStr, -1, "/", "");
+            $cookieStr = bin2hex($cookieStr);
+            setcookie(KEY_USER_AUTH_INFO, $cookieStr, -1, "/", "");
             return true;
         } else {
             return false;
         }
     }
 
-    // 로그인 유무
-    static function isWebLogin(){
-        $cookieStr = $_COOKIE["webUserMap"];
+    static function isLoggedIn(){
+        $cookieStr = $_COOKIE[KEY_USER_AUTH_INFO];
         return ($cookieStr != "") ? true : false;
     }
 
-    static function getWebUser(){
-        $cookieStr = $_COOKIE["webUserMap"];
-        if (AuthUtil::isWebLogin() == false) {
+    static function isLoggedInViaString(){
+        return self::isLoggedIn() ? "true" : "false";
+    }
+
+    static function getLoggedInfo(){
+        $cookieStr = $_COOKIE[KEY_USER_AUTH_INFO];
+        if (AuthUtil::isLoggedIn() == false) {
             $map = null;
         }
         else {
@@ -32,8 +36,8 @@ class AuthUtil {
         return $map;
     }
 
-    static function doWebLogout(){
-        setcookie("webUserMap", "", time() - 3600, "/", "");
+    static function requestLogout(){
+        setcookie(KEY_USER_AUTH_INFO, "", time() - 3600, "/", "");
     }
 }
 

@@ -1,5 +1,5 @@
 <?php
-include_once "Configs.php";
+include_once $_SERVER["DOCUMENT_ROOT"]."/eVote/shared/bases/Configs.php";
 
 if(!class_exists("Databases")) {
 	class Databases extends Configs {
