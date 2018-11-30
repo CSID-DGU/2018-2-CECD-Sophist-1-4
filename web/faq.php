@@ -1,10 +1,6 @@
 <? include_once $_SERVER["DOCUMENT_ROOT"]."/eVote/web/inc/header.php"; ?>
 <? include_once $_SERVER["DOCUMENT_ROOT"]."/eVote/shared/public/classes/WebInfoRoute.php"; ?>
-<?
-    if(AuthUtil::isLoggedIn()){
-        echo "<script>location.href='index.php';</script>";
-    }
-?>
+
 <?
     $webInfo = new WebInfoRoute();
     $list = $webInfo->getFaqList();

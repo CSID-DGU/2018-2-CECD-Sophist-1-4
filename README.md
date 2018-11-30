@@ -11,6 +11,12 @@ An hybrid application for helping conduct online vote and survey.
 - 정재엽
 - 원양
 
+## Contact
+
+- Facebook : [PullingPolling on Facebook](https://www.facebook.com/pullingpolling)
+- Google+ : [PullingPolling on Google+](https://plus.google.com/u/2/100278896118356850382?hl=ko)
+- Twitter : [PullingPolling on Twitter](https://twitter.com/pullingpolling1)
+
 ### Prerequisites
 
 None

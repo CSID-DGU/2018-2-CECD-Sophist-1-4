@@ -17,8 +17,8 @@
 
                 <!-- footer follow -->
                 <ul class="footer-follow">
-                    <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                    <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                    <li><a href="https://www.facebook.com/pullingpolling"><i class="fa fa-facebook"></i></a></li>
+                    <li><a href="https://twitter.com/pullingpolling1"><i class="fa fa-twitter"></i></a></li>
                     <li><a href="https://plus.google.com/u/2/100278896118356850382?hl=ko"><i class="fa fa-google-plus"></i></a></li>
 <!--                    <li><a href="#"><i class="fa fa-instagram"></i></a></li>-->
 <!--                    <li><a href="#"><i class="fa fa-linkedin"></i></a></li>-->
