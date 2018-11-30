@@ -38,6 +38,7 @@ class AuthUtil {
 
     static function requestLogout(){
         setcookie(KEY_USER_AUTH_INFO, "", time() - 3600, "/", "");
+        return true;
     }
 }
 

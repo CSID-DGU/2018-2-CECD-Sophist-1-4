@@ -1,3 +1,26 @@
+<? include_once $_SERVER["DOCUMENT_ROOT"]."/eVote/shared/bases/utils/AuthUtil.php"; ?>
+
+<script>
+    $(document).ready(function(){
+        $(".jLogin").click(function(){
+            location.href="login.php";
+        });
+
+        $(".jLogout").click(function(){
+            callJson(
+                "/eVote/shared/public/route.php?F=UserAuthRoute.requestLogout",
+                null, function(data){
+                    if(data.returnCode == 1){
+                        alert(data.returnMessage);
+                    }else{
+                        alert("오류가 발생하였습니다.\n관리자에게 문의하세요.");
+                    }
+                }
+            );
+        });
+    });
+</script>
+
 <div class="navbar-header">
     <!-- Logo -->
     <div class="navbar-brand">
@@ -24,11 +47,15 @@
     <li><a href="#">Prices</a></li>
     <li><a href="#">Team</a></li>
     <li><a href="#contact">FAQ</a></li>
-    <li class="has-dropdown"><a href="#blog">마이페이지</a>
-        <ul class="dropdown">
-            <li><a href="blog-single.html">blog post</a></li>
-        </ul>
-    </li>
+    <? if(AuthUtil::isLoggedIn()){ ?>
+        <li class="has-dropdown"><a href="#blog">마이페이지</a>
+            <ul class="dropdown">
+                <li><a href="#" class="jLogout">로그아웃</a></li>
+            </ul>
+        </li>
+    <?}else{?>
+        <li><a href="#" class="jLogin">로그인</a></li>
+    <?}?>
 </ul>
 <!-- /Main navigation -->
 
