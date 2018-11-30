@@ -1,9 +1,9 @@
-<? include_once "./inc/header.php"; ?>
+<? include_once $_SERVER["DOCUMENT_ROOT"]."/eVote/web/inc/header.php"; ?>
 <body>
 	<header>
 		<nav id="nav" class="navbar">
 			<div class="container">
-<? include_once "./inc/navigator.php"; ?>
+                <? include_once $_SERVER["DOCUMENT_ROOT"]."/eVote/web/inc/navigator.php"; ?>
 
 		<!-- header wrapper -->
 		<div class="header-wrapper sm-padding bg-grey">
@@ -258,4 +258,4 @@
 	</div>
 	<!-- /Blog -->
 
-<? include_once "./inc/footer.php"; ?>
+<? include_once $_SERVER["DOCUMENT_ROOT"]."/eVote/web/inc/footer.php"; ?>

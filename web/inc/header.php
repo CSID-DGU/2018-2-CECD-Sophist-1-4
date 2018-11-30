@@ -32,5 +32,20 @@
     <![endif]-->
     <script type="text/javascript" src="js/jquery.min.js"></script>
     <script type="text/javascript" src="js/AjaxUtil.js"></script>
-</head>
+    <script>
+        $(document).ready(function(){
+            var coll = $(".collapsible");
+            for (var i = 0; i < coll.length; i++){
+                coll[i].addEventListener("click", function(){
+                    this.classList.toggle("active");
+                    var content = this.nextElementSibling;
 
+                    if (content.style.maxHeight)
+                        content.style.maxHeight = null;
+                    else
+                        content.style.maxHeight = content.scrollHeight + "px";
+                });
+            }
+        });
+    </script>
+</head>

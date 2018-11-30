@@ -2,7 +2,7 @@
 
 <script>
     $(document).ready(function(){
-        $(".jLogin").click(function(){
+        $(".jLoginBt").click(function(){
             location.href="login.php";
         });
 
@@ -12,6 +12,7 @@
                 null, function(data){
                     if(data.returnCode == 1){
                         alert(data.returnMessage);
+                        location.href = "index.php";
                     }else{
                         alert("오류가 발생하였습니다.\n관리자에게 문의하세요.");
                     }
@@ -46,15 +47,16 @@
     <li><a href="#">Services</a></li>
     <li><a href="#">Prices</a></li>
     <li><a href="#">Team</a></li>
-    <li><a href="#contact">FAQ</a></li>
+    <li><a href="faq.php">FAQ</a></li>
     <? if(AuthUtil::isLoggedIn()){ ?>
         <li class="has-dropdown"><a href="#blog">마이페이지</a>
             <ul class="dropdown">
+                <li><a href="profile.php" class="">로그아웃</a></li>
                 <li><a href="#" class="jLogout">로그아웃</a></li>
             </ul>
         </li>
     <?}else{?>
-        <li><a href="#" class="jLogin">로그인</a></li>
+        <li><a href="#" class="jLoginBt">로그인</a></li>
     <?}?>
 </ul>
 <!-- /Main navigation -->
