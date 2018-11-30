@@ -47,9 +47,9 @@
     <li><a href="#">그룹</a></li>
     <li><a href="faq.php">FAQ</a></li>
     <? if(AuthUtil::isLoggedIn()){ ?>
-        <li class="has-dropdown"><a href="#">마이페이지</a>
+        <li class="has-dropdown"><a href="#"><?=AuthUtil::getLoggedInfo()->name?></a>
             <ul class="dropdown">
-                <li><a href="profile.php" class=""><i class="fa fa-dashboard"> </i> 대시보드</a></li>
+                <li><a href="dashboard.php" class=""><i class="fa fa-dashboard"> </i> 대시보드</a></li>
                 <li><a href="profile.php" class=""><i class="fa fa-user"> </i> 내 정보</a></li>
                 <li><a href="#" class="jLogout"><i class="fa fa-sign-out"> </i> 로그아웃</a></li>
             </ul>

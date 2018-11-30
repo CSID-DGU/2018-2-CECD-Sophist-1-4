@@ -1,6 +1,12 @@
 <? include_once $_SERVER["DOCUMENT_ROOT"]."/eVote/web/inc/header.php"; ?>
 <script>
     $(document).ready(function(){
+        $(".jDashboardGo").click(function(){
+            location.href="dashboard.php";
+        });
+        $(".jJoinGo").click(function(){
+            location.href="join.php";
+        });
     });
 </script>
 
@@ -32,8 +38,11 @@
                                 아직도 불편한 설문조사 서비스를 이용하고 계신가요? 보기 힘든 결과 자료를 검토하고 계신가요?
                                 <br/>깨끗하고 빠른 <?=$CONST_PROJECT_NAME?>과 함께 의견을 모아보세요!
 							</p>
-							<button class="white-btn">회원가입</button>
-							<button class="main-btn">그룹관리</button>
+							<?if(AuthUtil::isLoggedIn()){?>
+							<button class="main-btn jDashboardGo">대시보드 바로가기</button>
+							<?}else{?>
+							<button class="main-btn jJoinGo">간편 회원가입</button>
+							<?}?>
 						</div>
 					</div>
 					<!-- /home content -->
