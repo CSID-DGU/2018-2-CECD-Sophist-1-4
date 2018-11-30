@@ -25,7 +25,7 @@
 <div class="navbar-header">
     <!-- Logo -->
     <div class="navbar-brand">
-        <a href="index_backup.html">
+        <a href="index.php">
             <img class="logo" src="img/logo.png" alt="logo">
             <img class="logo-alt" src="img/logo-alt.png" alt="logo">
         </a>

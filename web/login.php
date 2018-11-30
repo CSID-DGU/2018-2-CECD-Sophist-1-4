@@ -52,11 +52,16 @@
 						<div class="reply-form text-center">
 							<h3 class="title">회원 로그인</h3>
 							<form>
-                                <input class="input jEmailTxt" type="email" placeholder="이메일">
+                                <input class="input jEmailTxt" type="email" placeholder="이메일" />
                                 <br/>
-								<input class="input jPasswordTxt" type="password" placeholder="패스워드">
+								<input class="input jPasswordTxt" type="password" placeholder="패스워드" />
                                 <br/>
-								<button type="button" class="main-btn jLog">로그인</button>
+                                <div class="btn-group" role="group" aria-label="Basic example">
+                                    <button type="button" class="btn btn-default jLog"><i class="fa fa-envelope"></i> 이메일로 로그인</button>
+                                    <button type="button" class="btn bg-primary jLog"><i class="fa fa-facebook"></i> Facebook으로 로그인</button>
+                                </div>
+                                <br/><br/>
+                                <a href="https://colorlib.com" style="color:#333;text-decoration: none;"><u>회원가입</u></a>
 							</form>
 						</div>
 						<!-- /reply form -->
