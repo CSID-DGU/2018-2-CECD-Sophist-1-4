@@ -1,8 +1,7 @@
-<? include_once "./inc/header.php"; ?>
+<? include_once $_SERVER["DOCUMENT_ROOT"]."/eVote/web/inc/header.php"; ?>
 
 <script>
     $(document).ready(function(){
-        alert("서비스 개발중입니다.");
     });
 </script>
 
@@ -19,7 +18,7 @@
 		<nav id="nav" class="navbar nav-transparent">
 			<div class="container">
 
-<? include_once "./inc/navigator.php"; ?>
+<? include_once $_SERVER["DOCUMENT_ROOT"]."/eVote/web//inc/navigator.php"; ?>
 
 		<!-- home wrapper -->
 		<div class="home-wrapper">
@@ -170,4 +169,4 @@
 	<!-- /Numbers -->
 
 
-<? include_once "./inc/footer.php"; ?>
+<? include_once $_SERVER["DOCUMENT_ROOT"]."/eVote/web//inc/footer.php"; ?>

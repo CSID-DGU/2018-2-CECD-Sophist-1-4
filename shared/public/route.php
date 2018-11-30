@@ -1,5 +1,5 @@
 <?php
-foreach (glob("classes/*.php") as $filename) {
+foreach (glob($_SERVER["DOCUMENT_ROOT"]."/eVote/shared/public/classes/*.php") as $filename) {
     include_once $filename;
 }
 

@@ -1,5 +1,5 @@
 <?php
-include_once "../bases/Databases.php";
+include_once $_SERVER["DOCUMENT_ROOT"]."/eVote/shared/bases/Databases.php";
 
 class Routable extends Databases {
 

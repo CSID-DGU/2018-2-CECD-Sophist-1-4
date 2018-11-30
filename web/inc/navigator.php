@@ -17,18 +17,18 @@
 
 <!--  Main navigation  -->
 <ul class="main-nav nav navbar-nav navbar-right">
-    <li><a href="#">Home</a></li>
+    <li><a href="index.php">홈</a></li>
     <li><a href="#">About</a></li>
     <li><a href="#">Portfolio</a></li>
     <li><a href="#">Services</a></li>
     <li><a href="#">Prices</a></li>
     <li><a href="#">Team</a></li>
-    <li class="has-dropdown"><a href="#blog">Blog</a>
+    <li><a href="#contact">FAQ</a></li>
+    <li class="has-dropdown"><a href="#blog">마이페이지</a>
         <ul class="dropdown">
             <li><a href="blog-single.html">blog post</a></li>
         </ul>
     </li>
-    <li><a href="#contact">Contact</a></li>
 </ul>
 <!-- /Main navigation -->
 
