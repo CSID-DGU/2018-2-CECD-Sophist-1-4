@@ -20,7 +20,7 @@
                 }
                 , function(data){
                     if(data.returnCode > 0){
-                        if(data.returnCode == 2){
+                        if(data.returnCode > 1){
                             alert(data.returnMessage);
                         }else{
                             location.href = "index.php";

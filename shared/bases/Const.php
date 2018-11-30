@@ -44,5 +44,10 @@ define("MSG_METHOD_NOT_EXISTS", ERROR."Invalid Route Parameter. [M]");
 
 define("KEY_USER_AUTH_INFO", "KEY_USER_AUTH_INFO");
 
+// AES Encryption Key
+define("AES_KEY", "pkcd931018950503");
+define("AES_KEY_128", substr(AES_KEY, 0, 128 / 8));
+define("AES_KEY_256", substr(AES_KEY, 0, 256 / 8));
+
 ?>
 

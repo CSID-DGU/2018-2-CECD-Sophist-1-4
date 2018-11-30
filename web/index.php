@@ -1,11 +1,19 @@
 <? include_once $_SERVER["DOCUMENT_ROOT"]."/eVote/web/inc/header.php"; ?>
 <script>
     $(document).ready(function(){
+        if("<?=$_REQUEST["msg"] != ""?>"){
+            alert("<?=$_REQUEST["msg"]?>");
+            location.href="index.php";
+        }
+
         $(".jDashboardGo").click(function(){
             location.href="dashboard.php";
         });
         $(".jJoinGo").click(function(){
             location.href="join.php";
+        });
+        $(".jLoginGo").click(function(){
+            location.href="login.php";
         });
     });
 </script>
@@ -41,7 +49,8 @@
 							<?if(AuthUtil::isLoggedIn()){?>
 							<button class="main-btn jDashboardGo">대시보드 바로가기</button>
 							<?}else{?>
-							<button class="main-btn jJoinGo">간편 회원가입</button>
+                                <button class="white-btn jLoginGo">로그인</button>
+							    <button class="main-btn jJoinGo">간편 회원가입</button>
 							<?}?>
 						</div>
 					</div>

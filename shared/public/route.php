@@ -22,8 +22,14 @@ if(class_exists($ROUTABLE_CLS)){
 }
 
 if(method_exists($tempObject, $ROUTABLE_MTD)){
-    echo json_encode($tempObject->$ROUTABLE_MTD());
-    exit;
+    $val = $tempObject->$ROUTABLE_MTD();
+    if(is_array($val) && $val["redirect"] == true){
+        echo "<script>location.href='".$val["url"]."';</script>";
+        exit;
+    }else{
+        echo json_encode($val);
+        exit;
+    }
 }else{
     echo MSG_METHOD_NOT_EXISTS;
     exit;

@@ -28,7 +28,7 @@
 
                 <!-- footer copyright -->
                 <div class="footer-copyright">
-                    <p>Copyright © 2018. All Rights Reserved.</p>
+                    <p>Copyright © PullingPolling. All Rights Reserved.</p>
                 </div>
                 <!-- /footer copyright -->
 

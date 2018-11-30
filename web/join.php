@@ -7,21 +7,33 @@ if(AuthUtil::isLoggedIn()){
     <script>
 
         $(document).ready(function(){
-            $(".jLog").click(function(){
-                if($(".jEmailTxt").val() == "" || $(".jPasswordTxt").val() == ""){
-                    alert("회원 정보를 입력하세요.");
+            $(".jJoin").click(function(){
+                if($(".jEmailTxt").val() == ""
+                    || $(".jPhoneTxt").val() == ""
+                    || $(".jNameTxt").val() == ""
+                    || $(".jPasswordTxt").val() == ""
+                    || $(".jSex").val() == ""){
+                    alert("회원 정보를 모두 입력하세요.");
                     return;
                 }
+                if($(".jPasswordTxt").val() != $(".jPasswordCTxt").val()){
+                    alert("패스워드 확인이 일치하지 않습니다.");
+                    return;
+                }
+
                 callJson(
-                    "/eVote/shared/public/route.php?F=UserAuthRoute.requestLogin",
+                    "/eVote/shared/public/route.php?F=UserAuthRoute.joinUser",
                     {
                         email : $(".jEmailTxt").val(),
-                        pwd : $(".jPasswordTxt").val()
+                        pwd : $(".jPhoneTxt").val(),
+                        phone : $(".jSex").val(),
+                        name : $(".jNameTxt").val(),
+                        sex : $(".jSex").val()
                     }
                     , function(data){
                         if(data.returnCode > 0){
-                            if(data.returnCode == 2){
-                                alert(data.returnMessage);
+                            alert(data.returnMessage);
+                            if(data.returnCode > 1){
                             }else{
                                 location.href = "index.php";
                             }
@@ -55,15 +67,26 @@ if(AuthUtil::isLoggedIn()){
                 <main id="main" class="col-md-9">
                     <!-- reply form -->
                     <div class="reply-form text-center">
-                        <h3 class="title">회원 로그인</h3>
+                        <h3 class="title">회원가입</h3>
                         <form>
+                            <input class="input jNameTxt" type="text" placeholder="성명" />
+                            <br/>
                             <input class="input jEmailTxt" type="email" placeholder="이메일" />
+                            <br/>
+                            <input class="input jPhoneTxt" type="text" placeholder="전화번호" />
                             <br/>
                             <input class="input jPasswordTxt" type="password" placeholder="패스워드" />
                             <br/>
+                            <input class="input jPasswordCTxt" type="password" placeholder="패스워드 확인" />
+                            <br/>
+                            <select class="input jSex">
+                                <option value="N">성별(선택)</option>
+                                <option value="M">남성</option>
+                                <option value="F">여성</option>
+                            </select>
+                            <br/><br/>
                             <div class="btn-group" role="group" aria-label="Basic example">
-                                <button type="button" class="btn btn-default jLog"><i class="fa fa-sign-in"></i> 로그인</button>
-                                <button type="button" class="btn bg-primary jJoin"><i class="fa fa-pencil"></i> 회원가입</button>
+                                <button type="button" class="btn bg-primary jJoin"><i class="fa fa-pencil"></i> 가입하기</button>
                             </div>
                         </form>
                     </div>
