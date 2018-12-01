@@ -72,3 +72,9 @@ function loadPageInto(url, sendData, selector, appendable, onEmpty){
         }
     });
 }
+
+function buttonLink(selector, url){
+    $(selector).click(function(){
+        location.href=url;
+    });
+}

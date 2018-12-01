@@ -54,9 +54,6 @@
                 );
             });
 
-            buttonLink(".jMyGroup", "myGroup.php");
-            buttonLink(".jCGroup", "createGroup.php");
-
             $(".jJoin").click(function(){
                 if($(".jEmailTxt").val() == ""
                     || $(".jPhoneTxt").val() == ""
@@ -103,10 +100,11 @@
 
                 <div class="header-wrapper sm-padding bg-grey">
                     <div class="container">
-                        <h2>그룹</h2>
+                        <h2>내 그룹</h2>
                         <ul class="breadcrumb">
                             <li class="breadcrumb-item"><a href="index.php">홈</a></li>
-                            <li class="breadcrumb-item">그룹</li>
+                            <li class="breadcrumb-item"><a href="group.php">홈</a></li>
+                            <li class="breadcrumb-item">내 그룹</li>
                         </ul>
                     </div>
                 </div>
@@ -123,8 +121,8 @@
             <div class="row tiny-padding">
 
                 <div class="col-md-12 text-right">
-                    <button class="btn btn-default jMyGroup"><i class="fa fa-list"></i> 내 그룹</button>
-                    <button class="btn bg-primary jCGroup"><i class="fa fa-plus"></i> 그룹 생성</button>
+                    <button class="btn btn-default"><i class="fa fa-list"></i> 내 그룹</button>
+                    <button class="btn bg-primary"><i class="fa fa-plus"></i> 그룹 생성</button>
                 </div>
                 <br/>
                 <aside id="aside" class="col-md-3">
