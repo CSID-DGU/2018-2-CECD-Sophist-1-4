@@ -51,6 +51,9 @@
             <ul class="dropdown">
                 <li><a href="dashboard.php" class=""><i class="fa fa-dashboard"> </i> 대시보드</a></li>
                 <li><a href="profile.php" class=""><i class="fa fa-user"> </i> 내 정보</a></li>
+                <?if(AuthUtil::getLoggedInfo()->isAdmin == 1){?>
+                <li><a href="admin.php" class=""><i class="fa fa-gear"> </i> 관리자 모드</a></li>
+                <?}?>
                 <li><a href="#" class="jLogout"><i class="fa fa-sign-out"> </i> 로그아웃</a></li>
             </ul>
         </li>
