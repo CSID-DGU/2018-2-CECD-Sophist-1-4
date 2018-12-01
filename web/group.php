@@ -83,10 +83,20 @@ $list = $router->getGroupList();
                 <main id="main" class="col-md-12">
 
                     <div class="blog-comments">
-                        <?foreach($list as $item){?>
+                        <?foreach($list as $item){
+                            $madeBy = $item["madeName"];
+                            if($item["madeBy"]==0) $madeBy = "관리자";
+                            ?>
                         <div class="media">
                             <div class="media-body">
-                                <h4 class="media-heading"><?=$item["title"]?><span class="time"><?=$item["madeName"]?> / <?=$item["regDate"]?></span>
+                                <h4 class="media-heading">
+                                    <?if($item["needsAuth"] == 1){?>
+                                        <i class="fa fa-lock"></i>&nbsp;
+                                    <?}?>
+                                    <?=$item["title"]?>
+                                    <span class="time">
+                                        <i class="fa fa-user"></i>&nbsp;<?=$madeBy?>&nbsp;&nbsp;
+                                        <i class="fa fa-calendar"></i> <?=$item["regDate"]?></span>
                                     <a href="#" class="reply">자세히 <i class="fa fa-sign-in"></i></a>
                                 </h4>
                                 <p><?=$item["desc"]?></p>
