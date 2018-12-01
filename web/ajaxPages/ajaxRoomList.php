@@ -8,6 +8,12 @@ $list = $router->getVoteList();
 ?>
 <?foreach($list as $item){
     $madeBy = $item["madeName"];
+    $typeName = "";
+    switch ($item["type"]){
+        case "V" : $typeName = "투표"; break;
+        case "S" : $typeName = "설문"; break;
+        default : $typeName = "오류"; break;
+    }
     if($item["madeBy"]==0) $madeBy = "관리자";
     ?>
     <div class="media">
@@ -16,7 +22,7 @@ $list = $router->getVoteList();
                 <?if($item["needsAuth"] == 1){?>
                     <i class="fa fa-lock"></i>&nbsp;
                 <?}?>
-                <?=$item["title"]?>
+                [<?=$typeName?>] <?=$item["title"]?>
                 <span class="time">
                     <?if($item["groupID"] > 0){?>
                         <i class="fa fa-users"></i>&nbsp;<?=$item["groupName"]?>&nbsp;&nbsp;

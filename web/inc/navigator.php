@@ -44,6 +44,7 @@
     <li><a href="index.php">홈</a></li>
     <li><a href="room.php">투표/설문</a></li>
     <li><a href="group.php">그룹</a></li>
+    <li><a href="notice.php">공지사항</a></li>
     <li><a href="faq.php">FAQ</a></li>
     <? if(AuthUtil::isLoggedIn()){ ?>
         <li class="has-dropdown"><a href="#"><?=AuthUtil::getLoggedInfo()->name?></a>

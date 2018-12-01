@@ -57,42 +57,6 @@
             buttonLink(".jMyGroup", "myGroup.php");
             buttonLink(".jCGroup", "createGroup.php");
 
-            $(".jJoin").click(function(){
-                if($(".jEmailTxt").val() == ""
-                    || $(".jPhoneTxt").val() == ""
-                    || $(".jNameTxt").val() == ""
-                    || $(".jPasswordTxt").val() == ""
-                    || $(".jSex").val() == ""){
-                    alert("회원 정보를 모두 입력하세요.");
-                    return;
-                }
-                if($(".jPasswordTxt").val() != $(".jPasswordCTxt").val()){
-                    alert("패스워드 확인이 일치하지 않습니다.");
-                    return;
-                }
-
-                callJson(
-                    "/eVote/shared/public/route.php?F=UserAuthRoute.joinUser",
-                    {
-                        email : $(".jEmailTxt").val(),
-                        pwd : $(".jPasswordTxt").val(),
-                        phone : $(".jPhoneTxt").val(),
-                        name : $(".jNameTxt").val(),
-                        sex : $(".jSex").val()
-                    }
-                    , function(data){
-                        if(data.returnCode > 0){
-                            alert(data.returnMessage);
-                            if(data.returnCode > 1){
-                            }else{
-                                location.href = "index.php";
-                            }
-                        }else{
-                            alert("오류가 발생하였습니다.\n관리자에게 문의하세요.");
-                        }
-                    }
-                )
-            });
         });
     </script>
     <body>

@@ -2,12 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7a708afb-bd89-490b-b167-97aaeae173a6" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web/survey.php" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/web/ajaxPages/ajaxVoteList.php" afterPath="$PROJECT_DIR$/web/ajaxPages/ajaxRoomList.php" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/web/vote.php" afterPath="$PROJECT_DIR$/web/room.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/ajaxPages/ajaxNoticeList.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/notice.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/noticeDetail.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/shared/public/classes/GroupRoute.php" afterPath="$PROJECT_DIR$/shared/public/classes/GroupRoute.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/shared/public/classes/WebInfoRoute.php" afterPath="$PROJECT_DIR$/shared/public/classes/WebInfoRoute.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/ajaxPages/ajaxRoomList.php" afterPath="$PROJECT_DIR$/web/ajaxPages/ajaxRoomList.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/group.php" afterPath="$PROJECT_DIR$/web/group.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/inc/navigator.php" afterPath="$PROJECT_DIR$/web/inc/navigator.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/room.php" afterPath="$PROJECT_DIR$/web/room.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -18,55 +21,93 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="navigator.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/inc/navigator.php">
+      <file leaf-file-name="notice.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/web/notice.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="415">
-              <caret line="44" column="25" lean-forward="false" selection-start-line="44" selection-start-column="25" selection-end-line="44" selection-end-column="25" />
+            <state relative-caret-position="380">
+              <caret line="20" column="13" lean-forward="true" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="group.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/group.php">
+      <file leaf-file-name="blog-single.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/blog-single.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="494">
-              <caret line="51" column="46" lean-forward="true" selection-start-line="51" selection-start-column="46" selection-end-line="51" selection-end-column="46" />
+            <state relative-caret-position="126">
+              <caret line="111" column="38" lean-forward="true" selection-start-line="111" selection-start-column="38" selection-end-line="111" selection-end-column="38" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="myGroup.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/myGroup.php">
+      <file leaf-file-name="login.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/login.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="456">
-              <caret line="106" column="58" lean-forward="false" selection-start-line="106" selection-start-column="58" selection-end-line="106" selection-end-column="58" />
+            <state relative-caret-position="323">
+              <caret line="68" column="60" lean-forward="true" selection-start-line="68" selection-start-column="60" selection-end-line="68" selection-end-column="60" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="room.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ajaxNoticeList.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/ajaxPages/ajaxNoticeList.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="209">
+              <caret line="11" column="6" lean-forward="true" selection-start-line="11" selection-start-column="6" selection-end-line="11" selection-end-column="6" />
+              <folding>
+                <marker date="1543649551941" expanded="true" signature="628:634" ph=" " />
+                <marker date="1543649551941" expanded="true" signature="646:652" ph=" " />
+                <marker date="1543649551941" expanded="true" signature="652:658" ph=" " />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="noticeDetail.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/noticeDetail.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="304">
+              <caret line="16" column="11" lean-forward="true" selection-start-line="16" selection-start-column="11" selection-end-line="16" selection-end-column="11" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ajaxGroupList.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/ajaxPages/ajaxGroupList.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="285">
+              <caret line="15" column="48" lean-forward="true" selection-start-line="15" selection-start-column="48" selection-end-line="15" selection-end-column="48" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="WebInfoRoute.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/shared/public/classes/WebInfoRoute.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="323">
+              <caret line="17" column="37" lean-forward="true" selection-start-line="17" selection-start-column="37" selection-end-line="17" selection-end-column="37" />
+              <folding>
+                <marker date="1543650385837" expanded="true" signature="190:231" ph="SELECT * FRO... tblFaq" />
+                <marker date="1543650385837" expanded="true" signature="392:637" ph="SELECT *, (S... tblGroup" />
+                <marker date="1543650385837" expanded="true" signature="727:883" ph="SELECT * FRO... tblNotice" />
+                <marker date="1543650385837" expanded="true" signature="1008:1056" ph="SELECT `hit`... tblNotice" />
+                <marker date="1543650385837" expanded="true" signature="1127:1167" ph="UPDATE tblNo... " />
+                <marker date="1543650385837" expanded="true" signature="1127:1188" ph="UPDATE tblNo... " />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="room.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/room.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="283">
-              <caret line="115" column="0" lean-forward="true" selection-start-line="115" selection-start-column="0" selection-end-line="115" selection-end-column="0" />
+            <state relative-caret-position="411">
+              <caret line="76" column="0" lean-forward="true" selection-start-line="76" selection-start-column="0" selection-end-line="76" selection-end-column="0" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ajaxRoomList.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/ajaxPages/ajaxRoomList.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="589">
-              <caret line="31" column="46" lean-forward="false" selection-start-line="31" selection-start-column="46" selection-end-line="31" selection-end-column="46" />
-              <folding>
-                <element signature="e#783#789#0#HTML" expanded="true" />
-                <element signature="e#789#795#0#HTML" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -74,51 +115,13 @@
       <file leaf-file-name="GroupRoute.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/shared/public/classes/GroupRoute.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="380">
-              <caret line="20" column="25" lean-forward="false" selection-start-line="20" selection-start-column="25" selection-end-line="20" selection-end-column="25" />
+            <state relative-caret-position="133">
+              <caret line="7" column="64" lean-forward="true" selection-start-line="7" selection-start-column="64" selection-end-line="7" selection-end-column="64" />
               <folding>
                 <marker date="1543648058955" expanded="true" signature="278:480" ph="SELECT *, (S... tblGroup" />
                 <marker date="1543648058955" expanded="true" signature="278:503" ph="SELECT *, (S... tblGroup" />
                 <marker date="1543648058955" expanded="true" signature="699:932" ph="SELECT *, (S... " />
                 <marker date="1543648058955" expanded="true" signature="699:1072" ph="SELECT *, (S... tblGroup" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="createGroup.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/createGroup.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="551">
-              <caret line="104" column="86" lean-forward="true" selection-start-line="104" selection-start-column="86" selection-end-line="104" selection-end-column="86" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ajaxRecommendation.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/ajaxPages/ajaxRecommendation.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="95">
-              <caret line="5" column="2" lean-forward="true" selection-start-line="5" selection-start-column="2" selection-end-line="5" selection-end-column="2" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Routable.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/shared/public/classes/Routable.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="409">
-              <caret line="22" column="26" lean-forward="true" selection-start-line="22" selection-start-column="26" selection-end-line="22" selection-end-column="26" />
-              <folding>
-                <marker date="1543643701331" expanded="true" signature="692:723" ph="SELECT `${{$... " />
-                <marker date="1543643701331" expanded="true" signature="692:738" ph="SELECT `${{$... ${{$table}}" />
-                <marker date="1543643701331" expanded="true" signature="692:754" ph="SELECT `${{$... ${{$table}}" />
-                <marker date="1543643701331" expanded="true" signature="692:784" ph="SELECT `${{$... ${{$table}}" />
-                <marker date="1543643701331" expanded="true" signature="692:792" ph="SELECT `${{$... ${{$table}}" />
-                <marker date="1543643701331" expanded="true" signature="3144:3568" ph="INSERT INTO tblDocument... " />
-                <marker date="1543643701331" expanded="true" signature="3569:3815" ph="UPDATE `titl... " />
               </folding>
             </state>
           </provider>
@@ -135,8 +138,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>send</find>
-      <find>margin</find>
       <find>COLOR</find>
       <find>margin-top</find>
       <find>.</find>
@@ -165,6 +166,8 @@
       <find>tblVote</find>
       <find>vote.php</find>
       <find>ajaxVote</find>
+      <find>morbi</find>
+      <find>jCon</find>
     </findStrings>
     <replaceStrings>
       <replace>mailInfo</replace>
@@ -183,7 +186,6 @@
         <option value="$PROJECT_DIR$/shared/bases/utils/AuthUtil.php" />
         <option value="$PROJECT_DIR$/shared/bases/js/AjaxUtil.js" />
         <option value="$PROJECT_DIR$/web/js/main.js" />
-        <option value="$PROJECT_DIR$/shared/public/classes/WebInfoRoute.php" />
         <option value="$PROJECT_DIR$/../fb_oauth.php" />
         <option value="$PROJECT_DIR$/web/inc/header.php" />
         <option value="$PROJECT_DIR$/README.md" />
@@ -205,15 +207,20 @@
         <option value="$PROJECT_DIR$/shared/public/classes/Routable.php" />
         <option value="$PROJECT_DIR$/web/ajaxPages/ajaxRecommendation.php" />
         <option value="$PROJECT_DIR$/web/js/AjaxUtil.js" />
-        <option value="$PROJECT_DIR$/web/group.php" />
         <option value="$PROJECT_DIR$/web/createGroup.php" />
         <option value="$PROJECT_DIR$/web/myGroup.php" />
-        <option value="$PROJECT_DIR$/web/inc/navigator.php" />
         <option value="$PROJECT_DIR$/web/survey.php" />
         <option value="$PROJECT_DIR$/shared/public/classes/GroupRoute.php" />
         <option value="$PROJECT_DIR$/web/ajaxPages/ajaxVoteList.php" />
         <option value="$PROJECT_DIR$/web/vote.php" />
+        <option value="$PROJECT_DIR$/web/ajaxPages/ajaxRoomList.php" />
+        <option value="$PROJECT_DIR$/web/inc/navigator.php" />
+        <option value="$PROJECT_DIR$/web/group.php" />
         <option value="$PROJECT_DIR$/web/room.php" />
+        <option value="$PROJECT_DIR$/web/notice.php" />
+        <option value="$PROJECT_DIR$/web/ajaxPages/ajaxNoticeList.php" />
+        <option value="$PROJECT_DIR$/shared/public/classes/WebInfoRoute.php" />
+        <option value="$PROJECT_DIR$/web/noticeDetail.php" />
       </list>
     </option>
   </component>
@@ -343,8 +350,8 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\xampp\htdocs\eVote\web\ajaxPages" />
       <recent name="C:\xampp\htdocs\eVote\web" />
+      <recent name="C:\xampp\htdocs\eVote\web\ajaxPages" />
       <recent name="C:\xampp\htdocs\eVote\shared\public\classes" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -374,18 +381,17 @@
       <option name="presentableId" value="Default" />
       <updated>1543581757271</updated>
       <workItem from="1543581758469" duration="18718000" />
-      <workItem from="1543635300382" duration="12452000" />
+      <workItem from="1543635300382" duration="14619000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="31170000" />
+    <option name="totallyTimeSpent" value="33337000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="0" width="974" height="1047" extended-state="0" />
-    <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24947807" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24947807" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -415,38 +421,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/web/login.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="380">
-          <caret line="20" column="33" lean-forward="true" selection-start-line="20" selection-start-column="33" selection-end-line="20" selection-end-column="33" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/shared/public/route.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="494">
-          <caret line="26" column="48" lean-forward="false" selection-start-line="26" selection-start-column="48" selection-end-line="26" selection-end-column="48" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/shared/public/classes/Routable.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="266">
-          <caret line="14" column="5" lean-forward="true" selection-start-line="14" selection-start-column="5" selection-end-line="14" selection-end-column="5" />
-          <folding>
-            <marker date="1543643701331" expanded="true" signature="692:723" ph="SELECT `${{$... " />
-            <marker date="1543643701331" expanded="true" signature="692:738" ph="SELECT `${{$... ${{$table}}" />
-            <marker date="1543643701331" expanded="true" signature="692:754" ph="SELECT `${{$... ${{$table}}" />
-            <marker date="1543643701331" expanded="true" signature="692:784" ph="SELECT `${{$... ${{$table}}" />
-            <marker date="1543643701331" expanded="true" signature="692:792" ph="SELECT `${{$... ${{$table}}" />
-            <marker date="1543643701331" expanded="true" signature="3144:3568" ph="INSERT INTO tblDocument... " />
-            <marker date="1543643701331" expanded="true" signature="3569:3815" ph="UPDATE `titl... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/shared/bases/modules/email/class.phpmailer.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="53238">
@@ -647,14 +621,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/login.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="190">
-          <caret line="61" column="0" lean-forward="true" selection-start-line="61" selection-start-column="0" selection-end-line="61" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$APPLICATION_HOME_DIR$/lib/phpstorm.jar!/resources/html5-schema/html5/phrase.rnc">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="322">
@@ -724,36 +690,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/shared/public/classes/WebInfoRoute.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="76">
-          <caret line="4" column="18" lean-forward="false" selection-start-line="4" selection-start-column="18" selection-end-line="4" selection-end-column="18" />
-          <folding>
-            <marker date="1543588295005" expanded="true" signature="190:231" ph="SELECT * FRO... tblFaq" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/web/inc/header.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="449">
           <caret line="40" column="65" lean-forward="true" selection-start-line="40" selection-start-column="65" selection-end-line="40" selection-end-column="65" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/ajaxPages/ajaxGroupList.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="91" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/blog-single.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="418">
-          <caret line="254" column="36" lean-forward="true" selection-start-line="254" selection-start-column="36" selection-end-line="254" selection-end-column="36" />
           <folding />
         </state>
       </provider>
@@ -798,14 +738,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/group.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="494">
-          <caret line="51" column="46" lean-forward="true" selection-start-line="51" selection-start-column="46" selection-end-line="51" selection-end-column="46" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/web/createGroup.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="551">
@@ -822,14 +754,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/inc/navigator.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="415">
-          <caret line="44" column="25" lean-forward="false" selection-start-line="44" selection-start-column="25" selection-end-line="44" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/web/survey.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="285">
@@ -838,10 +762,29 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/web/ajaxPages/ajaxRoomList.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="530">
+          <caret line="39" column="14" lean-forward="true" selection-start-line="39" selection-start-column="14" selection-end-line="39" selection-end-column="14" />
+          <folding>
+            <element signature="e#985#991#0#HTML" expanded="true" />
+            <element signature="e#991#997#0#HTML" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/inc/navigator.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="453">
+          <caret line="46" column="33" lean-forward="false" selection-start-line="46" selection-start-column="33" selection-end-line="46" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/shared/public/classes/GroupRoute.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="380">
-          <caret line="20" column="25" lean-forward="false" selection-start-line="20" selection-start-column="25" selection-end-line="20" selection-end-column="25" />
+        <state relative-caret-position="133">
+          <caret line="7" column="64" lean-forward="true" selection-start-line="7" selection-start-column="64" selection-end-line="7" selection-end-column="64" />
           <folding>
             <marker date="1543648058955" expanded="true" signature="278:480" ph="SELECT *, (S... tblGroup" />
             <marker date="1543648058955" expanded="true" signature="278:503" ph="SELECT *, (S... tblGroup" />
@@ -851,21 +794,85 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/ajaxPages/ajaxRoomList.php">
+    <entry file="file://$PROJECT_DIR$/web/room.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="589">
-          <caret line="31" column="46" lean-forward="false" selection-start-line="31" selection-start-column="46" selection-end-line="31" selection-end-column="46" />
+        <state relative-caret-position="411">
+          <caret line="76" column="0" lean-forward="true" selection-start-line="76" selection-start-column="0" selection-end-line="76" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/blog-single.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="111" column="38" lean-forward="true" selection-start-line="111" selection-start-column="38" selection-end-line="111" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/login.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="68" column="60" lean-forward="true" selection-start-line="68" selection-start-column="60" selection-end-line="68" selection-end-column="60" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/ajaxPages/ajaxGroupList.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="15" column="48" lean-forward="true" selection-start-line="15" selection-start-column="48" selection-end-line="15" selection-end-column="48" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/group.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="31">
+          <caret line="58" column="0" lean-forward="false" selection-start-line="58" selection-start-column="0" selection-end-line="58" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/ajaxPages/ajaxNoticeList.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="209">
+          <caret line="11" column="6" lean-forward="true" selection-start-line="11" selection-start-column="6" selection-end-line="11" selection-end-column="6" />
           <folding>
-            <element signature="e#783#789#0#HTML" expanded="true" />
-            <element signature="e#789#795#0#HTML" expanded="true" />
+            <marker date="1543649551941" expanded="true" signature="628:634" ph=" " />
+            <marker date="1543649551941" expanded="true" signature="646:652" ph=" " />
+            <marker date="1543649551941" expanded="true" signature="652:658" ph=" " />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/room.php">
+    <entry file="file://$PROJECT_DIR$/shared/public/classes/WebInfoRoute.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="283">
-          <caret line="115" column="0" lean-forward="true" selection-start-line="115" selection-start-column="0" selection-end-line="115" selection-end-column="0" />
+        <state relative-caret-position="323">
+          <caret line="17" column="37" lean-forward="true" selection-start-line="17" selection-start-column="37" selection-end-line="17" selection-end-column="37" />
+          <folding>
+            <marker date="1543650385837" expanded="true" signature="190:231" ph="SELECT * FRO... tblFaq" />
+            <marker date="1543650385837" expanded="true" signature="392:637" ph="SELECT *, (S... tblGroup" />
+            <marker date="1543650385837" expanded="true" signature="727:883" ph="SELECT * FRO... tblNotice" />
+            <marker date="1543650385837" expanded="true" signature="1008:1056" ph="SELECT `hit`... tblNotice" />
+            <marker date="1543650385837" expanded="true" signature="1127:1167" ph="UPDATE tblNo... " />
+            <marker date="1543650385837" expanded="true" signature="1127:1188" ph="UPDATE tblNo... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/noticeDetail.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="304">
+          <caret line="16" column="11" lean-forward="true" selection-start-line="16" selection-start-column="11" selection-end-line="16" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/notice.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="380">
+          <caret line="20" column="13" lean-forward="true" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
           <folding />
         </state>
       </provider>

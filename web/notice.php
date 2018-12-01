@@ -8,7 +8,7 @@
 
             function loadMore(page){
                 loadPageInto(
-                    "/eVote/web/ajaxPages/ajaxRoomList.php",
+                    "/eVote/web/ajaxPages/ajaxNoticeList.php",
                     {page : page},
                     ".jContainer",
                     true,
@@ -40,7 +40,7 @@
                     "/eVote/web/ajaxPages/ajaxRecommendation.php",
                     {
                         key : $(this).val(),
-                        table : "tblRoom",
+                        table : "tblNotice",
                         col : "title"
                     },
                     function(data){
@@ -52,6 +52,11 @@
                         $(".jRec").html(html);
                     }
                 );
+            });
+
+            $(document).on("click", ".jDetail", function(){
+                var id = $(this).attr("noticeID");
+                location.href = "noticeDetail.php?id=" + id;
             });
 
             buttonLink(".jMyGroup", "myGroup.php");
@@ -67,10 +72,10 @@
 
                 <div class="header-wrapper sm-padding bg-grey">
                     <div class="container">
-                        <h2>투표 및 설문</h2>
+                        <h2>공지사항</h2>
                         <ul class="breadcrumb">
                             <li class="breadcrumb-item"><a href="index.php">홈</a></li>
-                            <li class="breadcrumb-item">투표 및 설문</li>
+                            <li class="breadcrumb-item">공지사항</li>
                         </ul>
                     </div>
                 </div>
@@ -85,16 +90,11 @@
 
             <!-- Row -->
             <div class="row tiny-padding">
-
-                <div class="col-md-12 text-right">
-                    <button class="btn btn-default jMyGroup"><i class="fa fa-list"></i> 참여중인 투표/설문</button>
-                    <button class="btn bg-primary jCGroup"><i class="fa fa-plus"></i> 투표/설문 생성</button>
-                </div>
                 <br/>
                 <aside id="aside" class="col-md-3">
                     <div class="widget">
                         <div class="widget-search">
-                            <input class="search-input jSearchTxt" type="text" placeholder="투표/설문 검색">
+                            <input class="search-input jSearchTxt" type="text" placeholder="공지사항 검색">
                             <button class="search-btn jSearch" type="button"><i class="fa fa-search"></i></button>
                         </div>
                         <div class="blog-comments recommend jRec">
