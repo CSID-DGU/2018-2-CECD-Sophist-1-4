@@ -36,13 +36,13 @@
 			<div class="row">
 
 				<!-- Main -->
-				<main id="main" class="col-md-9 text-center">
+				<main id="main" class="col-md-12 text-center">
 <!--                    <h3 class="title">FAQ</h3>-->
 						<!-- reply form -->
                     <? foreach ($list as $item){ ?>
-                    <button class="collapsible"><?=$item["title"]?></button>
+                    <button class="collapsible"><i class="fa fa-question-circle"></i>&nbsp;&nbsp;<?=$item["title"]?></button>
                     <div class="collapsible_content">
-                        <p><?=$item["content"]?></p>
+                        <p class="faq-answer"><?=$item["content"]?></p>
                     </div>
                     <?}?>
 				</main>

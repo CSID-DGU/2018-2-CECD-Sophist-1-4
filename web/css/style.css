@@ -1264,6 +1264,12 @@ header {
     background-color: #6195FF;
 }
 
+/* FAQ */
+.faq-answer{
+    margin-top : 5px;
+    font-size: 14px;
+}
+
 /* -- blog comments -- */
 
 .blog-comments {

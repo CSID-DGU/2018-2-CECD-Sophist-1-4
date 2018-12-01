@@ -7,7 +7,9 @@ class GroupRoute extends Routable {
     function getGroupList(){
         $slt = "SELECT *, 
                 (SELECT `name` FROM tblUser WHERE `id`=`madeBy` LIMIT 1) AS madeName 
-                FROM tblGroup ORDER BY `regDate` DESC";
+                FROM tblGroup
+                WHERE `parentId`=0 
+                ORDER BY `regDate` DESC";
         return $this->getArray($slt);
     }
 
