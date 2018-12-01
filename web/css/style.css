@@ -1276,8 +1276,22 @@ header {
     margin: 40px 0px;
 }
 
+.blog-comments.recommend {
+    margin: 5px 0px;
+}
+
 .blog-comments .media {
     padding: 20px;
+    background-color: #FFF;
+    border-top: 1px solid #EEE;
+    border-bottom: 0px;
+    border-right: 1px solid #EEE;
+    border-left: 1px solid #EEE;
+    margin-top: 0px;
+}
+
+.blog-comments .media.recommend {
+    padding: 5px;
     background-color: #FFF;
     border-top: 1px solid #EEE;
     border-bottom: 0px;

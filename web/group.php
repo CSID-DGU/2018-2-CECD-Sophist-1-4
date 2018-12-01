@@ -1,15 +1,59 @@
 <? include_once $_SERVER["DOCUMENT_ROOT"]."/eVote/web/inc/header.php"; ?>
-<? include_once $_SERVER["DOCUMENT_ROOT"]."/eVote/shared/public/classes/GroupRoute.php"; ?>
-<?
-//if(AuthUtil::isLoggedIn()){
-//    echo "<script>location.href='index.php';</script>";
-//}
-$router = new GroupRoute();
-$list = $router->getGroupList();
-?>
     <script>
 
         $(document).ready(function(){
+
+            var currentPage = 1;
+            var isFinal = false;
+
+            function loadMore(page){
+                loadPageInto(
+                    "/eVote/web/ajaxPages/ajaxGroupList.php",
+                    {page : page},
+                    ".jContainer",
+                    true,
+                    function(){
+                        isFinal = true;
+                        currentPage--;
+                        $(".jLoadMore").hide();
+                    }
+                );
+            }
+
+            loadMore(currentPage);
+
+            $(".jLoadMore").click(function(){
+                loadMore(++currentPage);
+            });
+
+            $(document).on("click", ".jRecList", function(){
+                $(".jSearchTxt").val($(this).html());
+                $(".jRec").html("");
+            });
+
+            $(".jSearchTxt").keyup(function(){
+                if($(this).val().trim() == ""){
+                    $(".jRec").html("");
+                    return;
+                }
+                callJsonIgnoreError(
+                    "/eVote/web/ajaxPages/ajaxRecommendation.php",
+                    {
+                        key : $(this).val(),
+                        table : "tblGroup",
+                        col : "title"
+                    },
+                    function(data){
+                        console.log(data);
+                        var html = "";
+                        for(var w = 0; w < data.length; w++){
+                            html += "<div class='media recommend jRecList'>" + data[w] + "</div>";
+                        }
+                        $(".jRec").html(html);
+                    }
+                );
+            });
+
             $(".jJoin").click(function(){
                 if($(".jEmailTxt").val() == ""
                     || $(".jPhoneTxt").val() == ""
@@ -79,39 +123,24 @@ $list = $router->getGroupList();
                     <button class="btn btn-default"><i class="fa fa-list"></i> 내 그룹</button>
                     <button class="btn bg-primary"><i class="fa fa-plus"></i> 그룹 생성</button>
                 </div>
+                <br/>
+                <aside id="aside" class="col-md-3">
+                    <div class="widget">
+                        <div class="widget-search">
+                            <input class="search-input jSearchTxt" type="text" placeholder="그룹 검색">
+                            <button class="search-btn jSearch" type="button"><i class="fa fa-search"></i></button>
+                        </div>
+                        <div class="blog-comments recommend jRec">
+                        </div>
+                    </div>
+                </aside>
                 <!-- Main -->
                 <main id="main" class="col-md-12">
+                    <div class="blog-comments jContainer">
+                    </div>
 
-                    <div class="blog-comments">
-                        <?foreach($list as $item){
-                            $madeBy = $item["madeName"];
-                            if($item["madeBy"]==0) $madeBy = "관리자";
-                            ?>
-                        <div class="media">
-                            <div class="media-body">
-                                <h4 class="media-heading">
-                                    <?if($item["needsAuth"] == 1){?>
-                                        <i class="fa fa-lock"></i>&nbsp;
-                                    <?}?>
-                                    <?=$item["title"]?>
-                                    <span class="time">
-                                        <i class="fa fa-user"></i>&nbsp;<?=$madeBy?>&nbsp;&nbsp;
-                                        <i class="fa fa-calendar"></i> <?=$item["regDate"]?></span>
-                                    <a href="#" class="reply">자세히 <i class="fa fa-sign-in"></i></a>
-                                </h4>
-                                <p><?=$item["desc"]?></p>
-                            </div>
-                            <div class="blog-tags sm-tag">
-                                <?
-                                $tags = explode(",", $item["tag"]);
-                                foreach ($tags as $tag){
-                                ?>
-                                <a href="#"><i class="fa fa-tag"></i><?=$tag?></a>
-                                <?}?>
-                            </div>
-                        </div>
-                        <?}?>
-
+                    <div class="text-center">
+                    <button class="btn btn-default jLoadMore"><i class="fa fa-spinner"></i> 더 보기</button>
                     </div>
                     <!-- blog tags -->
             </div>

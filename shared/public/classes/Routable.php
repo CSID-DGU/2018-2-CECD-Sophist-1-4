@@ -14,6 +14,20 @@ class Routable extends Databases {
         return $this->decryptAES256("r8e5JO53po+YjINxOCQWpg==");
     }
 
+    function getRecommendation($key, $table, $col, $count = 10){
+        $slt = "SELECT `{$col}` FROM `{$table}` WHERE `{$col}` LIKE '%{$key}%' ORDER BY `{$col}` DESC LIMIT {$count}";
+        $arr = $this->getArray($slt);
+
+        if(sizeof($arr) == 0) return array();
+
+        $retVal = array();
+        $cursor = 0;
+        foreach ($arr as $unit){
+            $retVal[$cursor++] = $unit[$col];
+        }
+        return $retVal;
+    }
+
     function getData($actionUrl, $request=array()){
         $url = $actionUrl . "?" . http_build_query($request, '', '&');
         $curl_obj = curl_init();
