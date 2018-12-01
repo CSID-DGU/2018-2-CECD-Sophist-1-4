@@ -7,6 +7,10 @@
 <script>
 
     $(document).ready(function(){
+        $(".jJoin").click(function(){
+            location.href = "join.php";
+        });
+
         $(".jLog").click(function(){
             if($(".jEmailTxt").val() == "" || $(".jPasswordTxt").val() == ""){
                 alert("회원 정보를 입력하세요.");

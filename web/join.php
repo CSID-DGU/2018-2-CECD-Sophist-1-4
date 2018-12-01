@@ -25,8 +25,8 @@ if(AuthUtil::isLoggedIn()){
                     "/eVote/shared/public/route.php?F=UserAuthRoute.joinUser",
                     {
                         email : $(".jEmailTxt").val(),
-                        pwd : $(".jPhoneTxt").val(),
-                        phone : $(".jSex").val(),
+                        pwd : $(".jPasswordTxt").val(),
+                        phone : $(".jPhoneTxt").val(),
                         name : $(".jNameTxt").val(),
                         sex : $(".jSex").val()
                     }

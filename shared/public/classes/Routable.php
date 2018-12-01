@@ -11,7 +11,7 @@ class Routable extends Databases {
     }
 
     function test(){
-        return $this->encryptAES256("test");
+        return $this->decryptAES256("r8e5JO53po+YjINxOCQWpg==");
     }
 
     function getData($actionUrl, $request=array()){
