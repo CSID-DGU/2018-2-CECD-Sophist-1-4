@@ -1,8 +1,8 @@
 <? include_once $_SERVER["DOCUMENT_ROOT"]."/eVote/web/inc/header.php"; ?>
 <?
-if(AuthUtil::isLoggedIn()){
-    echo "<script>location.href='index.php';</script>";
-}
+//if(AuthUtil::isLoggedIn()){
+//    echo "<script>location.href='index.php';</script>";
+//}
 ?>
     <script>
 
@@ -50,15 +50,17 @@ if(AuthUtil::isLoggedIn()){
         <nav id="nav" class="navbar">
             <div class="container">
                 <? include_once $_SERVER["DOCUMENT_ROOT"]."/eVote/web/inc/navigator.php"; ?>
+
                 <div class="header-wrapper sm-padding bg-grey">
                     <div class="container">
-                        <h2>회원가입</h2>
+                        <h2>그룹</h2>
                         <ul class="breadcrumb">
                             <li class="breadcrumb-item"><a href="index.php">홈</a></li>
-                            <li class="breadcrumb-item">회원가입</li>
+                            <li class="breadcrumb-item">그룹</li>
                         </ul>
                     </div>
                 </div>
+
     </header>
     <!-- /Header -->
 
@@ -73,32 +75,24 @@ if(AuthUtil::isLoggedIn()){
 
                 <!-- Main -->
                 <main id="main" class="col-md-9">
-                    <!-- reply form -->
-                    <div class="reply-form text-center">
-<!--                        <h3 class="title">회원가입</h3>-->
-                        <form>
-                            <input class="input jNameTxt" type="text" placeholder="성명" />
-                            <br/>
-                            <input class="input jEmailTxt" type="email" placeholder="이메일" />
-                            <br/>
-                            <input class="input jPhoneTxt" type="text" placeholder="전화번호" />
-                            <br/>
-                            <input class="input jPasswordTxt" type="password" placeholder="패스워드" />
-                            <br/>
-                            <input class="input jPasswordCTxt" type="password" placeholder="패스워드 확인" />
-                            <br/>
-                            <select class="input jSex">
-                                <option value="N">성별(선택)</option>
-                                <option value="M">남성</option>
-                                <option value="F">여성</option>
-                            </select>
-                            <br/><br/>
-                            <div class="btn-group" role="group" aria-label="Basic example">
-                                <button type="button" class="btn bg-primary jJoin"><i class="fa fa-pencil"></i> 가입하기</button>
+                    <div class="blog-comments">
+                        <div class="media">
+                            <div class="media-body">
+                                <h4 class="media-heading">Joe Doe<span class="time">2 min ago</span><a href="#" class="reply">Reply <i class="fa fa-reply"></i></a></h4>
+                                <p>Nec feugiat nisl pretium fusce id velit ut tortor pretium. Nisl purus in mollis nunc sed. Nunc non blandit massa enim nec.</p>
                             </div>
-                        </form>
+                        </div>
                     </div>
-                    <!-- /reply form -->
+                    <!-- blog tags -->
+                    <div class="blog-tags">
+                        <h5>Tags :</h5>
+                        <a href="#"><i class="fa fa-tag"></i>Web</a>
+                        <a href="#"><i class="fa fa-tag"></i>Design</a>
+                        <a href="#"><i class="fa fa-tag"></i>Marketing</a>
+                        <a href="#"><i class="fa fa-tag"></i>Development</a>
+                        <a href="#"><i class="fa fa-tag"></i>Branding</a>
+                        <a href="#"><i class="fa fa-tag"></i>Photography</a>
+                    </div>
             </div>
             </main>
             <!-- /Main -->

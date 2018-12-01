@@ -42,12 +42,20 @@
 		<nav id="nav" class="navbar">
 			<div class="container">
                 <? include_once $_SERVER["DOCUMENT_ROOT"]."/eVote/web/inc/navigator.php"; ?>
-
+                <div class="header-wrapper sm-padding bg-grey">
+                    <div class="container">
+                        <h2>회원 로그인</h2>
+                        <ul class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="index.php">홈</a></li>
+                            <li class="breadcrumb-item">로그인</li>
+                        </ul>
+                    </div>
+                </div>
 	</header>
 	<!-- /Header -->
 
 	<!-- Blog -->
-	<div id="blog" class="section md-padding">
+	<div id="blog" class="section">
 
 		<!-- Container -->
 		<div class="container">
@@ -59,7 +67,7 @@
 				<main id="main" class="col-md-9">
 						<!-- reply form -->
 						<div class="reply-form text-center">
-							<h3 class="title">회원 로그인</h3>
+<!--							<h3 class="title">회원 로그인</h3>-->
 							<form>
                                 <input class="input jEmailTxt" type="email" placeholder="이메일" />
                                 <br/>

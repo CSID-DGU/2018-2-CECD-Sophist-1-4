@@ -40,11 +40,11 @@ if(!AuthUtil::isLoggedIn()){
                 <? include_once $_SERVER["DOCUMENT_ROOT"]."/eVote/web/inc/navigator.php"; ?>
                 <div class="header-wrapper sm-padding bg-grey">
                     <div class="container">
-                        <h2>대시보드</h2>
+                        <h2>내 정보</h2>
                         <ul class="breadcrumb">
                             <li class="breadcrumb-item"><a href="index.php">홈</a></li>
                             <li class="breadcrumb-item">내 계정</li>
-                            <li class="breadcrumb-item">그룹</li>
+                            <li class="breadcrumb-item">내 정보</li>
                         </ul>
                     </div>
                 </div>

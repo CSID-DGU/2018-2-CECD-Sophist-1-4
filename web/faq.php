@@ -14,7 +14,15 @@
 		<nav id="nav" class="navbar">
 			<div class="container">
                 <? include_once $_SERVER["DOCUMENT_ROOT"]."/eVote/web/inc/navigator.php"; ?>
-
+                <div class="header-wrapper sm-padding bg-grey">
+                    <div class="container">
+                        <h2>FAQ</h2>
+                        <ul class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="index.php">홈</a></li>
+                            <li class="breadcrumb-item">FAQ</li>
+                        </ul>
+                    </div>
+                </div>
 	</header>
 	<!-- /Header -->
 
@@ -29,7 +37,7 @@
 
 				<!-- Main -->
 				<main id="main" class="col-md-9 text-center">
-                    <h3 class="title">FAQ</h3>
+<!--                    <h3 class="title">FAQ</h3>-->
 						<!-- reply form -->
                     <? foreach ($list as $item){ ?>
                     <button class="collapsible"><?=$item["title"]?></button>
