@@ -2,10 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7a708afb-bd89-490b-b167-97aaeae173a6" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/ajaxPages/ajaxVoteList.php" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/web/survey.php" afterPath="" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/web/ajaxPages/ajaxVoteList.php" afterPath="$PROJECT_DIR$/web/ajaxPages/ajaxRoomList.php" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/web/vote.php" afterPath="$PROJECT_DIR$/web/room.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/shared/public/classes/GroupRoute.php" afterPath="$PROJECT_DIR$/shared/public/classes/GroupRoute.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/vote.php" afterPath="$PROJECT_DIR$/web/vote.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/inc/navigator.php" afterPath="$PROJECT_DIR$/web/inc/navigator.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -21,16 +23,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="415">
               <caret line="44" column="25" lean-forward="false" selection-start-line="44" selection-start-column="25" selection-end-line="44" selection-end-column="25" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="survey.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/survey.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
-              <caret line="126" column="88" lean-forward="false" selection-start-line="126" selection-start-column="88" selection-end-line="126" selection-end-column="88" />
               <folding />
             </state>
           </provider>
@@ -56,18 +48,18 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="vote.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/web/vote.php">
+      <file leaf-file-name="room.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/web/room.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="380">
-              <caret line="42" column="40" lean-forward="false" selection-start-line="42" selection-start-column="40" selection-end-line="42" selection-end-column="40" />
+            <state relative-caret-position="283">
+              <caret line="115" column="0" lean-forward="true" selection-start-line="115" selection-start-column="0" selection-end-line="115" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ajaxVoteList.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/ajaxPages/ajaxVoteList.php">
+      <file leaf-file-name="ajaxRoomList.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/ajaxPages/ajaxRoomList.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="589">
               <caret line="31" column="46" lean-forward="false" selection-start-line="31" selection-start-column="46" selection-end-line="31" selection-end-column="46" />
@@ -85,10 +77,10 @@
             <state relative-caret-position="380">
               <caret line="20" column="25" lean-forward="false" selection-start-line="20" selection-start-column="25" selection-end-line="20" selection-end-column="25" />
               <folding>
-                <marker date="1543646738681" expanded="true" signature="278:480" ph="SELECT *, (S... tblGroup" />
-                <marker date="1543646738681" expanded="true" signature="278:503" ph="SELECT *, (S... tblGroup" />
-                <marker date="1543646738681" expanded="true" signature="699:932" ph="SELECT *, (S... " />
-                <marker date="1543646738681" expanded="true" signature="699:1072" ph="SELECT *, (S... tblGroup" />
+                <marker date="1543648058955" expanded="true" signature="278:480" ph="SELECT *, (S... tblGroup" />
+                <marker date="1543648058955" expanded="true" signature="278:503" ph="SELECT *, (S... tblGroup" />
+                <marker date="1543648058955" expanded="true" signature="699:932" ph="SELECT *, (S... " />
+                <marker date="1543648058955" expanded="true" signature="699:1072" ph="SELECT *, (S... tblGroup" />
               </folding>
             </state>
           </provider>
@@ -143,9 +135,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>top</find>
-      <find>col</find>
-      <find>blog pa</find>
       <find>send</find>
       <find>margin</find>
       <find>COLOR</find>
@@ -173,6 +162,9 @@
       <find>searc</find>
       <find>media</find>
       <find>jConta</find>
+      <find>tblVote</find>
+      <find>vote.php</find>
+      <find>ajaxVote</find>
     </findStrings>
     <replaceStrings>
       <replace>mailInfo</replace>
@@ -221,6 +213,7 @@
         <option value="$PROJECT_DIR$/shared/public/classes/GroupRoute.php" />
         <option value="$PROJECT_DIR$/web/ajaxPages/ajaxVoteList.php" />
         <option value="$PROJECT_DIR$/web/vote.php" />
+        <option value="$PROJECT_DIR$/web/room.php" />
       </list>
     </option>
   </component>
@@ -381,12 +374,12 @@
       <option name="presentableId" value="Default" />
       <updated>1543581757271</updated>
       <workItem from="1543581758469" duration="18718000" />
-      <workItem from="1543635300382" duration="11721000" />
+      <workItem from="1543635300382" duration="12452000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="30439000" />
+    <option name="totallyTimeSpent" value="31170000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="0" width="974" height="1047" extended-state="0" />
@@ -850,15 +843,15 @@
         <state relative-caret-position="380">
           <caret line="20" column="25" lean-forward="false" selection-start-line="20" selection-start-column="25" selection-end-line="20" selection-end-column="25" />
           <folding>
-            <marker date="1543646738681" expanded="true" signature="278:480" ph="SELECT *, (S... tblGroup" />
-            <marker date="1543646738681" expanded="true" signature="278:503" ph="SELECT *, (S... tblGroup" />
-            <marker date="1543646738681" expanded="true" signature="699:932" ph="SELECT *, (S... " />
-            <marker date="1543646738681" expanded="true" signature="699:1072" ph="SELECT *, (S... tblGroup" />
+            <marker date="1543648058955" expanded="true" signature="278:480" ph="SELECT *, (S... tblGroup" />
+            <marker date="1543648058955" expanded="true" signature="278:503" ph="SELECT *, (S... tblGroup" />
+            <marker date="1543648058955" expanded="true" signature="699:932" ph="SELECT *, (S... " />
+            <marker date="1543648058955" expanded="true" signature="699:1072" ph="SELECT *, (S... tblGroup" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/ajaxPages/ajaxVoteList.php">
+    <entry file="file://$PROJECT_DIR$/web/ajaxPages/ajaxRoomList.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="589">
           <caret line="31" column="46" lean-forward="false" selection-start-line="31" selection-start-column="46" selection-end-line="31" selection-end-column="46" />
@@ -869,10 +862,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/vote.php">
+    <entry file="file://$PROJECT_DIR$/web/room.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="380">
-          <caret line="42" column="40" lean-forward="false" selection-start-line="42" selection-start-column="40" selection-end-line="42" selection-end-column="40" />
+        <state relative-caret-position="283">
+          <caret line="115" column="0" lean-forward="true" selection-start-line="115" selection-start-column="0" selection-end-line="115" selection-end-column="0" />
           <folding />
         </state>
       </provider>

@@ -42,8 +42,7 @@
 <!--  Main navigation  -->
 <ul class="main-nav nav navbar-nav navbar-right">
     <li><a href="index.php">홈</a></li>
-    <li><a href="vote.php">투표</a></li>
-    <li><a href="survey.php">설문</a></li>
+    <li><a href="room.php">투표/설문</a></li>
     <li><a href="group.php">그룹</a></li>
     <li><a href="faq.php">FAQ</a></li>
     <? if(AuthUtil::isLoggedIn()){ ?>
