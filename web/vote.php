@@ -8,7 +8,7 @@
 
             function loadMore(page){
                 loadPageInto(
-                    "/eVote/web/ajaxPages/ajaxGroupList.php",
+                    "/eVote/web/ajaxPages/ajaxVoteList.php",
                     {page : page},
                     ".jContainer",
                     true,
@@ -40,7 +40,7 @@
                     "/eVote/web/ajaxPages/ajaxRecommendation.php",
                     {
                         key : $(this).val(),
-                        table : "tblGroup",
+                        table : "tblVote",
                         col : "title"
                     },
                     function(data){
@@ -130,7 +130,7 @@
                 <aside id="aside" class="col-md-3">
                     <div class="widget">
                         <div class="widget-search">
-                            <input class="search-input jSearchTxt" type="text" placeholder="그룹 검색">
+                            <input class="search-input jSearchTxt" type="text" placeholder="투표 검색">
                             <button class="search-btn jSearch" type="button"><i class="fa fa-search"></i></button>
                         </div>
                         <div class="blog-comments recommend jRec">

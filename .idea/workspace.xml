@@ -2,14 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7a708afb-bd89-490b-b167-97aaeae173a6" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/createGroup.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/myGroup.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/survey.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/vote.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/ajaxPages/ajaxVoteList.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/group.php" afterPath="$PROJECT_DIR$/web/group.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/inc/navigator.php" afterPath="$PROJECT_DIR$/web/inc/navigator.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/js/AjaxUtil.js" afterPath="$PROJECT_DIR$/web/js/AjaxUtil.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/shared/public/classes/GroupRoute.php" afterPath="$PROJECT_DIR$/shared/public/classes/GroupRoute.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/vote.php" afterPath="$PROJECT_DIR$/web/vote.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -63,9 +59,37 @@
       <file leaf-file-name="vote.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/web/vote.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="817">
-              <caret line="126" column="88" lean-forward="false" selection-start-line="126" selection-start-column="88" selection-end-line="126" selection-end-column="88" />
+            <state relative-caret-position="380">
+              <caret line="42" column="40" lean-forward="false" selection-start-line="42" selection-start-column="40" selection-end-line="42" selection-end-column="40" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ajaxVoteList.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/ajaxPages/ajaxVoteList.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="589">
+              <caret line="31" column="46" lean-forward="false" selection-start-line="31" selection-start-column="46" selection-end-line="31" selection-end-column="46" />
+              <folding>
+                <element signature="e#783#789#0#HTML" expanded="true" />
+                <element signature="e#789#795#0#HTML" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GroupRoute.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/shared/public/classes/GroupRoute.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="380">
+              <caret line="20" column="25" lean-forward="false" selection-start-line="20" selection-start-column="25" selection-end-line="20" selection-end-column="25" />
+              <folding>
+                <marker date="1543646738681" expanded="true" signature="278:480" ph="SELECT *, (S... tblGroup" />
+                <marker date="1543646738681" expanded="true" signature="278:503" ph="SELECT *, (S... tblGroup" />
+                <marker date="1543646738681" expanded="true" signature="699:932" ph="SELECT *, (S... " />
+                <marker date="1543646738681" expanded="true" signature="699:1072" ph="SELECT *, (S... tblGroup" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -90,16 +114,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="blog-single.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/blog-single.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="418">
-              <caret line="254" column="36" lean-forward="true" selection-start-line="254" selection-start-column="36" selection-end-line="254" selection-end-column="36" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="Routable.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/shared/public/classes/Routable.php">
           <provider selected="true" editor-type-id="text-editor">
@@ -118,16 +132,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="header.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/inc/header.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="449">
-              <caret line="40" column="65" lean-forward="true" selection-start-line="40" selection-start-column="65" selection-end-line="40" selection-end-column="65" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
     </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
@@ -139,7 +143,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>ajax</find>
       <find>top</find>
       <find>col</find>
       <find>blog pa</find>
@@ -169,6 +172,7 @@
       <find>callJso</find>
       <find>searc</find>
       <find>media</find>
+      <find>jConta</find>
     </findStrings>
     <replaceStrings>
       <replace>mailInfo</replace>
@@ -205,7 +209,6 @@
         <option value="$PROJECT_DIR$/web/profile.php" />
         <option value="$PROJECT_DIR$/web/faq.php" />
         <option value="$PROJECT_DIR$/web/ajaxPages/ajaxGroupList.php" />
-        <option value="$PROJECT_DIR$/shared/public/classes/GroupRoute.php" />
         <option value="$PROJECT_DIR$/web/css/style.css" />
         <option value="$PROJECT_DIR$/shared/public/classes/Routable.php" />
         <option value="$PROJECT_DIR$/web/ajaxPages/ajaxRecommendation.php" />
@@ -215,6 +218,8 @@
         <option value="$PROJECT_DIR$/web/myGroup.php" />
         <option value="$PROJECT_DIR$/web/inc/navigator.php" />
         <option value="$PROJECT_DIR$/web/survey.php" />
+        <option value="$PROJECT_DIR$/shared/public/classes/GroupRoute.php" />
+        <option value="$PROJECT_DIR$/web/ajaxPages/ajaxVoteList.php" />
         <option value="$PROJECT_DIR$/web/vote.php" />
       </list>
     </option>
@@ -345,6 +350,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\eVote\web\ajaxPages" />
       <recent name="C:\xampp\htdocs\eVote\web" />
       <recent name="C:\xampp\htdocs\eVote\shared\public\classes" />
     </key>
@@ -375,12 +381,12 @@
       <option name="presentableId" value="Default" />
       <updated>1543581757271</updated>
       <workItem from="1543581758469" duration="18718000" />
-      <workItem from="1543635300382" duration="10083000" />
+      <workItem from="1543635300382" duration="11721000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="28801000" />
+    <option name="totallyTimeSpent" value="30439000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="0" width="974" height="1047" extended-state="0" />
@@ -416,14 +422,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/web/join.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="418">
-          <caret line="22" column="0" lean-forward="true" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/web/login.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="380">
@@ -733,17 +731,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/shared/public/classes/GroupRoute.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
-          <caret line="18" column="0" lean-forward="true" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
-          <folding>
-            <marker date="1543641980680" expanded="true" signature="278:480" ph="SELECT *, (S... tblGroup" />
-            <marker date="1543641980680" expanded="true" signature="278:503" ph="SELECT *, (S... tblGroup" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/shared/public/classes/WebInfoRoute.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="76">
@@ -858,10 +845,34 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/shared/public/classes/GroupRoute.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="380">
+          <caret line="20" column="25" lean-forward="false" selection-start-line="20" selection-start-column="25" selection-end-line="20" selection-end-column="25" />
+          <folding>
+            <marker date="1543646738681" expanded="true" signature="278:480" ph="SELECT *, (S... tblGroup" />
+            <marker date="1543646738681" expanded="true" signature="278:503" ph="SELECT *, (S... tblGroup" />
+            <marker date="1543646738681" expanded="true" signature="699:932" ph="SELECT *, (S... " />
+            <marker date="1543646738681" expanded="true" signature="699:1072" ph="SELECT *, (S... tblGroup" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/ajaxPages/ajaxVoteList.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="589">
+          <caret line="31" column="46" lean-forward="false" selection-start-line="31" selection-start-column="46" selection-end-line="31" selection-end-column="46" />
+          <folding>
+            <element signature="e#783#789#0#HTML" expanded="true" />
+            <element signature="e#789#795#0#HTML" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/web/vote.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="817">
-          <caret line="126" column="88" lean-forward="false" selection-start-line="126" selection-start-column="88" selection-end-line="126" selection-end-column="88" />
+        <state relative-caret-position="380">
+          <caret line="42" column="40" lean-forward="false" selection-start-line="42" selection-start-column="40" selection-end-line="42" selection-end-column="40" />
           <folding />
         </state>
       </provider>
