@@ -1,8 +1,11 @@
 <? include_once $_SERVER["DOCUMENT_ROOT"]."/eVote/web/inc/header.php"; ?>
+<? include_once $_SERVER["DOCUMENT_ROOT"]."/eVote/shared/public/classes/GroupRoute.php"; ?>
 <?
 //if(AuthUtil::isLoggedIn()){
 //    echo "<script>location.href='index.php';</script>";
 //}
+$router = new GroupRoute();
+$list = $router->getGroupList();
 ?>
     <script>
 
@@ -66,33 +69,41 @@
 
     <!-- Blog -->
     <div id="blog" class="section">
-
         <!-- Container -->
         <div class="container">
 
             <!-- Row -->
-            <div class="row">
+            <div class="row tiny-padding">
 
+                <div class="col-md-12 text-right">
+                    <button class="btn btn-default"><i class="fa fa-list"></i> 내 그룹</button>
+                    <button class="btn bg-primary"><i class="fa fa-plus"></i> 그룹 생성</button>
+                </div>
                 <!-- Main -->
-                <main id="main" class="col-md-9">
+                <main id="main" class="col-md-12">
+
                     <div class="blog-comments">
+                        <?foreach($list as $item){?>
                         <div class="media">
                             <div class="media-body">
-                                <h4 class="media-heading">Joe Doe<span class="time">2 min ago</span><a href="#" class="reply">Reply <i class="fa fa-reply"></i></a></h4>
-                                <p>Nec feugiat nisl pretium fusce id velit ut tortor pretium. Nisl purus in mollis nunc sed. Nunc non blandit massa enim nec.</p>
+                                <h4 class="media-heading"><?=$item["title"]?><span class="time"><?=$item["madeName"]?> / <?=$item["regDate"]?></span>
+                                    <a href="#" class="reply">자세히 <i class="fa fa-sign-in"></i></a>
+                                </h4>
+                                <p><?=$item["desc"]?></p>
+                            </div>
+                            <div class="blog-tags sm-tag">
+                                <?
+                                $tags = explode(",", $item["tag"]);
+                                foreach ($tags as $tag){
+                                ?>
+                                <a href="#"><i class="fa fa-tag"></i><?=$tag?></a>
+                                <?}?>
                             </div>
                         </div>
+                        <?}?>
+
                     </div>
                     <!-- blog tags -->
-                    <div class="blog-tags">
-                        <h5>Tags :</h5>
-                        <a href="#"><i class="fa fa-tag"></i>Web</a>
-                        <a href="#"><i class="fa fa-tag"></i>Design</a>
-                        <a href="#"><i class="fa fa-tag"></i>Marketing</a>
-                        <a href="#"><i class="fa fa-tag"></i>Development</a>
-                        <a href="#"><i class="fa fa-tag"></i>Branding</a>
-                        <a href="#"><i class="fa fa-tag"></i>Photography</a>
-                    </div>
             </div>
             </main>
             <!-- /Main -->

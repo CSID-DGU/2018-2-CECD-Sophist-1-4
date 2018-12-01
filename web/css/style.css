@@ -159,6 +159,11 @@ ul, ol {
     padding-bottom: 120px;
 }
 
+.tiny-padding {
+    padding-top: 45px;
+    padding-bottom: 45px;
+}
+
 .sm-padding {
     padding-top: 60px;
     padding-bottom: 60px;
@@ -1174,6 +1179,10 @@ header {
     margin: 40px 0px;
 }
 
+.blog-tags.sm-tag {
+    margin: 0px 0px;
+}
+
 .blog-tags h5 {
     margin-bottom: 0;
     display: inline-block;
@@ -1183,6 +1192,15 @@ header {
     display: inline-block;
     padding: 6px 13px;
     font-size: 14px;
+    margin: 2px 0px;
+    background: #F4F4F4;
+    color: #10161A;
+}
+
+.blog-tags.sm-tag a {
+    display: inline-block;
+    padding: 6px 13px;
+    font-size: 11px;
     margin: 2px 0px;
     background: #F4F4F4;
     color: #10161A;
@@ -1277,6 +1295,7 @@ header {
 .blog-comments .media .media-body .media-heading {
     text-transform: uppercase;
     margin-bottom:10px;
+    margin-top:5px;
 }
 
 .blog-comments .media .media-body .media-heading .time {
