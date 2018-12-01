@@ -1,8 +1,13 @@
 <? include_once $_SERVER["DOCUMENT_ROOT"]."/eVote/web/inc/header.php"; ?>
+<? include_once $_SERVER["DOCUMENT_ROOT"]."/eVote/shared/public/classes/UserAuthRoute.php"; ?>
 <?
 if(!AuthUtil::isLoggedIn()){
     echo "<script>location.href='index.php';</script>";
 }
+
+$router = new UserAuthRoute();
+$userInfo = $router->getUser(AuthUtil::getLoggedInfo()->id);
+
 ?>
     <script>
 
@@ -52,7 +57,7 @@ if(!AuthUtil::isLoggedIn()){
     <!-- /Header -->
 
     <!-- Blog -->
-    <div id="blog" class="section md-padding">
+    <div id="blog" class="section">
 
         <!-- Container -->
         <div class="container">
@@ -61,21 +66,52 @@ if(!AuthUtil::isLoggedIn()){
             <div class="row">
 
                 <!-- Main -->
-                <main id="main" class="col-md-9">
+                <main id="main" class="">
                     <!-- reply form -->
-                    <div class="reply-form text-center">
-                        <h3 class="title">회원 로그인</h3>
+                    <div class="text-left col-md-6 md-padding">
+                        <h3 class="title">계정 정보</h3>
+                        <h4><?=$userInfo["email"]?> (<?=$userInfo["name"]?>)</h4>
                         <form>
-                            <input class="input jEmailTxt" type="email" placeholder="이메일" />
+                            <input style="margin:10px 0px;" class="input jPhoneTxt" value="<?=$userInfo["phone"]?>" type="text" placeholder="전화번호" />
                             <br/>
-                            <input class="input jPasswordTxt" type="password" placeholder="패스워드" />
+                            <input style="margin:10px 0px;" class="input jPasswordTxt" type="password" placeholder="패스워드" />
                             <br/>
+                            <input style="margin:10px 0px;" class="input jPasswordCTxt" type="password" placeholder="패스워드 확인" />
+                            <br/>
+                            <select class="input jSex">
+                                <option value="N" <?=$userInfo["sex"]=="N" ? "SELECTED" : ""?>>성별(선택)</option>
+                                <option value="M" <?=$userInfo["sex"]=="M" ? "SELECTED" : ""?>>남성</option>
+                                <option value="F" <?=$userInfo["sex"]=="F" ? "SELECTED" : ""?>>여성</option>
+                            </select>
+                            <br/><br/>
                             <div class="btn-group" role="group" aria-label="Basic example">
-                                <button type="button" class="btn btn-default jLog"><i class="fa fa-sign-in"></i> 로그인</button>
-                                <button type="button" class="btn bg-primary jJoin"><i class="fa fa-pencil"></i> 회원가입</button>
+                                <button type="button" class="btn bg-primary jJoin"><i class="fa fa-edit"></i> 변경사항 저장</button>
                             </div>
                         </form>
                     </div>
+
+
+                    <div class="text-left col-md-6 md-padding">
+                        <h3 class="title">서비스</h3>
+                        <form>
+                            <p>총 참여 투표 : <b> 0 </b>
+                                &nbsp;&nbsp;&nbsp;&nbsp;
+                                <a href="#" class="btn-default btn">내 투표기록 보기</a></p>
+                            <br/>
+                            <p>총 참여 설문 : <b> 0 </b>
+                                &nbsp;&nbsp;&nbsp;&nbsp;
+                                <a href="#" class="btn-default btn">내 설문기록 보기</a></p>
+                            <br/>
+                            <p>총 소속 그룹 : <b> 0 </b>
+                                &nbsp;&nbsp;&nbsp;&nbsp;
+                                <a href="#" class="btn-default btn">내 그룹 모두 보기</a></p>
+                            <br/><br/>
+                            <div class="btn-group" role="group" aria-label="Basic example">
+<!--                                <button type="button" class="btn bg-primary jJoin"><i class="fa fa-pencil"></i> 가입하기</button>-->
+                            </div>
+                        </form>
+                    </div>
+
                     <!-- /reply form -->
             </div>
             </main>

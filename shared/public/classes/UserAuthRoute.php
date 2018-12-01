@@ -43,6 +43,15 @@ class UserAuthRoute extends Routable {
         return $retVal;
     }
 
+    function getUserByReq(){
+        return $this->getUser($_REQUEST["id"]);
+    }
+
+    function getUser($no){
+        $slt = "SELECT * FROM tblUser WHERE `id`='{$no}'";
+        return $this->getRow($slt);
+    }
+
     function joinUser(){
         $name = $_REQUEST["name"];
         $email = $_REQUEST["email"];
