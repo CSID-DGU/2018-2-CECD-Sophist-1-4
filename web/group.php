@@ -103,6 +103,7 @@
                 </aside>
                 <!-- Main -->
                 <main id="main" class="col-md-12">
+                    <p style="font-size: 12px;">※ 최상위 그룹만 표시됩니다.</p>
                     <div class="blog-comments jContainer">
                     </div>
 

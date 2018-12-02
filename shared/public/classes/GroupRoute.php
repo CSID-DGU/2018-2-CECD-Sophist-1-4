@@ -17,12 +17,17 @@ class GroupRoute extends Routable {
 
     function getVoteList(){
         $page = $_REQUEST["page"] == "" ? 1 : $_REQUEST["page"];
+        $type = $_REQUEST["type"] == "" ? "A" : $_REQUEST["type"];
+
+        $whereStmt = "1=1 ";
+        if($type != "A") $whereStmt .= "AND `type` = '{$type}'";
+
         $startLimit = ($page - 1) * 5;
         $slt = "SELECT *,
                 (SELECT `needsAuth` FROM tblGroup WHERE `id`=`groupID` LIMIT 1) AS needsAuth,
                 (SELECT `title` FROM tblGroup WHERE `id`=`groupID` LIMIT 1) AS groupName, 
                 (SELECT `name` FROM tblUser WHERE `id`=`madeBy` LIMIT 1) AS madeName 
-                FROM tblRoom 
+                FROM tblRoom WHERE {$whereStmt}
                 ORDER BY `regDate` DESC LIMIT {$startLimit}, 5";
         return $this->getArray($slt);
     }

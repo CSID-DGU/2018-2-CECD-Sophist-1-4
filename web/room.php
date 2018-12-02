@@ -1,4 +1,9 @@
 <? include_once $_SERVER["DOCUMENT_ROOT"]."/eVote/web/inc/header.php"; ?>
+<?
+if($_REQUEST["type"] == ""){
+    echo "<script>location.href='room.php?type=A';</script>";
+}
+?>
     <script>
 
         $(document).ready(function(){
@@ -9,7 +14,10 @@
             function loadMore(page){
                 loadPageInto(
                     "/eVote/web/ajaxPages/ajaxRoomList.php",
-                    {page : page},
+                    {
+                        page : page,
+                        type : "<?=$_REQUEST["type"]?>"
+                    },
                     ".jContainer",
                     true,
                     function(){
@@ -19,6 +27,10 @@
                     }
                 );
             }
+
+            buttonLink(".jShowA", "room.php?type=A");
+            buttonLink(".jShowV", "room.php?type=V");
+            buttonLink(".jShowS", "room.php?type=S");
 
             loadMore(currentPage);
 
@@ -103,6 +115,11 @@
                 </aside>
                 <!-- Main -->
                 <main id="main" class="col-md-12">
+                    <div class="btn-group" role="group" aria-label="Basic example">
+                        <button type="button" class="btn <?=$_REQUEST["type"] == "A" ? "bg-primary" : ""?> jShowA">전체</button>
+                        <button type="button" class="btn <?=$_REQUEST["type"] == "V" ? "bg-primary" : ""?> jShowV">투표</button>
+                        <button type="button" class="btn <?=$_REQUEST["type"] == "S" ? "bg-primary" : ""?> jShowS">설문</button>
+                    </div>
                     <div class="blog-comments jContainer">
                     </div>
 
