@@ -27,4 +27,12 @@ class GroupRoute extends Routable {
         return $this->getArray($slt);
     }
 
+    function getMyGroupList($id){
+        $slt = "SELECT * 
+                FROM tblGroup 
+                WHERE `id` IN 
+                (SELECT groupID FROM tblGroupMember WHERE userID='{$id}') ORDER BY `title` DESC";
+        return $this->getArray($slt);
+    }
+
 }

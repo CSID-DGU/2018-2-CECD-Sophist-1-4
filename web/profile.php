@@ -78,11 +78,13 @@ $userInfo = $router->getUser(AuthUtil::getLoggedInfo()->id);
                             <br/>
                             <input style="margin:10px 0px;" class="input jPasswordCTxt" type="password" placeholder="패스워드 확인" />
                             <br/>
-                            <select class="input jSex">
-                                <option value="N" <?=$userInfo["sex"]=="N" ? "SELECTED" : ""?>>성별(선택)</option>
-                                <option value="M" <?=$userInfo["sex"]=="M" ? "SELECTED" : ""?>>남성</option>
-                                <option value="F" <?=$userInfo["sex"]=="F" ? "SELECTED" : ""?>>여성</option>
-                            </select>
+                            <div class="input selectpicker control-label">
+                                <select id="prd_" class="form-control jSex" name="prd_">
+                                    <option value="N" <?=$userInfo["sex"]=="N" ? "SELECTED" : ""?>>성별(선택)</option>
+                                    <option value="M" <?=$userInfo["sex"]=="M" ? "SELECTED" : ""?>>남성</option>
+                                    <option value="F" <?=$userInfo["sex"]=="F" ? "SELECTED" : ""?>>여성</option>
+                                </select>
+                            </div>
                             <br/><br/>
                             <div class="btn-group" role="group" aria-label="Basic example">
                                 <button type="button" class="btn bg-primary jJoin"><i class="fa fa-edit"></i> 변경사항 저장</button>

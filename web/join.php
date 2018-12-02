@@ -87,11 +87,13 @@ if(AuthUtil::isLoggedIn()){
                             <br/>
                             <input class="input jPasswordCTxt" type="password" placeholder="패스워드 확인" />
                             <br/>
-                            <select class="input jSex">
-                                <option value="N">성별(선택)</option>
-                                <option value="M">남성</option>
-                                <option value="F">여성</option>
-                            </select>
+                            <div class="input selectpicker control-label">
+                                <select id="prd_" class="form-control jSex" name="prd_">
+                                    <option value="N">성별(선택)</option>
+                                    <option value="M">남성</option>
+                                    <option value="F">여성</option>
+                                </select>
+                            </div>
                             <br/><br/>
                             <div class="btn-group" role="group" aria-label="Basic example">
                                 <button type="button" class="btn bg-primary jJoin"><i class="fa fa-pencil"></i> 가입하기</button>
