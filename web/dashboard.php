@@ -1,7 +1,7 @@
 <? include_once $_SERVER["DOCUMENT_ROOT"]."/eVote/web/inc/header.php"; ?>
 <?
 if(!AuthUtil::isLoggedIn()){
-    echo "<script>location.href='index.php';</script>";
+    echo "<script>alert('로그인이 필요한 서비스입니다.'); location.href='login.php';</script>";
 }
 ?>
     <script>

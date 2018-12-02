@@ -1,9 +1,9 @@
 <? include_once $_SERVER["DOCUMENT_ROOT"]."/eVote/web/inc/header.php"; ?>
 <? include_once $_SERVER["DOCUMENT_ROOT"]."/eVote/shared/public/classes/GroupRoute.php"; ?>
 <?
-//if(AuthUtil::isLoggedIn()){
-//    echo "<script>location.href='index.php';</script>";
-//}
+if(!AuthUtil::isLoggedIn()){
+    echo "<script>alert('로그인이 필요한 서비스입니다.'); location.href='login.php';</script>";
+}
 $router = new GroupRoute();
 $list = $router->getMyGroupList(AuthUtil::getLoggedInfo()->id);
 ?>

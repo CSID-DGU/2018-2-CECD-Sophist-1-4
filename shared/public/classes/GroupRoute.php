@@ -80,7 +80,7 @@ class GroupRoute extends Routable {
         $rootId = $_REQUEST["rootId"];
         $parentId = $_REQUEST["parentId"];
         $needsAuth = $_REQUEST["needsAuth"];
-        $madeBy = $_REQUEST["madeBy"];
+        $madeBy = $_REQUEST["madeBy"] == "" ? "0" : $_REQUEST["madeBy"];
         $tag = $_REQUEST["tag"];
 
         $slt = "SELECT COUNT(*) AS rn FROM tblGroup WHERE `title` = '{$title}' AND parentId='{$parentId}'";
