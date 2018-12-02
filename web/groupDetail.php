@@ -130,11 +130,11 @@ $list = $router->getMyGroupList(AuthUtil::getLoggedInfo()->id);
 
                 <div class="header-wrapper sm-padding bg-grey">
                     <div class="container">
-                        <h2>그룹 설정</h2>
+                        <h2>그룹 상세 정보</h2>
                         <ul class="breadcrumb">
                             <li class="breadcrumb-item"><a href="index.php">홈</a></li>
                             <li class="breadcrumb-item"><a href="group.php">그룹</a></li>
-                            <li class="breadcrumb-item">그룹 설정</li>
+                            <li class="breadcrumb-item">그룹 상세 정보</li>
                         </ul>
                     </div>
                 </div>

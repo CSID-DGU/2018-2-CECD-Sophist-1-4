@@ -35,4 +35,34 @@ class GroupRoute extends Routable {
         return $this->getArray($slt);
     }
 
+    function addGroup(){
+        $title = $_REQUEST["title"];
+        $desc = $_REQUEST["desc"];
+        $authCode = $_REQUEST["authCode"];
+        $rootId = $_REQUEST["rootId"];
+        $parentId = $_REQUEST["parentId"];
+        $needsAuth = $_REQUEST["needsAuth"];
+        $madeBy = $_REQUEST["madeBy"];
+        $tag = $_REQUEST["tag"];
+
+        $slt = "SELECT COUNT(*) AS rn FROM tblGroup WHERE `title` = '{$title}' AND parentId='{$parentId}'";
+        $sameTitle = $this->getValue($slt, "rn");
+        if($sameTitle > 0){
+            return Routable::response(2, "동일한 그룹명이 동일 계층에 존재합니다.");
+        }
+
+        $ins = "INSERT INTO tblGroup(`title`, `desc`, `authCode`, `rootId`, `parentId`, `needsAuth`, `madeBy`, `tag`, `regDate`)
+                VALUES('{$title}', '{$desc}', '$authCode', '{$rootId}', '{$parentId}', '{$needsAuth}', '{$madeBy}', '{$tag}', NOW())";
+        $this->update($ins);
+
+        $lastKey = $this->mysql_insert_id();
+
+        if($rootId == 0){
+            $upt = "UPDATE tblGroup SET `rootId` = '{$lastKey}' WHERE `id` = '{$lastKey}'";
+            $this->update($upt);
+        }
+
+        return Routable::response(1, "그룹 생성이 완료되었습니다.", $lastKey);
+    }
+
 }
