@@ -20,7 +20,7 @@ $list = $router->getGroupList();
                 <span class="time">
                                         <i class="fa fa-user"></i>&nbsp;<?=$madeBy?>&nbsp;&nbsp;
                                         <i class="fa fa-calendar"></i> <?=$item["regDate"]?></span>
-                <a href="#" class="reply">자세히 <i class="fa fa-sign-in"></i></a>
+                <a href="#" class="reply jDetail" groupId="<?=$item["id"]?>">자세히 <i class="fa fa-sign-in"></i></a>
             </h4>
             <p><?=$item["desc"]?></p>
         </div>

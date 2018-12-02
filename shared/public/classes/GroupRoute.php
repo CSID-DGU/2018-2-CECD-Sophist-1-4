@@ -21,6 +21,19 @@ class GroupRoute extends Routable {
         return $this->getArray($slt);
     }
 
+    function belongsToGroup($user, $group){
+        $slt = "SELECT COUNT(*) AS rn FROM tblGroupMember WHERE groupId='{$group}' AND userId='{$user}'";
+        $rn = $this->getValue($slt, "rn");
+        return ($rn > 0);
+    }
+
+    function getGroup(){
+        $slt = "SELECT *,
+                (SELECT `name` FROM tblUser WHERE `id`=`madeBy` LIMIT 1) AS madeName
+                FROM tblGroup WHERE `id` = '{$_REQUEST["id"]}'";
+        return $this->getRow($slt);
+    }
+
     function getVoteList(){
         $page = $_REQUEST["page"] == "" ? 1 : $_REQUEST["page"];
         $type = $_REQUEST["type"] == "" ? "A" : $_REQUEST["type"];
@@ -40,6 +53,16 @@ class GroupRoute extends Routable {
                 FROM tblRoom WHERE {$whereStmt}
                 ORDER BY `regDate` DESC LIMIT {$startLimit}, 5";
         return $this->getArray($slt);
+    }
+
+    function getVote(){
+        $id = $_REQUEST["id"];
+        $slt = "SELECT *,
+                (SELECT `needsAuth` FROM tblGroup WHERE `id`=`groupID` LIMIT 1) AS needsAuth,
+                (SELECT `title` FROM tblGroup WHERE `id`=`groupID` LIMIT 1) AS groupName, 
+                (SELECT `name` FROM tblUser WHERE `id`=`madeBy` LIMIT 1) AS madeName 
+                FROM tblRoom WHERE `id`='{$id}'";
+        return $this->getRow($slt);
     }
 
     function getMyGroupList($id){

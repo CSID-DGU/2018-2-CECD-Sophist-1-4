@@ -14,12 +14,11 @@ $list = $router->getNoticeList();
         <div class="media-body">
             <h4 class="media-heading jDetail" noticeID="<?=$item["id"]?>">
                 <?=$item["title"]?>
-                <span class="time">
-                    <i class="fa fa-user"></i>&nbsp;<?=$madeBy?>&nbsp;&nbsp;
-                    <i class="fa fa-calendar"></i> <?=$item["regDate"]?></span>
                 <a href="#" class="reply jDetail" noticeID="<?=$item["id"]?>">자세히 <i class="fa fa-sign-in"></i></a>
             </h4>
-            <p><?=$item["desc"]?></p>
+            <span class="small">
+                    <i class="fa fa-user"></i>&nbsp;<?=$madeBy?>&nbsp;&nbsp;
+                    <i class="fa fa-calendar"></i> <?=$item["regDate"]?></span>
         </div>
     </div>
 <?}?>

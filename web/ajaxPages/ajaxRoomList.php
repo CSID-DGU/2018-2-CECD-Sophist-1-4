@@ -29,7 +29,7 @@ $list = $router->getVoteList();
                     <?}?>
                     <i class="fa fa-user"></i>&nbsp;<?=$madeBy?>
                 </span>
-                <a href="#" class="reply">자세히 <i class="fa fa-sign-in"></i></a>
+                <a href="#" class="reply jDetail" roomId="<?=$item["id"]?>" groupId="<?=$item["groupID"]?>">자세히 <i class="fa fa-sign-in"></i></a>
             </h4>
             <p><?=$item["desc"]?></p>
             <span class="small">

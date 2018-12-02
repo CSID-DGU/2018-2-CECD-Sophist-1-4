@@ -29,6 +29,11 @@
                 loadMore(++currentPage);
             });
 
+            $(document).on("click", ".jDetail", function(){
+                var id = $(this).attr("groupId");
+                location.href = "groupDetail.php?id=" + id;
+            });
+
             $(".jSearch").click(function(){
                 var searchText = encodeURI($(".jSearchTxt").val());
                 location.href = "group.php?query=" + searchText;

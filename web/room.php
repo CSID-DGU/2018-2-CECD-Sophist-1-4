@@ -39,6 +39,11 @@ if($_REQUEST["type"] == ""){
                 loadMore(++currentPage);
             });
 
+            $(document).on("click", ".jDetail", function(){
+                var id = $(this).attr("roomId");
+                location.href = "roomDetail.php?id=" + id;
+            });
+
             $(".jSearch").click(function(){
                 var searchText = encodeURI($(".jSearchTxt").val());
                 var type = "<?=$_REQUEST["type"] == "" ? "A" : $_REQUEST["type"]?>";
