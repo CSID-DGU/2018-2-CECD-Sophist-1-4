@@ -9,7 +9,10 @@
             function loadMore(page){
                 loadPageInto(
                     "/eVote/web/ajaxPages/ajaxNoticeList.php",
-                    {page : page},
+                    {
+                        page : page,
+                        query : "<?=$_REQUEST["query"]?>"
+                    },
                     ".jContainer",
                     true,
                     function(){
@@ -24,6 +27,11 @@
 
             $(".jLoadMore").click(function(){
                 loadMore(++currentPage);
+            });
+
+            $(".jSearch").click(function(){
+                var searchText = encodeURI($(".jSearchTxt").val());
+                location.href = "notice.php?query=" + searchText;
             });
 
             $(document).on("click", ".jRecList", function(){
@@ -94,7 +102,7 @@
                 <aside id="aside" class="col-md-3">
                     <div class="widget">
                         <div class="widget-search">
-                            <input class="search-input jSearchTxt" type="text" placeholder="공지사항 검색">
+                            <input class="search-input jSearchTxt" type="text" value="<?=$_REQUEST["query"]?>" placeholder="공지사항 검색">
                             <button class="search-btn jSearch" type="button"><i class="fa fa-search"></i></button>
                         </div>
                         <div class="blog-comments recommend jRec">

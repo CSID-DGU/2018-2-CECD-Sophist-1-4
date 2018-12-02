@@ -16,7 +16,8 @@ if($_REQUEST["type"] == ""){
                     "/eVote/web/ajaxPages/ajaxRoomList.php",
                     {
                         page : page,
-                        type : "<?=$_REQUEST["type"]?>"
+                        type : "<?=$_REQUEST["type"]?>",
+                        query : "<?=$_REQUEST["query"]?>"
                     },
                     ".jContainer",
                     true,
@@ -28,14 +29,20 @@ if($_REQUEST["type"] == ""){
                 );
             }
 
-            buttonLink(".jShowA", "room.php?type=A");
-            buttonLink(".jShowV", "room.php?type=V");
-            buttonLink(".jShowS", "room.php?type=S");
+            buttonLink(".jShowA", "room.php?type=A&query=<?=$_REQUEST["query"]?>");
+            buttonLink(".jShowV", "room.php?type=V&query=<?=$_REQUEST["query"]?>");
+            buttonLink(".jShowS", "room.php?type=S&query=<?=$_REQUEST["query"]?>");
 
             loadMore(currentPage);
 
             $(".jLoadMore").click(function(){
                 loadMore(++currentPage);
+            });
+
+            $(".jSearch").click(function(){
+                var searchText = encodeURI($(".jSearchTxt").val());
+                var type = "<?=$_REQUEST["type"] == "" ? "A" : $_REQUEST["type"]?>";
+                location.href = "room.php?query=" + searchText + "&type=" + type;
             });
 
             $(document).on("click", ".jRecList", function(){
@@ -106,7 +113,7 @@ if($_REQUEST["type"] == ""){
                 <aside id="aside" class="col-md-3">
                     <div class="widget">
                         <div class="widget-search">
-                            <input class="search-input jSearchTxt" type="text" placeholder="투표/설문 검색">
+                            <input class="search-input jSearchTxt" type="text" value="<?=$_REQUEST["query"]?>" placeholder="투표/설문 검색">
                             <button class="search-btn jSearch" type="button"><i class="fa fa-search"></i></button>
                         </div>
                         <div class="blog-comments recommend jRec">

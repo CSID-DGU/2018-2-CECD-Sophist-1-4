@@ -6,11 +6,17 @@ class GroupRoute extends Routable {
 
     function getGroupList(){
         $page = $_REQUEST["page"] == "" ? 1 : $_REQUEST["page"];
+        $query = $_REQUEST["query"];
+        $whereStmt = "1=1 AND `parentId`=0 ";
+        if($query != ""){
+            $whereStmt .= " AND `title` LIKE '%{$query}%'";
+        }
+
         $startLimit = ($page - 1) * 5;
         $slt = "SELECT *, 
                 (SELECT `name` FROM tblUser WHERE `id`=`madeBy` LIMIT 1) AS madeName 
                 FROM tblGroup
-                WHERE `parentId`=0 
+                WHERE {$whereStmt}
                 ORDER BY `regDate` DESC LIMIT {$startLimit}, 5";
         return $this->getArray($slt);
     }
@@ -18,9 +24,13 @@ class GroupRoute extends Routable {
     function getVoteList(){
         $page = $_REQUEST["page"] == "" ? 1 : $_REQUEST["page"];
         $type = $_REQUEST["type"] == "" ? "A" : $_REQUEST["type"];
+        $query = $_REQUEST["query"];
 
         $whereStmt = "1=1 ";
         if($type != "A") $whereStmt .= "AND `type` = '{$type}'";
+        if($query != ""){
+            $whereStmt .= " AND `title` LIKE '%{$query}%'";
+        }
 
         $startLimit = ($page - 1) * 5;
         $slt = "SELECT *,

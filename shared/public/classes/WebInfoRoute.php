@@ -10,10 +10,16 @@ class WebInfoRoute extends Routable {
 
     function getNoticeList(){
         $page = $_REQUEST["page"] == "" ? 1 : $_REQUEST["page"];
+        $query = $_REQUEST["query"];
+        $whereStmt = "1=1 ";
+        if($query != ""){
+            $whereStmt .= " AND `title` LIKE '%{$query}%'";
+        }
+
         $startLimit = ($page - 1) * 5;
         $slt = "SELECT `id`, `title`, `madeBy`, `filePath`, `uptDate`, `regDate`,
                 (SELECT `name` FROM tblUser WHERE `id`=`madeBy` LIMIT 1) AS madeName 
-                FROM tblNotice
+                FROM tblNotice WHERE {$whereStmt}
                 ORDER BY `regDate` DESC LIMIT {$startLimit}, 5";
         return $this->getArray($slt);
     }
