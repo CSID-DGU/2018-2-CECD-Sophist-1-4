@@ -39,6 +39,7 @@
     <![endif]-->
     <script type="text/javascript" src="js/jquery.min.js"></script>
     <script type="text/javascript" src="js/AjaxUtil.js"></script>
+    <script type="text/javascript" src="js/web3.js"></script>
     <script>
         $(document).ready(function(){
             var coll = $(".collapsible");
