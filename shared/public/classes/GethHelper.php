@@ -3,7 +3,9 @@ include_once $_SERVER["DOCUMENT_ROOT"]."/eVote/shared/public/classes/Routable.ph
 
 class GethHelper extends Routable {
 
-    static function sendTransaction($from, $to, $data){
+    static function sendTransaction($from, $passPhrase, $to, $data){
+        self::unlock($from, $passPhrase);
+
         $obj = new Routable();
         $res = $obj->postGeth(
             GETH_URL,
@@ -12,15 +14,13 @@ class GethHelper extends Routable {
                 array(
                     "from" => $from,
                     "to" => $to,
-                    "gasPrice" => "0x10",
-                    "value" => "0x10",
                     "data" => "0x".bin2hex($data)
                 )
             ),
             GETH_TXID
         );
 
-        return $res;
+        return json_decode($res, true);
     }
 
     static function getTransaction($hash){
@@ -34,7 +34,7 @@ class GethHelper extends Routable {
             GETH_TXID
         );
 
-        return $res;
+        return json_decode($res, true);
     }
 
     static function newAccount($passPhrase){
@@ -70,20 +70,21 @@ class GethHelper extends Routable {
         return $arr["result"];
     }
 
-    function accTest(){
-        return GethHelper::newAccount("test");
+    static function getTransactions($hashes){
+        $arr = array();
+        for($e = 0; $e < sizeof($hashes); $e++){
+            $arr[$e] = GethHelper::getTransaction($hashes[$e]);
+        }
+        return $arr;
     }
 
-    function txTest(){
+    function writeOnBase($data){
         return GethHelper::sendTransaction(
-            "0xb7795b1f3648475b4749f5a659617340e99012a6",
-            "0xb7795b1f3648475b4749f5a659617340e99012a6",
-            "txTest"
-            );
-    }
-
-    function txGetTest(){
-        return GethHelper::getTransaction("0xa6daa15dd52d47ef8ef33902d620e2ead3ccb4cca467e4038184c2c83038b751");
+            GETH_ETHERBASE,
+            GETH_ETHERBASE_PASS,
+            GETH_ETHERBASE,
+            $data
+        );
     }
 
 }

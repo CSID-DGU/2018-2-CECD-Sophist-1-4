@@ -51,6 +51,8 @@ define("AES_KEY_256", substr(AES_KEY, 0, 256 / 8));
 
 // Geth
 define("GETH_URL", "http://picklecode.co.kr:8545");
+define("GETH_ETHERBASE", "0xb7795b1f3648475b4749f5a659617340e99012a6");
+define("GETH_ETHERBASE_PASS", "qwerty");
 define("GETH_TXID", "950503");
 
 ?>
