@@ -74,17 +74,6 @@ class Routable extends Databases {
         return $this->postJson($url, $data);
     }
 
-    function testCurl(){
-        return $this->postGeth(
-            "http://picklecode.co.kr:8545",
-            "eth_getBalance",
-            array(
-                "0xb7795b1f3648475b4749f5a659617340e99012a6"
-            ),
-            "36"
-            );
-    }
-
     function encryptAES256($str){
         $res = openssl_encrypt($str, "AES-256-CBC", AES_KEY_256, 0, AES_KEY_256);
         return $res;

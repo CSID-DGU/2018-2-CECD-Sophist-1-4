@@ -49,5 +49,9 @@ define("AES_KEY", "pkcd931018950503");
 define("AES_KEY_128", substr(AES_KEY, 0, 128 / 8));
 define("AES_KEY_256", substr(AES_KEY, 0, 256 / 8));
 
+// Geth
+define("GETH_URL", "http://picklecode.co.kr:8545");
+define("GETH_TXID", "950503");
+
 ?>
 
