@@ -47,18 +47,10 @@ class Routable extends Databases {
         return  (curl_exec($curl_obj));
     }
 
-    function testCurl(){
-        $data = array(
-            "jsonrpc" => "2.0",
-            "method" => "eth_getBalance",
-            "params" => array(
-                "0xb7795b1f3648475b4749f5a659617340e99012a6"
-            ),
-            "id" => "36",
-        );
+    function postJson($url, $data){
         $data_string = json_encode($data);
 
-        $ch = curl_init('http://picklecode.co.kr:8545');
+        $ch = curl_init($url);
         curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
         curl_setopt($ch, CURLOPT_POSTFIELDS, $data_string);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -69,6 +61,28 @@ class Routable extends Databases {
 
         $result = curl_exec($ch);
         return $result;
+    }
+
+    function postGeth($url, $method, $params, $id){
+        $data = array(
+            "jsonrpc" => "2.0",
+            "method" => $method,
+            "params" => $params,
+            "id" => $id,
+        );
+
+        return $this->postJson($url, $data);
+    }
+
+    function testCurl(){
+        return $this->postGeth(
+            "http://picklecode.co.kr:8545",
+            "eth_getBalance",
+            array(
+                "0xb7795b1f3648475b4749f5a659617340e99012a6"
+            ),
+            "36"
+            );
     }
 
     function encryptAES256($str){
