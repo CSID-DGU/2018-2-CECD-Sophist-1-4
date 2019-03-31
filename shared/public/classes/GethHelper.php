@@ -103,13 +103,13 @@ class GethHelper extends Routable {
 
     function ver(){
         return self::verifyAction(
-            "0x426895585f03afe7fe1d0f068f0a7483aedb03e8e677cfc40f1dbd5bbc37f004",
-            "create", 5, "test", "room", "dddd"
+            "0x832ea3b2069f04d964cb18931c56400f2a97ccd6b327969ade34df4886b82077",
+            "create", 5, "new", "room", "aa"
         );
     }
 
     function txTT(){
-        return GethHelper::writeByApp("create", 5, "test", "room", "dddd");
+        return GethHelper::writeByApp("create", 5, "new", "room", "aa");
     }
 
 }
