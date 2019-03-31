@@ -37,6 +37,43 @@ class GethHelper extends Routable {
         return $res;
     }
 
+    static function newAccount($passPhrase){
+        $obj = new Routable();
+        $res = $obj->postGeth(
+            GETH_URL,
+            "personal_newAccount",
+            array(
+                $passPhrase
+            ),
+            GETH_TXID
+        );
+
+        $arr = json_decode($res, true);
+
+        return $arr["result"];
+    }
+
+    static function unlock($address, $passPhrase){
+        $obj = new Routable();
+        $res = $obj->postGeth(
+            GETH_URL,
+            "personal_unlockAccount",
+            array(
+                $address,
+                $passPhrase
+            ),
+            GETH_TXID
+        );
+
+        $arr = json_decode($res, true);
+
+        return $arr["result"];
+    }
+
+    function accTest(){
+        return GethHelper::newAccount("test");
+    }
+
     function txTest(){
         return GethHelper::sendTransaction(
             "0xb7795b1f3648475b4749f5a659617340e99012a6",
