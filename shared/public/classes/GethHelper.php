@@ -87,6 +87,31 @@ class GethHelper extends Routable {
         );
     }
 
+    static function formatHistoryData($action, $id, $by, $what, $extra){
+        return "HISTORY-".$action."-".$id."-".$by."-".$what."-".$extra;
+    }
+
+    static function writeByApp($action, $id, $by, $what, $extra){
+        return GethHelper::writeOnBase(GethHelper::formatHistoryData($action, $id, $by, $what, $extra));
+    }
+
+    static function verifyAction($hash, $action, $id, $by, $what, $extra){
+        $res = GethHelper::getTransaction($hash);
+        $comp = GethHelper::formatHistoryData($action, $id, $by, $what, $extra);
+        return hex2bin(substr($res["result"]["input"], 2)) == $comp;
+    }
+
+    function ver(){
+        return self::verifyAction(
+            "0x426895585f03afe7fe1d0f068f0a7483aedb03e8e677cfc40f1dbd5bbc37f004",
+            "create", 5, "test", "room", "dddd"
+        );
+    }
+
+    function txTT(){
+        return GethHelper::writeByApp("create", 5, "test", "room", "dddd");
+    }
+
 }
 
 ?>
