@@ -47,6 +47,30 @@ class Routable extends Databases {
         return  (curl_exec($curl_obj));
     }
 
+    function testCurl(){
+        $data = array(
+            "jsonrpc" => "2.0",
+            "method" => "eth_getBalance",
+            "params" => array(
+                "0xb7795b1f3648475b4749f5a659617340e99012a6"
+            ),
+            "id" => "36",
+        );
+        $data_string = json_encode($data);
+
+        $ch = curl_init('http://picklecode.co.kr:8545');
+        curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $data_string);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+                'Content-Type: application/json',
+                'Content-Length: ' . strlen($data_string))
+        );
+
+        $result = curl_exec($ch);
+        return $result;
+    }
+
     function encryptAES256($str){
         $res = openssl_encrypt($str, "AES-256-CBC", AES_KEY_256, 0, AES_KEY_256);
         return $res;
@@ -106,6 +130,38 @@ class Routable extends Databases {
 
         $this->update($sql);
         return $this->makeResultJson(1, "");
+    }
+
+    function lnFn_Common_CrPost($a,$b='',$c=0){
+        if( !is_array( $a ) ) return false;
+        foreach((array)$a as $k=>$v){
+            if($c){
+                if(is_numeric( $k )) $k=$b;
+                else $k=$b;
+            }
+            else{
+                if (is_int($k))$k=$b.$k;
+            }
+            if(is_array($v) || is_object($v)){
+                $r[] = $this->lnFn_Common_CrPost($v, $k, 1);
+                continue;
+            }
+            $r[] = urlencode($k) . "=" . urlencode($v) ;
+        }
+        return implode("&", $r);
+    }
+
+    function post($apiName, $params){
+        $request = $this->lnFn_Common_CrPost($params);
+        $actionUrl = "{$this->serverRoot}{$apiName}";
+        $retVal = $this->postData($actionUrl, $request);
+        return $retVal;
+    }
+
+    function get($apiName, $params){
+        $actionUrl = "{$this->serverRoot}{$apiName}";
+        $retVal = $this->getData($actionUrl, $params);
+        return $retVal;
     }
 
 }

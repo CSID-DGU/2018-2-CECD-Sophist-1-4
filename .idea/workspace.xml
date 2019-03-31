@@ -5,9 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7a708afb-bd89-490b-b167-97aaeae173a6" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/etheTest.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/inc/header.php" afterPath="$PROJECT_DIR$/web/inc/header.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/shared/public/classes/Routable.php" afterPath="$PROJECT_DIR$/shared/public/classes/Routable.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/shared/public/route.php" afterPath="$PROJECT_DIR$/shared/public/route.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/etheTest.php" afterPath="$PROJECT_DIR$/web/etheTest.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -18,11 +19,29 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="etheTest.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/web/etheTest.php">
+      <file leaf-file-name="Routable.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/shared/public/classes/Routable.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="114">
-              <caret line="6" column="2" lean-forward="true" selection-start-line="6" selection-start-column="2" selection-end-line="6" selection-end-column="2" />
+            <state relative-caret-position="170">
+              <caret line="48" column="0" lean-forward="true" selection-start-line="48" selection-start-column="0" selection-end-line="48" selection-end-column="0" />
+              <folding>
+                <marker date="1553999753008" expanded="true" signature="692:723" ph="SELECT `${{$... " />
+                <marker date="1553999753008" expanded="true" signature="692:738" ph="SELECT `${{$... ${{$table}}" />
+                <marker date="1553999753008" expanded="true" signature="692:754" ph="SELECT `${{$... ${{$table}}" />
+                <marker date="1553999753008" expanded="true" signature="692:784" ph="SELECT `${{$... ${{$table}}" />
+                <marker date="1553999753008" expanded="true" signature="692:792" ph="SELECT `${{$... ${{$table}}" />
+                <marker date="1553999753008" expanded="true" signature="3922:4346" ph="INSERT INTO tblDocument... " />
+                <marker date="1553999753008" expanded="true" signature="4347:4593" ph="UPDATE `titl... " />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="faq.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/faq.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="155">
+              <caret line="9" column="7" lean-forward="true" selection-start-line="9" selection-start-column="7" selection-end-line="9" selection-end-column="7" />
               <folding />
             </state>
           </provider>
@@ -39,7 +58,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>protected</find>
       <find>Mail()</find>
       <find>tags</find>
       <find>총</find>
@@ -69,6 +87,7 @@
       <find>jDetail</find>
       <find>$vote</find>
       <find>collapsi</find>
+      <find>getData</find>
     </findStrings>
     <replaceStrings>
       <replace>mailInfo</replace>
@@ -96,12 +115,10 @@
         <option value="$PROJECT_DIR$/shared/bases/modules/email/class.phpmailer.php" />
         <option value="$PROJECT_DIR$/shared/bases/modules/email/EmailSender.php" />
         <option value="$PROJECT_DIR$/shared/bases/Const.php" />
-        <option value="$PROJECT_DIR$/shared/public/route.php" />
         <option value="$PROJECT_DIR$/web/index.php" />
         <option value="$PROJECT_DIR$/web/login.php" />
         <option value="$PROJECT_DIR$/web/faq.php" />
         <option value="$PROJECT_DIR$/web/css/style.css" />
-        <option value="$PROJECT_DIR$/shared/public/classes/Routable.php" />
         <option value="$PROJECT_DIR$/web/ajaxPages/ajaxRecommendation.php" />
         <option value="$PROJECT_DIR$/web/js/AjaxUtil.js" />
         <option value="$PROJECT_DIR$/web/myGroup.php" />
@@ -129,8 +146,11 @@
         <option value="$PROJECT_DIR$/shared/public/classes/UserAuthRoute.php" />
         <option value="$PROJECT_DIR$/../index.php" />
         <option value="$PROJECT_DIR$/shared/public/classes/WebInfoRoute.php" />
-        <option value="$PROJECT_DIR$/web/etheTest.php" />
         <option value="$PROJECT_DIR$/web/inc/header.php" />
+        <option value="$PROJECT_DIR$/web/js/web3.js" />
+        <option value="$PROJECT_DIR$/web/etheTest.php" />
+        <option value="$PROJECT_DIR$/shared/public/classes/Routable.php" />
+        <option value="$PROJECT_DIR$/shared/public/route.php" />
       </list>
     </option>
   </component>
@@ -142,10 +162,9 @@
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
-    <option name="x" value="46" />
-    <option name="y" value="68" />
-    <option name="width" value="974" />
-    <option name="height" value="1047" />
+    <option name="x" value="952" />
+    <option name="width" value="976" />
+    <option name="height" value="1048" />
   </component>
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -165,7 +184,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -252,12 +271,12 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../main" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../solveme/shared/public/route.php" />
     <property name="nodejs_interpreter_path" value="C:/Program Files/nodejs/node" />
   </component>
   <component name="RecentsManager">
@@ -306,18 +325,19 @@
       <workItem from="1547113665915" duration="55000" />
       <workItem from="1547113732337" duration="14000" />
       <workItem from="1552552080998" duration="1333000" />
-      <workItem from="1553061399226" duration="525000" />
+      <workItem from="1553061399226" duration="1797000" />
+      <workItem from="1553996202708" duration="599000" />
+      <workItem from="1553998869751" duration="1059000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="53697000" />
+    <option name="totallyTimeSpent" value="56627000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="46" y="68" width="974" height="1047" extended-state="0" />
-    <editor active="true" />
+    <frame x="952" y="0" width="976" height="1048" extended-state="0" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24947807" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24895833" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -347,27 +367,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/../web/pages/accountInit.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="38">
-          <caret line="27" column="0" lean-forward="true" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../web/pages/faq.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="68" column="82" lean-forward="true" selection-start-line="68" selection-start-column="82" selection-end-line="68" selection-end-column="82" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/js/main.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="487">
-          <caret line="45" column="81" lean-forward="true" selection-start-line="45" selection-start-column="81" selection-end-line="45" selection-end-column="81" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/web/index_backup.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="152">
@@ -433,14 +432,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/shared/public/route.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="494">
-          <caret line="26" column="48" lean-forward="false" selection-start-line="26" selection-start-column="48" selection-end-line="26" selection-end-column="48" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$APPLICATION_HOME_DIR$/lib/phpstorm.jar!/resources/html5-schema/html5/phrase.rnc">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="322">
@@ -484,22 +475,6 @@
         <state relative-caret-position="492">
           <caret line="108" column="0" lean-forward="true" selection-start-line="108" selection-start-column="0" selection-end-line="108" selection-end-column="0" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/shared/public/classes/Routable.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="7" column="20" lean-forward="false" selection-start-line="7" selection-start-column="20" selection-end-line="7" selection-end-column="20" />
-          <folding>
-            <marker date="1543643701331" expanded="true" signature="692:723" ph="SELECT `${{$... " />
-            <marker date="1543643701331" expanded="true" signature="692:738" ph="SELECT `${{$... ${{$table}}" />
-            <marker date="1543643701331" expanded="true" signature="692:754" ph="SELECT `${{$... ${{$table}}" />
-            <marker date="1543643701331" expanded="true" signature="692:784" ph="SELECT `${{$... ${{$table}}" />
-            <marker date="1543643701331" expanded="true" signature="692:792" ph="SELECT `${{$... ${{$table}}" />
-            <marker date="1543643701331" expanded="true" signature="3144:3568" ph="INSERT INTO tblDocument... " />
-            <marker date="1543643701331" expanded="true" signature="3569:3815" ph="UPDATE `titl... " />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -661,14 +636,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/faq.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="665">
-          <caret line="35" column="29" lean-forward="false" selection-start-line="35" selection-start-column="29" selection-end-line="35" selection-end-column="29" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/shared/public/classes/UserAuthRoute.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1406">
@@ -722,7 +689,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="133">
           <caret line="7" column="15" lean-forward="false" selection-start-line="7" selection-start-column="15" selection-end-line="7" selection-end-column="15" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -730,14 +696,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="171">
           <caret line="9" column="41" lean-forward="false" selection-start-line="9" selection-start-column="41" selection-end-line="9" selection-end-column="41" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/js/web3.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="152">
-          <caret line="5" column="118" lean-forward="false" selection-start-line="5" selection-start-column="118" selection-end-line="5" selection-end-column="118" />
           <folding />
         </state>
       </provider>
@@ -758,11 +716,67 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$USER_HOME$/Desktop/web3.js" />
+    <entry file="file://$PROJECT_DIR$/web/js/web3.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="57">
+          <caret line="3" column="0" lean-forward="true" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/web/etheTest.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="114">
-          <caret line="6" column="2" lean-forward="true" selection-start-line="6" selection-start-column="2" selection-end-line="6" selection-end-column="2" />
+        <state relative-caret-position="171">
+          <caret line="45" column="6" lean-forward="true" selection-start-line="45" selection-start-column="6" selection-end-line="45" selection-end-column="6" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/faq.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="155">
+          <caret line="9" column="7" lean-forward="true" selection-start-line="9" selection-start-column="7" selection-end-line="9" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../main/shared/public/route.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../solveme/shared/public/route.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="456">
+          <caret line="24" column="9" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="47" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/shared/public/route.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="15" column="10" lean-forward="true" selection-start-line="15" selection-start-column="10" selection-end-line="15" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/shared/public/classes/Routable.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="48" column="0" lean-forward="true" selection-start-line="48" selection-start-column="0" selection-end-line="48" selection-end-column="0" />
+          <folding>
+            <marker date="1553999753008" expanded="true" signature="692:723" ph="SELECT `${{$... " />
+            <marker date="1553999753008" expanded="true" signature="692:738" ph="SELECT `${{$... ${{$table}}" />
+            <marker date="1553999753008" expanded="true" signature="692:754" ph="SELECT `${{$... ${{$table}}" />
+            <marker date="1553999753008" expanded="true" signature="692:784" ph="SELECT `${{$... ${{$table}}" />
+            <marker date="1553999753008" expanded="true" signature="692:792" ph="SELECT `${{$... ${{$table}}" />
+            <marker date="1553999753008" expanded="true" signature="3922:4346" ph="INSERT INTO tblDocument... " />
+            <marker date="1553999753008" expanded="true" signature="4347:4593" ph="UPDATE `titl... " />
+          </folding>
         </state>
       </provider>
     </entry>
