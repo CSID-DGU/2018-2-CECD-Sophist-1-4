@@ -78,7 +78,7 @@ class GethHelper extends Routable {
         return $arr;
     }
 
-    function writeOnBase($data){
+    static function writeOnBase($data){
         return GethHelper::sendTransaction(
             GETH_ETHERBASE,
             GETH_ETHERBASE_PASS,
