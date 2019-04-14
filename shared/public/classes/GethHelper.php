@@ -103,7 +103,7 @@ class GethHelper extends Routable {
 
     function ver(){
         return self::verifyAction(
-            "0x832ea3b2069f04d964cb18931c56400f2a97ccd6b327969ade34df4886b82077",
+            "0x247cbf7d3943e62909f13f62d685c240f53ed007e09f6c15cd0c036f6325d3d3",
             "create", 5, "new", "room", "aa"
         );
     }

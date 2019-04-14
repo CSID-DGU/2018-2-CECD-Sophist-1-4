@@ -65,8 +65,8 @@ $list = $router->getMyGroupList(AuthUtil::getLoggedInfo()->id);
                 var title = $(".jTitle").val();
                 var desc = $(".jDesc").val();
                 var authCode = $(".jAuthCode").val();
-                var rootId = $(".jHier option:selected").attr("rootID");
-                var parentId = $(".jHier option:selected").val();
+                var rootId = 0;
+                var parentId = 0;
                 var needsAuth = $(".jNeedsAuth").prop("checked") == true ? 1 : 0;
                 var madeBy = $(".jMadeBy").val();
                 var tag = tags.toString();
@@ -157,15 +157,7 @@ $list = $router->getMyGroupList(AuthUtil::getLoggedInfo()->id);
                         <h3 class="title">그룹 생성 정보</h3>
                         <!--                        <h3 class="title">회원가입</h3>-->
                         <form>
-<!--                            <label for="prd_" class="control-label">PRODUCT</label><br>-->
-                            <div class="input selectpicker control-label">
-                                <select id="prd_" class="form-control jHier jParentID" name="prd_">
-                                    <option rootID="0" value="0">최상위 그룹으로 설정</option>
-                                <?foreach($list as $item){?>
-                                    <option rootID="<?=$item["rootId"]?>" value="<?=$item["id"]?>">'<?=$item["title"]?>'의 하위 그룹으로 설정</option>
-                                <?}?>
-                                </select>
-                            </div>
+
                             <br/>
                             <input class="input jTitle" type="text" placeholder="그룹명" />
                             <br/>
