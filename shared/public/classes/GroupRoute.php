@@ -65,6 +65,41 @@ class GroupRoute extends Routable {
         return $this->getRow($slt);
     }
 
+    function attendSurvey(){
+        $voteID = $_REQUEST["voteID"];
+        $userID = AuthUtil::getLoggedInfo()->id;
+        $answer = $_REQUEST["answer"];
+        $type = $_REQUEST["type"];
+
+        if($type == "V"){
+            $del = "DELETE FROM tblVoteSelection WHERE voteID='{$voteID}' AND userID='{$userID}'";
+            $sql = "INSERT INTO tblVoteSelection(voteID, userID, selected, regDate) VALUES ('{$voteID}', '{$userID}', '{$answer}', NOW())";
+        }else{
+            $del = "DELETE FROM tblSurvey WHERE voteID='{$voteID}' AND userID='{$userID}'";
+            $sql = "INSERT INTO tblSurvey(voteID, userID, answer, regDate) VALUES ('{$voteID}', '{$userID}', '{$answer}', NOW());";
+        }
+
+        $this->update($del);
+        $this->update($sql);
+        return Routable::response(1, "저장되었습니다.");
+    }
+
+    function getCandidates($voteID){
+        $sql = "SELECT * FROM tblVoteCand WHERE `voteID`='{$voteID}' ORDER BY orderNo";
+        return $this->getArray($sql);
+    }
+
+    function getAttendedInfo($roomId, $type){
+        $user = AuthUtil::getLoggedInfo()->id;
+        $sql = "";
+        if($type == 'V'){
+            $sql = "SELECT * FROM tblVoteSelection WHERE `voteId`='{$roomId}' AND `userId`='{$user}'";
+        }else{
+            $sql = "SELECT * FROM tblSurvey WHERE `voteId`='{$roomId}' AND `userId`='{$user}'";
+        }
+        return $this->getArray($sql);
+    }
+
     function getMyGroupList($id){
         $slt = "SELECT * 
                 FROM tblGroup 
