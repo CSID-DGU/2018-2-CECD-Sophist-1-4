@@ -79,7 +79,7 @@ if($_REQUEST["type"] == ""){
             });
 
             buttonLink(".jMyGroup", "myGroup.php");
-            buttonLink(".jCGroup", "createGroup.php");
+            buttonLink(".jCRoom", "createRoom.php");
 
         });
     </script>
@@ -112,7 +112,7 @@ if($_REQUEST["type"] == ""){
 
                 <div class="col-md-12 text-right">
                     <button class="btn btn-default jMyGroup"><i class="fa fa-list"></i> 참여중인 투표/설문</button>
-                    <button class="btn bg-primary jCGroup"><i class="fa fa-plus"></i> 투표/설문 생성</button>
+                    <button class="btn bg-primary jCRoom"><i class="fa fa-plus"></i> 투표/설문 생성</button>
                 </div>
                 <br/>
                 <aside id="aside" class="col-md-3">

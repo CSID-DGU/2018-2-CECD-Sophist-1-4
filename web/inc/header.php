@@ -40,6 +40,18 @@
     <script type="text/javascript" src="js/jquery.min.js"></script>
     <script type="text/javascript" src="js/AjaxUtil.js"></script>
     <script type="text/javascript" src="js/web3.js"></script>
+
+
+<!--    pickadate.js-->
+    <script type="text/javascript" src="js/picker.js"></script>
+    <script type="text/javascript" src="js/legacy.js"></script>
+    <script type="text/javascript" src="js/picker.date.js"></script>
+    <script type="text/javascript" src="js/picker.time.js"></script>
+    <link type="text/css" rel="stylesheet" href="css/default.css"/>
+    <link type="text/css" rel="stylesheet" href="css/default.date.css"/>
+    <link type="text/css" rel="stylesheet" href="css/default.time.css"/>
+
+
     <script>
         $(document).ready(function(){
             var coll = $(".collapsible");
@@ -55,5 +67,22 @@
                 });
             }
         });
+
+        jQuery.extend( jQuery.fn.pickadate.defaults, {
+            monthsFull: [ '1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월' ],
+            monthsShort: [ '1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월' ],
+            weekdaysFull: [ '일요일', '월요일', '화요일', '수요일', '목요일', '금요일', '토요일' ],
+            weekdaysShort: [ '일', '월', '화', '수', '목', '금', '토' ],
+            today: '오늘',
+            clear: '취소',
+            firstDay: 1,
+            format: 'yyyy 년 mm 월 dd 일',
+            formatSubmit: 'yyyy/mm/dd'
+        });
+
+        jQuery.extend( jQuery.fn.pickatime.defaults, {
+            clear: '취소'
+        });
+
     </script>
 </head>

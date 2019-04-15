@@ -74,48 +74,48 @@
 
 			<!-- Row -->
 			<div class="row">
+                <div class="reply-form text-center">
+                    <h4 class="title">본 투표/설문 참여를 위해서는 그룹 가입이 필요합니다.</h4>
+                    <p class="tiny-padding">해당 그룹의 상세 페이지에서 가입을 완료한 이후 이용바랍니다.</p>
+                    <?
+                    $madeBy = $item["madeName"];
+                    if($item["madeBy"]==0) $madeBy = "관리자";
+                    ?>
+                    <div class="blog-comments jContainer text-left">
+                        <div class="media">
+                            <div class="media-body">
+                                <h4 class="media-heading">
+                                    <?if($item["needsAuth"] == 1){?>
+                                        <i class="fa fa-lock"></i>&nbsp;
+                                    <?}?>
+                                    <?=$item["title"]?>
+                                    <span class="time">
+                                        <i class="fa fa-user"></i>&nbsp;<?=$madeBy?>&nbsp;&nbsp;
+                                        <i class="fa fa-calendar"></i> <?=$item["regDate"]?></span>
+                                </h4>
+                                <p><?=$item["desc"]?></p>
+                            </div>
+                            <div class="blog-tags sm-tag">
+                                <?
+                                $tags = explode(",", $item["tag"]);
+                                foreach ($tags as $tag){
+                                    ?>
+                                    <a href="#"><i class="fa fa-tag"></i><?=$tag?></a>
+                                <?}?>
+                            </div>
+                        </div>
+                    </div>
 
+                    <div class="btn-group" role="group" aria-label="Basic example">
+                        <button type="button" class="btn btn-default jGJoin"><i class="fa fa-sign-in"></i> 그룹 상세로 이동</button>
+                        <button type="button" class="btn bg-primary jBack"><i class="fa fa-times"></i> 취소</button>
+                    </div>
+                </div>
+                <!-- /reply form -->
 				<!-- Main -->
 				<main id="main" class="col-md-9">
 						<!-- reply form -->
-						<div class="reply-form text-center">
-                            <h4 class="title">본 투표/설문 참여를 위해서는 그룹 가입이 필요합니다.</h4>
-                            <p class="tiny-padding">해당 그룹의 상세 페이지에서 가입을 완료한 이후 이용바랍니다.</p>
-                            <?
-                            $madeBy = $item["madeName"];
-                            if($item["madeBy"]==0) $madeBy = "관리자";
-                            ?>
-                            <div class="blog-comments jContainer text-left">
-                            <div class="media">
-                                <div class="media-body">
-                                    <h4 class="media-heading">
-                                        <?if($item["needsAuth"] == 1){?>
-                                            <i class="fa fa-lock"></i>&nbsp;
-                                        <?}?>
-                                        <?=$item["title"]?>
-                                        <span class="time">
-                                        <i class="fa fa-user"></i>&nbsp;<?=$madeBy?>&nbsp;&nbsp;
-                                        <i class="fa fa-calendar"></i> <?=$item["regDate"]?></span>
-                                    </h4>
-                                    <p><?=$item["desc"]?></p>
-                                </div>
-                                <div class="blog-tags sm-tag">
-                                    <?
-                                    $tags = explode(",", $item["tag"]);
-                                    foreach ($tags as $tag){
-                                        ?>
-                                        <a href="#"><i class="fa fa-tag"></i><?=$tag?></a>
-                                    <?}?>
-                                </div>
-                            </div>
-                            </div>
 
-                            <div class="btn-group" role="group" aria-label="Basic example">
-                                <button type="button" class="btn btn-default jGJoin"><i class="fa fa-sign-in"></i> 그룹 상세로 이동</button>
-                                <button type="button" class="btn bg-primary jBack"><i class="fa fa-times"></i> 취소</button>
-                            </div>
-						</div>
-						<!-- /reply form -->
 					</div>
 				</main>
 				<!-- /Main -->
