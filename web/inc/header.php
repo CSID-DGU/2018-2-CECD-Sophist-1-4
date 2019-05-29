@@ -37,6 +37,9 @@ $CONST_DESC = "아직도 불편한 설문조사 서비스를 이용하고 계신
     <link rel="stylesheet" href="fontawesome/css/all.min.css">
     <!-- style CSS -->
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="js/snackbar.min.css" />
+    <script src="js/snackbar.min.js"></script>
+    <script src="js/sweetalert.min.js"></script>
 
     <script type="text/javascript" src="js/jquery.min.js"></script>
     <script type="text/javascript" src="js/AjaxUtil.js"></script>
@@ -117,6 +120,10 @@ $CONST_DESC = "아직도 불편한 설문조사 서비스를 이용하고 계신
             clear: '지우기'
         });
     });
+
+    function showSnackBar(text){
+        Snackbar.show({pos: 'bottom-left', duration:30000, text: text, actionText:'닫기', actionTextColor:'#fff'});
+    }
 
     function verifyText(content, msg){
         if(content == ""){

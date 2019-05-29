@@ -13,10 +13,11 @@ class UserAuthRoute extends Routable {
             if($val["status"] == "2"){
                 return Routable::response(3, "인증 대기중인 계정입니다.\n인증 후 이용해주세요.");
             }else{
+                $firstFlag = $val["accessDate"] == "" ? 1 : 0;
                 AuthUtil::requestLogin($val);
                 $upt = "UPDATE tblUser SET accessDate=NOW() WHERE `id`='{$val["id"]}'";
                 $this->update($upt);
-                return Routable::response(1, "정상적으로 로그인되었습니다.");
+                return Routable::response(1, "정상적으로 로그인되었습니다.", $firstFlag);
             }
         }else{
             return Routable::response(2, "일치하는 회원 정보를 찾을 수 없습니다.");

@@ -15,13 +15,21 @@ $userInfo = $router->getUser(AuthUtil::getLoggedInfo()->id);
         });
     </script>
 
-    <section class="contact-section area-padding">
+    <section class="contact-section mb-5">
+        <div class="apartment_part">
+            <div class="container">
+                <div class="row justify-content-between align-content-center">
+                    <div class="col-12">
+                        <div class="section_tittle">
+                            <h1 class="non-bold">내 정보</h1>
+                            <h4>반갑습니다, <?=$userInfo["name"]?>님!</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="container">
             <div class="row">
-                <div class="col-12">
-                    <h2 class="contact-title">내 정보</h2>
-                    <h4>반갑습니다, <?=$userInfo["name"]?>님!</h4>
-                </div>
                 <div class="col-12 text-right">
                     <a href="dashboard.php" class="genric-btn info-border radius"><i class="fa fa-list"></i> 대시보드</a>
                 </div>

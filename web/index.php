@@ -6,6 +6,9 @@ $list = $router->getTopVoteList();
 ?>
 <script>
     $(document).ready(function(){
+
+        if("<?=$_REQUEST["fl"]?>"==1) showSnackBar("대시보드에서 모든 결과를 확인하세요!");
+
         if("<?=$_REQUEST["msg"] != ""?>"){
             alert("<?=$_REQUEST["msg"]?>");
             location.href="index.php";

@@ -26,7 +26,7 @@
                         if(data.returnCode > 1){
                             alert(data.returnMessage);
                         }else{
-                            location.href = "index.php";
+                            location.href = "index.php?fl=" + data.data;
                         }
                     }else{
                         alert("오류가 발생하였습니다.\n관리자에게 문의하세요.");

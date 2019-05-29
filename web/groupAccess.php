@@ -9,43 +9,13 @@
     $item = $router->getGroup();
 ?>
 <script>
-
     $(document).ready(function(){
-        $(".jJoin").click(function(){
-            location.href = "join.php";
-        });
-
         $(".jBack").click(function(){
             history.back();
         });
 
         $(".jGJoin").click(function(){
             location.href = "groupDetail.php?id=<?=$_REQUEST["id"]?>";
-        });
-
-        $(".jLog").click(function(){
-            if($(".jEmailTxt").val() == "" || $(".jPasswordTxt").val() == ""){
-                alert("회원 정보를 입력하세요.");
-                return;
-            }
-            callJson(
-                "/eVote/shared/public/route.php?F=UserAuthRoute.requestLogin",
-                {
-                    email : $(".jEmailTxt").val(),
-                    pwd : $(".jPasswordTxt").val()
-                }
-                , function(data){
-                    if(data.returnCode > 0){
-                        if(data.returnCode > 1){
-                            alert(data.returnMessage);
-                        }else{
-                            location.href = "index.php";
-                        }
-                    }else{
-                        alert("오류가 발생하였습니다.\n관리자에게 문의하세요.");
-                    }
-                }
-            )
         });
     });
 </script>
@@ -58,7 +28,7 @@ if($item["madeBy"]==0) $madeBy = "관리자";
     <div class="apartment_part">
         <div class="container">
             <div class="row justify-content-between align-content-center">
-                <div class="col-md-8 col-lg-8 col-sm-8">
+                <div class="col-12">
                     <div class="section_tittle">
                         <h1 class="non-bold">그룹 상세 정보</h1>
                         <h5 class="non-bold">본 투표/설문을 이용하기 위해 그룹 가입이 필요합니다.</h5>

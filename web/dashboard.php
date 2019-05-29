@@ -1,93 +1,60 @@
 <? include_once $_SERVER["DOCUMENT_ROOT"]."/eVote/web/inc/header.php"; ?>
+<? include_once $_SERVER["DOCUMENT_ROOT"]."/eVote/shared/public/classes/UserAuthRoute.php"; ?>
 <?
 if(!AuthUtil::isLoggedIn()){
     echo "<script>alert('로그인이 필요한 서비스입니다.'); location.href='login.php';</script>";
 }
+
+$router = new UserAuthRoute();
+$userInfo = $router->getUser(AuthUtil::getLoggedInfo()->id);
+
 ?>
     <script>
-
         $(document).ready(function(){
-            $(".jLog").click(function(){
-                if($(".jEmailTxt").val() == "" || $(".jPasswordTxt").val() == ""){
-                    alert("회원 정보를 입력하세요.");
-                    return;
-                }
-                callJson(
-                    "/eVote/shared/public/route.php?F=UserAuthRoute.requestLogin",
-                    {
-                        email : $(".jEmailTxt").val(),
-                        pwd : $(".jPasswordTxt").val()
-                    }
-                    , function(data){
-                        if(data.returnCode > 0){
-                            if(data.returnCode == 2){
-                                alert(data.returnMessage);
-                            }else{
-                                location.href = "index.php";
-                            }
-                        }else{
-                            alert("오류가 발생하였습니다.\n관리자에게 문의하세요.");
-                        }
-                    }
-                )
-            });
+
         });
     </script>
-    <body>
-    <header>
-        <nav id="nav" class="navbar">
+
+    <section class="contact-section mb-5">
+        <div class="apartment_part">
             <div class="container">
-                <? include_once $_SERVER["DOCUMENT_ROOT"]."/eVote/web/inc/navigator.php"; ?>
-                <div class="header-wrapper sm-padding bg-grey">
-                    <div class="container">
-                        <h2>대시보드</h2>
-                        <ul class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="index.php">홈</a></li>
-                            <li class="breadcrumb-item">내 계정</li>
-                            <li class="breadcrumb-item">그룹</li>
-                        </ul>
+                <div class="row justify-content-between align-content-center">
+                    <div class="col-12">
+                        <div class="section_tittle">
+                            <h1 class="non-bold">대시보드</h1>
+                            <h4><?=$userInfo["name"]?>님의 대시보드</h4>
+                        </div>
                     </div>
                 </div>
-    </header>
-    <!-- /Header -->
-
-    <!-- Blog -->
-    <div id="blog" class="section md-padding">
-
-        <!-- Container -->
-        <div class="container">
-
-            <!-- Row -->
-            <div class="row">
-
-                <!-- Main -->
-                <main id="main" class="col-md-9">
-                    <!-- reply form -->
-                    <div class="reply-form text-center">
-                        <h3 class="title">회원 로그인</h3>
-                        <form>
-                            <input class="input jEmailTxt" type="email" placeholder="이메일" />
-                            <br/>
-                            <input class="input jPasswordTxt" type="password" placeholder="패스워드" />
-                            <br/>
-                            <div class="btn-group" role="group" aria-label="Basic example">
-                                <button type="button" class="btn btn-default jLog"><i class="fa fa-sign-in"></i> 로그인</button>
-                                <button type="button" class="btn bg-primary jJoin"><i class="fa fa-pencil"></i> 회원가입</button>
-                            </div>
-                        </form>
-                    </div>
-                    <!-- /reply form -->
             </div>
-            </main>
-            <!-- /Main -->
-
         </div>
-        <!-- /Row -->
-
-    </div>
-    <!-- /Container -->
-
-    </div>
-    <!-- /Blog -->
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-right">
+                    <a href="dashboard.php" class="genric-btn info-border radius"><i class="fa fa-list"></i> 대시보드</a>
+                </div>
+                <div class="col-12">
+                    <p class="mt-3"><i class="fa fa-mail-bulk"></i> 이메일</p>
+                    <span class="col-12 genric-btn primary-border radius"><?=$userInfo["email"]?></span>
+                    <p class="mt-3"><i class="fa fa-user"></i> 성명</p>
+                    <span class="col-12 genric-btn primary-border radius"><?=$userInfo["name"]?></span>
+                    <p class="mt-3"><i class="fa fa-phone"></i> 전화번호</p>
+                    <span class="col-12 genric-btn primary-border radius"><?=$userInfo["phone"]?></span>
+                    <p class="mt-3"><i class="fa fa-info-circle"></i> 성별</p>
+                    <?
+                    switch ($userInfo["sex"]){
+                        case "N": $sexInfo = "미응답"; break;
+                        case "M": $sexInfo = "남성"; break;
+                        case "F": $sexInfo = "여성"; break;
+                        default: $sexInfo = "오류"; break;
+                    }
+                    ?>
+                    <span class="col-12 genric-btn primary-border radius"><?=$sexInfo?></span>
+                    <p class="mt-3"><i class="fa fa-clock"></i> 마지막 로그인</p>
+                    <span class="col-12 genric-btn primary-border radius"><?=$userInfo["accessDate"]?></span>
+                </div>
+            </div>
+        </div>
+    </section>
 
 <? include_once $_SERVER["DOCUMENT_ROOT"]."/eVote/web/inc/footer.php"; ?>
