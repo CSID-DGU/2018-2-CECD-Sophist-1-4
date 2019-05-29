@@ -5,6 +5,7 @@
 $router = new GroupRoute();
 $list = $router->getMyGroupList(AuthUtil::getLoggedInfo()->id);
 $item = $router->getGroup();
+$isJoined = $router->isJoined($_REQUEST["id"], AuthUtil::getLoggedInfo()->id);
 ?>
 
     <script>
@@ -82,6 +83,19 @@ $item = $router->getGroup();
                 }
             });
 
+            $(".jMem").click(function(){
+                if(confirm("그룹에 가입하시겠습니까?")){
+                    var auth = $("#authText").val();
+                    joinGroup(auth);   
+                }
+            });
+
+            $(".jMemD").click(function(){
+                if(confirm("그룹을 탈퇴하시겠습니까?")){
+                    unjoin();
+                }
+            });
+
             $(".jGen").click(function(){
                 var title = $(".jTitle").val();
                 var desc = $(".jDesc").val();
@@ -129,8 +143,49 @@ $item = $router->getGroup();
                             alert("오류가 발생하였습니다.\n관리자에게 문의하세요.");
                         }
                     }
-                )
+                );
             });
+
+            function joinGroup(auth){
+                callJson(
+                    "/eVote/shared/public/route.php?F=GroupRoute.joinGroup",
+                    {
+                        id : "<?=$_REQUEST["id"]?>",
+                        auth : auth
+                    }
+                    , function(data){
+                        if(data.returnCode > 0){
+                            alert(data.returnMessage);
+                            if(data.returnCode > 1){
+                            }else{
+                                location.reload();
+                            }
+                        }else{
+                            alert("오류가 발생하였습니다.\n관리자에게 문의하세요.");
+                        }
+                    }
+                );
+            }
+
+            function unjoin(){
+                callJson(
+                    "/eVote/shared/public/route.php?F=GroupRoute.unjoinGroup",
+                    {
+                        id : "<?=$_REQUEST["id"]?>"
+                    }
+                    , function(data){
+                        if(data.returnCode > 0){
+                            alert(data.returnMessage);
+                            if(data.returnCode > 1){
+                            }else{
+                                location.reload();
+                            }
+                        }else{
+                            alert("오류가 발생하였습니다.\n관리자에게 문의하세요.");
+                        }
+                    }
+                );
+            }
 
             function refreshTag(){
                 var container = $(".jTagContainer");
@@ -166,7 +221,9 @@ if($item["madeBy"]==0) $madeBy = "관리자";
                                 <h5>
                                     <?if($item["needsAuth"] == 1){?>
                                         <i class="fa fa-lock"></i>&nbsp;
-                                    <?}?>&nbsp;<?=$item["title"]?></h5></a>
+                                    <?}?>&nbsp;<?=$item["title"]?>
+                                    <?if($item["needsAuth"] == 1 && $item["madeBy"] == AuthUtil::getLoggedInfo()->id){?>(<?=$item["authCode"]?>)<?}?>
+                                </h5></a>
                             <p>
                                 &nbsp;<i class="fa fa-user"></i>&nbsp;<?=$madeBy?>
                             </p>
@@ -183,13 +240,28 @@ if($item["madeBy"]==0) $madeBy = "관리자";
                                     }
                                 }?>
                             </ul>
+                            <?if($item["madeBy"] != AuthUtil::getLoggedInfo()->id){?>
+                                <?if(!$isJoined){?>
+                                    <div class="col-12 mt-3">
+                                    <?if($item["needsAuth"] == 1){?>
+                                        <input class="form-control placeholder hide-on-focus col-12" id="authText" type="text" placeholder="가입인증코드" />
+                                    <?}?>
+                                        <button class="mt-3 genric-btn info-border radius jMem col-12"><i class="fa fa-edit"></i> 가입하기</button>
+                                    </div>
+                                <?}else{?>
+                                    <button class="mt-3 genric-btn danger-border radius jMemD col-12"><i class="fa fa-edit"></i> 탈퇴하기</button>
+                                <?}?>
+                            <?}?>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
         <div class="text-center mt-3 mb-5">
-            <?if($item["madeBy"] == AuthUtil::getLoggedInfo()->id){?><button class="genric-btn danger-border radius jDel"><i class="fa fa-check"></i> 삭제하기</button><?}?>
+            <?if($item["madeBy"] == AuthUtil::getLoggedInfo()->id){?>
+                <button class="genric-btn danger-border radius jDel"><i class="fa fa-check"></i> 삭제하기</button>
+            <?}else{?>
+            <?}?>
             <button class="genric-btn info-border radius jBack"><i class="fa fa-times"></i> 이전으로</button>
         </div>
     </div>

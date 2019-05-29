@@ -4,6 +4,11 @@ include_once $_SERVER["DOCUMENT_ROOT"]."/eVote/shared/public/classes/Routable.ph
 
 class GroupRoute extends Routable {
 
+    function isJoined($groupID, $userID){
+        $slt = "SELECT COUNT(*) AS rn FROM tblGroupMember WHERE groupId='{$groupID}' AND userId='{$userID}'";
+        return $this->getValue($slt, "rn") > 0;
+    }
+
     function getGroupList(){
         $page = $_REQUEST["page"] == "" ? 1 : $_REQUEST["page"];
         $query = $_REQUEST["query"];
@@ -226,6 +231,30 @@ class GroupRoute extends Routable {
         }
 
         return Routable::response(1, "그룹 설정이 완료되었습니다.", $lastKey);
+    }
+
+    function unjoinGroup(){
+        $groupID = $_REQUEST["id"];
+        $userID = AuthUtil::getLoggedInfo()->id;
+        $del = "DELETE FROM tblGroupMember WHERE groupId='{$groupID}' AND userId='{$userID}'";
+        $this->update($del);
+        return Routable::response(1, "탈퇴하였습니다.");
+    }
+
+    function joinGroup(){
+        $auth = $_REQUEST["auth"];
+        $groupID = $_REQUEST["id"];
+        $userID = AuthUtil::getLoggedInfo()->id;
+        $slt = "SELECT * FROM tblGroup WHERE `id`='{$groupID}'";
+        $row = $this->getRow($slt);
+        
+        if($row["needsAuth"] == 1 && $row["authCode"] != $auth){
+            return Routable::response(2, "인증 코드가 일치하지 않습니다.");
+        }else{
+            $ins = "INSERT INTO tblGroupMember(`groupId`, `userId`, `regDate`) VALUES('{$groupID}', '{$userID}', NOW())";
+            $this->update($ins);
+            return Routable::response(1, "가입되었습니다.");
+        }
     }
 
 }
