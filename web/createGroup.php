@@ -167,7 +167,7 @@ $list = $router->getMyGroupList(AuthUtil::getLoggedInfo()->id);
                         </div>
 
                         <div class="form-group mt-5">
-                            <button type="button" class="genric-btn primary-border radius jGen"><i class="fa fa-plus"></i> 추가하기</button>
+                            <button type="button" class="genric-btn primary-border radius jGen"><i class="fa fa-plus"></i> 설정하기</button>
                             <button type="button" class="genric-btn primary-border radius jBack"><i class="fa fa-times"></i> 이전으로</button>
                         </div>
 

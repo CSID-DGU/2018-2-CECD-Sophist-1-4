@@ -60,6 +60,28 @@ $item = $router->getGroup();
                 history.back();
             });
 
+            $(".jDel").click(function(){
+                if(confirm("해당 항목을 삭제하시겠습니까?")){
+                    callJson(
+                        "/eVote/shared/public/route.php?F=GroupRoute.delGroup",
+                        {
+                            id : "<?=$_REQUEST["id"] == "" ? "0" : $_REQUEST["id"]?>"
+                        }
+                        , function(data){
+                            if(data.returnCode > 0){
+                                alert(data.returnMessage);
+                                if(data.returnCode > 1){
+                                }else{
+                                    location.href = "group.php";
+                                }
+                            }else{
+                                alert("오류가 발생하였습니다.\n관리자에게 문의하세요.");
+                            }
+                        }
+                    );
+                }
+            });
+
             $(".jGen").click(function(){
                 var title = $(".jTitle").val();
                 var desc = $(".jDesc").val();
@@ -167,6 +189,7 @@ if($item["madeBy"]==0) $madeBy = "관리자";
             </div>
         </div>
         <div class="text-center mt-3 mb-5">
+            <?if($item["madeBy"] == AuthUtil::getLoggedInfo()->id){?><button class="genric-btn danger-border radius jDel"><i class="fa fa-check"></i> 삭제하기</button><?}?>
             <button class="genric-btn info-border radius jBack"><i class="fa fa-times"></i> 이전으로</button>
         </div>
     </div>

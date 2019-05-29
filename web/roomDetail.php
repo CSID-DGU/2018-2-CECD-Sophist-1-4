@@ -83,6 +83,8 @@ if($item["groupID"] != 0){
                 $("#" + tg).prop("checked", true);
             });
 
+            buttonLink(".jModify", "createRoom.php?id=<?=$_REQUEST["id"]?>");
+
         });
     </script>
 
@@ -173,7 +175,7 @@ if($item["madeBy"]==0) $madeBy = "관리자";
                                 <?if($item["type"] == "V"){?>
                                     <? for($e = 0; $e < sizeof($selectionList); $e++){ ?>
                                         <div target="voting-radio-<?=$e?>" class="jRHelper switch-wrap d-flex justify-content-between genric-btn info-border radius p-3">
-                                            <p><?=$selectionList[$e]["title"]?> (<?=$selectionList[$e]["desc"]?>)</p>
+                                            <p><?=$selectionList[$e]["title"]?></p>
                                             <div class="primary-radio">
                                                 <input type="radio" name="selects" id="voting-radio-<?=$e?>" <?=$item["changeable"] == 1 ? "" : "DISABLED"?> <?=$selected == $selectionList[$e]["id"] ? "CHECKED" : ""?> value="<?=$selectionList[$e]["id"]?>" />
                                                 <label for="voting-radio-<?=$e?>"></label>
@@ -199,6 +201,7 @@ if($item["madeBy"]==0) $madeBy = "관리자";
         </div>
 
         <div class="text-center mt-3 mb-5">
+            <?if($item["madeBy"] == AuthUtil::getLoggedInfo()->id){?><button class="genric-btn primary-border radius jModify"><i class="fa fa-edit"></i> 재설정</button><?}?>
             <button class="genric-btn info-border radius jBack"><i class="fa fa-times"></i> 이전으로</button>
         </div>
     </div>

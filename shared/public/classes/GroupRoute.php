@@ -7,17 +7,17 @@ class GroupRoute extends Routable {
     function getGroupList(){
         $page = $_REQUEST["page"] == "" ? 1 : $_REQUEST["page"];
         $query = $_REQUEST["query"];
-        $whereStmt = "1=1 AND `parentId`=0 ";
+        $whereStmt = "isDeleted=0 AND 1=1 AND `parentId`=0 ";
         if($query != ""){
             $whereStmt .= " AND `title` LIKE '%{$query}%'";
         }
 
-        $startLimit = ($page - 1) * 5;
+        $startLimit = ($page - 1) * 6;
         $slt = "SELECT *, 
                 (SELECT `name` FROM tblUser WHERE `id`=`madeBy` LIMIT 1) AS madeName 
                 FROM tblGroup
                 WHERE {$whereStmt}
-                ORDER BY `regDate` DESC LIMIT {$startLimit}, 5";
+                ORDER BY `regDate` DESC LIMIT {$startLimit}, 6";
         return $this->getArray($slt);
     }
 
@@ -39,7 +39,7 @@ class GroupRoute extends Routable {
                 (SELECT `needsAuth` FROM tblGroup WHERE `id`=`groupID` LIMIT 1) AS needsAuth,
                 (SELECT `title` FROM tblGroup WHERE `id`=`groupID` LIMIT 1) AS groupName, 
                 (SELECT `name` FROM tblUser WHERE `id`=`madeBy` LIMIT 1) AS madeName 
-                FROM tblRoom
+                FROM tblRoom WHERE isDeleted=0
                 ORDER BY `regDate` DESC LIMIT {$count}";
         return $this->getArray($slt);
     }
@@ -49,19 +49,19 @@ class GroupRoute extends Routable {
         $type = $_REQUEST["type"] == "" ? "A" : $_REQUEST["type"];
         $query = $_REQUEST["query"];
 
-        $whereStmt = "1=1 ";
+        $whereStmt = "isDeleted=0 AND 1=1 ";
         if($type != "A") $whereStmt .= "AND `type` = '{$type}'";
         if($query != ""){
             $whereStmt .= " AND `title` LIKE '%{$query}%'";
         }
 
-        $startLimit = ($page - 1) * 5;
+        $startLimit = ($page - 1) * 6;
         $slt = "SELECT *,
                 (SELECT `needsAuth` FROM tblGroup WHERE `id`=`groupID` LIMIT 1) AS needsAuth,
                 (SELECT `title` FROM tblGroup WHERE `id`=`groupID` LIMIT 1) AS groupName, 
                 (SELECT `name` FROM tblUser WHERE `id`=`madeBy` LIMIT 1) AS madeName 
                 FROM tblRoom WHERE {$whereStmt}
-                ORDER BY `regDate` DESC LIMIT {$startLimit}, 5";
+                ORDER BY `regDate` DESC LIMIT {$startLimit}, 6";
         return $this->getArray($slt);
     }
 
@@ -132,17 +132,31 @@ class GroupRoute extends Routable {
         $changeable = $_REQUEST["changeable"];
 
         $ins = "INSERT INTO `eVoteDGU`.`tblRoom` 
-                (`groupID`, `type`, `title`, `ques`, `desc`, `madeBy`, `startDate`, `endDate`, `isEndless`, `changeable`, `regDate`)
+                (`id`, `groupID`, `type`, `title`, `ques`, `desc`, `madeBy`, `startDate`, `endDate`, `isEndless`, `changeable`, `regDate`)
                 VALUES
-                ('{$groupID}', '{$type}', '{$title}', '{$ques}', '{$desc}', '{$madeBy}', '{$startDate}', '{$endDate}', '{$isEndless}', '{$changeable}', NOW());
-";
+                ('{$id}', '{$groupID}', '{$type}', '{$title}', '{$ques}', '{$desc}', '{$madeBy}', '{$startDate}', '{$endDate}', '{$isEndless}', '{$changeable}', NOW())
+                ON DUPLICATE KEY UPDATE 
+                `groupID` = '{$groupID}', 
+                `type` = '{$type}', 
+                `title` = '{$title}', 
+                `ques` = '{$ques}', 
+                `desc` = '{$desc}', 
+                `madeBy` = '{$madeBy}', 
+                `startDate` = '{$startDate}', 
+                `endDate` = '{$endDate}', 
+                `isEndless` = '{$isEndless}', 
+                `changeable` = '{$changeable}', 
+                `regDate` = NOW()
+              ";
         $this->update($ins);
+        $lastKey = $this->mysql_insert_id();
 
         $del = "DELETE FROM tblVoteCand WHERE voteID = '{$id}'";
         $this->update($del);
 
-        $lastKey = $this->mysql_insert_id();
-        if($id != 0) $lastKey = $id;
+        if($id != 0) {
+            $lastKey = $id;
+        }
 
         if($type == "V") {
             $candList = json_decode($_REQUEST["tag"]);
@@ -152,10 +166,35 @@ class GroupRoute extends Routable {
                      tblVoteCand(`voteID`, `orderNo`, `title`, `regDate`)
                      VALUES('{$lastKey}', '{$candOrder}', '{$candItem}', NOW())";
                 $this->update($candIns);
+                $candOrder++;
             }
         }
 
         return Routable::response(1, "투표/설문 설정이 완료되었습니다.", $lastKey);
+    }
+
+    function delRoom(){
+        $id = $_REQUEST["id"];
+        $upt = "UPDATE tblRoom SET isDeleted=1 WHERE `id`='{$id}'";
+        $this->update($upt);
+
+        return Routable::response(1, "삭제되었습니다.");
+    }
+
+    function delGroup(){
+        $id = $_REQUEST["id"];
+
+        $slt = "SELECT COUNT(*) AS rn FROM tblRoom WHERE groupID='{$id}' AND isDeleted=0";
+        $cnt = $this->getValue($slt, "rn");
+
+        if($cnt > 0){
+            return Routable::response(2, "그룹 내 투표/설문이 존재합니다.");
+        }else{
+            $upt = "UPDATE tblGroup SET isDeleted=1 WHERE `id`='{$id}'";
+            $this->update($upt);
+
+            return Routable::response(1, "삭제되었습니다.");
+        }
     }
     
     function addGroup(){

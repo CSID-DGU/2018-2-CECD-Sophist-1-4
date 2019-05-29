@@ -1,6 +1,6 @@
 # Pulling-Polling [2018 DGU Capstone Design]
 
-An hybrid application for helping conduct online vote and survey.
+An hybrid application for helping conduct online voting and survey.
 
 ## Developers
 
@@ -19,15 +19,15 @@ An hybrid application for helping conduct online vote and survey.
 
 ### Prerequisites
 
-None
+PHP and its server with Geth
 
 ### Functions
 
-- 추후 추가 예정
+- Voting and Survey function with Geth Based history Management System
 
 ## Licenses
 
-- 추후 추가 예정
+- MIT
 
 ## Contributing
 
@@ -39,10 +39,6 @@ We use [GitHub](https://github.com) for versioning. For the versions available, 
 
 See also the list of [Projects](https://github.com/your/project/contributors) which are developed as capstone design 2018.
 
-## License
-
-- 추후 추가 예정
-
 ## Acknowledgments
 
-* None
+* This Project is being modified with feedback through CSID Manager
