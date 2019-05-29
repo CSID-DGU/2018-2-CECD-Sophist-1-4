@@ -5,7 +5,6 @@
     }
 ?>
 <script>
-
     $(document).ready(function(){
         $(".jJoin").click(function(){
             location.href = "join.php";
@@ -37,60 +36,30 @@
         });
     });
 </script>
-<body>
-	<header>
-		<nav id="nav" class="navbar">
-			<div class="container">
-                <? include_once $_SERVER["DOCUMENT_ROOT"]."/eVote/web/inc/navigator.php"; ?>
-                <div class="header-wrapper sm-padding bg-grey">
-                    <div class="container">
-                        <h2>회원 로그인</h2>
-                        <ul class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="index.php">홈</a></li>
-                            <li class="breadcrumb-item">로그인</li>
-                        </ul>
-                    </div>
+
+    <section class="contact-section area-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h2 class="contact-title">Member Login</h2>
                 </div>
-	</header>
-	<!-- /Header -->
-
-	<!-- Blog -->
-	<div id="blog" class="section">
-
-		<!-- Container -->
-		<div class="container">
-
-			<!-- Row -->
-			<div class="row">
-
-				<!-- Main -->
-				<main id="main" class="col-md-9">
-						<!-- reply form -->
-						<div class="reply-form text-center">
-<!--							<h3 class="title">회원 로그인</h3>-->
-							<form>
-                                <input class="input jEmailTxt" type="email" placeholder="이메일" />
-                                <br/>
-								<input class="input jPasswordTxt" type="password" placeholder="패스워드" />
-                                <br/>
-                                <div class="btn-group" role="group" aria-label="Basic example">
-                                    <button type="button" class="btn btn-default jLog"><i class="fa fa-sign-in"></i> 로그인</button>
-                                    <button type="button" class="btn bg-primary jJoin"><i class="fa fa-pencil"></i> 회원가입</button>
+                <div class="col-lg-6">
+                    <form class="form-contact contact_form" action="contact_process.php" method="post" id="contactForm" novalidate="novalidate">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="form-group">
+                                    <input class="jEmailTxt form-control placeholder hide-on-focus" type="email" placeholder="이메일">
+                                    <input class="jPasswordTxt mt-3 form-control placeholder hide-on-focus" type="password" placeholder="패스워드">
                                 </div>
-							</form>
-						</div>
-						<!-- /reply form -->
-					</div>
-				</main>
-				<!-- /Main -->
-
-			</div>
-			<!-- /Row -->
-
-		</div>
-		<!-- /Container -->
-
-	</div>
-	<!-- /Blog -->
-
+                            </div>
+                        </div>
+                        <div class="form-group mt-2">
+                            <button type="button" class="button button-contactForm jLog"><i class="fa fa-sign-in"></i> 로그인</button>
+                            <button type="button" class="button button-contactForm jJoin"><i class="fa fa-pencil"></i> 회원가입</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
 <? include_once $_SERVER["DOCUMENT_ROOT"]."/eVote/web/inc/footer.php"; ?>

@@ -121,78 +121,54 @@ $item = $router->getGroup();
 
         });
     </script>
-    <body>
-    <header>
-        <nav id="nav" class="navbar">
-            <div class="container">
-                <? include_once $_SERVER["DOCUMENT_ROOT"]."/eVote/web/inc/navigator.php"; ?>
 
-                <div class="header-wrapper sm-padding bg-grey">
-                    <div class="container">
-                        <h2>그룹 상세 정보</h2>
-                        <ul class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="index.php">홈</a></li>
-                            <li class="breadcrumb-item"><a href="group.php">그룹</a></li>
-                            <li class="breadcrumb-item">그룹 상세 정보</li>
-                        </ul>
+<?
+$madeBy = $item["madeName"];
+if($item["madeBy"]==0) $madeBy = "관리자";
+?>
+
+    <div class="apartment_part">
+        <div class="container">
+            <div class="row justify-content-between align-content-center">
+                <div class="col-md-8 col-lg-8 col-sm-8">
+                    <div class="section_tittle">
+                        <h1 class="non-bold">그룹 상세 정보</h1>
                     </div>
                 </div>
-
-    </header>
-    <!-- /Header -->
-
-    <!-- Blog -->
-    <div id="blog" class="section">
-        <!-- Container -->
-        <div class="container">
-
-            <!-- Row -->
+            </div>
             <div class="row">
-                <div class="reply-form text-center">
-                    <?
-                    $madeBy = $item["madeName"];
-                    if($item["madeBy"]==0) $madeBy = "관리자";
-                    ?>
-                    <div class="blog-comments jContainer text-left">
-                        <div class="media">
-                            <div class="media-body">
-                                <h4 class="media-heading">
+                <div class="col-md-12">
+                    <div class="single_appartment_part jDetail" groupId="<?=$item["id"]?>">
+                        <div class="single_appartment_content all">
+                            <a href="#">
+                                <h5>
                                     <?if($item["needsAuth"] == 1){?>
                                         <i class="fa fa-lock"></i>&nbsp;
-                                    <?}?>
-                                    <?=$item["title"]?>
-                                    <span class="time">
-                                        <i class="fa fa-user"></i>&nbsp;<?=$madeBy?>&nbsp;&nbsp;
-                                        <i class="fa fa-calendar"></i> <?=$item["regDate"]?></span>
-                                </h4>
-                                <p><?=$item["desc"]?></p>
-                            </div>
-                            <div class="blog-tags sm-tag">
+                                    <?}?>&nbsp;<?=$item["title"]?></h5></a>
+                            <p>
+                                &nbsp;<i class="fa fa-user"></i>&nbsp;<?=$madeBy?>
+                            </p>
+                            <p><?=$item["desc"]?></p>
+                            <p><?=$item["regDate"]?></p>
+                            <ul class="list-unstyled mt-0">
                                 <?
-                                $tags = explode(",", $item["tag"]);
-                                foreach ($tags as $tag){
-                                    ?>
-                                    <a href="#"><i class="fa fa-tag"></i><?=$tag?></a>
-                                <?}?>
-                            </div>
+                                if(strlen($item["tag"]) > 0) {
+                                    $tags = explode(",", $item["tag"]);
+                                    foreach ($tags as $tag) {
+                                        ?>
+                                        <li><a href="#"><span class="fa fa-tag"></span></a><?= $tag ?></li>
+                                        <?
+                                    }
+                                }?>
+                            </ul>
                         </div>
                     </div>
-
-                    <div class="btn-group" role="group" aria-label="Basic example">
-                        <button type="button" class="btn btn-default jBack"><i class="fa fa-times"></i> 이전으로</button>
-                    </div>
                 </div>
-                <!-- /reply form -->
             </div>
-            <!-- /Main -->
-
         </div>
-        <!-- /Row -->
-
+        <div class="text-center mt-3 mb-5">
+            <button class="genric-btn info-border radius jBack"><i class="fa fa-times"></i> 이전으로</button>
+        </div>
     </div>
-    <!-- /Container -->
-
-    </div>
-    <!-- /Blog -->
 
 <? include_once $_SERVER["DOCUMENT_ROOT"]."/eVote/web/inc/footer.php"; ?>

@@ -78,145 +78,130 @@ if($item["groupID"] != 0){
                 history.back();
             });
 
+            $(".jRHelper").click(function(e){
+                var tg = $(this).attr("target");
+                $("#" + tg).prop("checked", true);
+            });
+
         });
     </script>
-    <body>
-    <header>
-        <nav id="nav" class="navbar">
-            <div class="container">
-                <? include_once $_SERVER["DOCUMENT_ROOT"]."/eVote/web/inc/navigator.php"; ?>
 
-                <div class="header-wrapper sm-padding bg-grey">
-                    <div class="container">
-                        <h2><?=$typeName?> 상세 정보</h2>
-                        <ul class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="index.php">홈</a></li>
-                            <li class="breadcrumb-item"><a href="room.php?type=A">투표 및 설문</a></li>
-                            <li class="breadcrumb-item"><?=$typeName?> 상세 정보</li>
-                        </ul>
+<?
+$madeBy = $item["madeName"];
+$typeName = "";
+switch ($item["type"]){
+    case "V" : $typeName = "투표"; break;
+    case "S" : $typeName = "설문"; break;
+    default : $typeName = "오류"; break;
+}
+if($item["madeBy"]==0) $madeBy = "관리자";
+?>
+
+    <div class="apartment_part">
+        <div class="container">
+            <div class="row justify-content-between align-content-center">
+                <div class="col-md-8 col-lg-8 col-sm-8">
+                    <div class="section_tittle">
+                        <h1 class="non-bold"><?=$typeName?> 상세 정보</h1>
                     </div>
                 </div>
-
-    </header>
-
-    <!-- Blog -->
-    <div id="blog" class="section">
-
-        <!-- Container -->
-        <div class="container">
-
-            <!-- Row -->
+            </div>
             <div class="row">
-                <div class="reply-form text-center">
-                    <?
-                    $madeBy = $item["madeName"];
-                    $typeName = "";
-                    switch ($item["type"]){
-                        case "V" : $typeName = "투표"; break;
-                        case "S" : $typeName = "설문"; break;
-                        default : $typeName = "오류"; break;
-                    }
-                    if($item["madeBy"]==0) $madeBy = "관리자";
-                    ?>
-                    <div class="blog-comments jContainer text-left">
-                        <div class="media">
-                            <div class="media-body">
-                                <h4 class="media-heading">
-                                    <?if($item["needsAuth"] == 1){?>
+                <div class="col-md-6 col-lg-6 col-sm-6">
+                    <div class="single_appartment_part jDetail" roomId="<?=$item["id"]?>" groupId="<?=$item["groupID"]?>">
+                        <div class="appartment_img">
+                            <? if($item["type"]=="V"){ ?>
+                                <img src="img/ic_vote.png" alt="">
+                            <?}else{?><img src="img/ic_survey.png" alt=""><?}?>
+                            <div class="single_appartment_text">
+                                <h3 class="non-bold"><?if($item["needsAuth"] == 1){?>
                                         <i class="fa fa-lock"></i>&nbsp;
                                     <?}?>
-                                    [<?=$typeName?>] <?=$item["title"]?>
-                                    <span class="time">
-                    <?if($item["groupID"] > 0){?>
-                        <i class="fa fa-users"></i>&nbsp;<?=$item["groupName"]?>&nbsp;&nbsp;
-                    <?}?>
-                                        <i class="fa fa-user"></i>&nbsp;<?=$madeBy?>
-                </span>
-                                    <a href="#" class="reply jDetail" roomId="<?=$item["id"]?>" groupId="<?=$item["groupID"]?>">자세히 <i class="fa fa-sign-in"></i></a>
-                                </h4>
-                                <p><?=$item["desc"]?></p>
-                                <span class="small">
-                <i class="fa fa-calendar"></i>
-                                    <?=$item["startDate"]?>
-                                    <?if($item["isEndless"] == 0){?> ~ <?=$item["endDate"]?><?}?>
-            </span>
-                            </div>
-                            <div class="blog-tags sm-tag">
-                                <?if($item["groupID"] == 0){?><a href="#"><i class="fa fa-users"></i>공개 투표</a><?}?>
-                                <?if($item["groupID"] > 0){?><a href="#"><i class="fa fa-lock"></i>그룹 투표</a><?}?>
-                                <?if($item["needsAuth"] == 1){?><a href="#"><i class="fa fa-users"></i>비공개 그룹</a><?}?>
-                                <?if($item["cascadeGroup"] == 1){?><a href="#"><i class="fa fa-chain"></i>하위 그룹 포함</a><?}?>
-                                <?if($item["isEndless"] == 1){?><a href="#"><i class="fa fa-clock-o"></i>무기한 투표</a><?}?>
-                                <?if($item["changeable"] == 0){?><a href="#"><i class="fa fa-times"></i>재선택 불가</a><?}?>
-                                <?if($item["changeable"] == 1){?><a href="#"><i class="fa fa-repeat"></i>재선택 가능</a><?}?>
+                                    <?=$typeName?></h3>
+                                <p><span class="ti-calendar"></span>
+                                    <br/><?=$item["startDate"]?>
+                                    <?if($item["isEndless"] == 0){?><br/><?=$item["endDate"]?><?}?>
+                                </p>
                             </div>
                         </div>
-                    </div>
-
-                    <div class="reply-form text-center" style="margin-top: 0px;">
-                        <div class="blog-comments jContainer text-left" >
-                            <div class="media">
-                                <div class="media-body">
-                                    <h4 class="media-heading">
-                                        <?=$typeName?> 참여<br/>
-                                    </h4>
-                                        <?if(sizeof($attendedList) <= 0){?>
-                                            <?if($item["type"] == "V"){?>
-                                                <? for($e = 0; $e < sizeof($selectionList); $e++){ ?>
-                                                    <input type="radio" name="selects" <?=$e == 0 ? "CHECKED" : ""?> value="<?=$selectionList[$e]["id"]?>" />
-                                                    <?=$selectionList[$e]["title"]?> (<?=$selectionList[$e]["desc"]?>)<br/>
-                                                <?}?>
-                                                <br/>
-                                                <button type="button" class="btn btn-default jRevote"><i class="fa fa-edit"></i> 답변 저장</button>
-                                            <?}else{?>
-                                                <textarea id="surveyAnswer"></textarea>
-                                                <button type="button" class="btn btn-default jReselect"><i class="fa fa-edit"></i> 답변 저장</button>
-                                            <?}?>
-                                            <span></span>
-                                        <?}else{?>
-                                        <?if($item["type"] == "V"){?>
-                                                <? for($e = 0; $e < sizeof($selectionList); $e++){ ?>
-                                                    <input type="radio" name="selects" <?=$item["changeable"] == 1 ? "" : "DISABLED"?> <?=$selected == $selectionList[$e]["id"] ? "CHECKED" : ""?> value="<?=$selectionList[$e]["id"]?>" />
-                                                    <?=$selectionList[$e]["title"]?> (<?=$selectionList[$e]["desc"]?>)<br/>
-                                                <?}?>
-                                                <?if($item["changeable"] == 1){?>
-                                                    <br/>
-                                                    <button type="button" class="btn btn-default jRevote"><i class="fa fa-refresh"></i> 답변 수정</button>
-                                                <?}?>
-                                        <?}else{?>
-                                                <textarea id="surveyAnswer" <?=$item["changeable"] == 1?"":"disabled"?>><?=$attendedList[0]["answer"]?></textarea>
-                                                <?if($item["changeable"] == 1){?>
-                                                    <button type="button" class="btn btn-default jReselect"><i class="fa fa-refresh"></i> 답변 수정</button>
-                                                <?}?>
-                                            <?}?>
-                                        <?}?>
-
-                                </div>
-                            </div>
+                        <div class="single_appartment_content">
+                            <p>
+                                <?if($item["groupID"] > 0){?><i class="fa fa-users"></i> <?=$item["groupName"]?><?}?>
+                                &nbsp;<i class="fa fa-user"></i>&nbsp;<?=$madeBy?>
+                            </p>
+                            <p><?=$item["desc"]?></p>
+                            <a href="#">
+                                <h5><?if($item["needsAuth"] == 1){?>
+                                        <i class="fa fa-lock"></i>&nbsp;
+                                    <?}?> <?=$item["title"]?></h5></a>
+                            <ul class="list-unstyled">
+                                <?if($item["groupID"] == 0){?><li><a href="#"><span class="fa fa-users"></span></a>공개</li><?}?>
+                                <?if($item["groupID"] > 0){?><li><a href="#"><span class="fa fa-lock"></span></a>그룹</li><?}?>
+                                <?if($item["needsAuth"] == 1){?><li><a href="#"><span class="fa fa-users"></span></a>비공개</li><?}?>
+                                <?if($item["isEndless"] == 1){?><li><a href="#"><span class="fa fa-clock"></span></a>무기한</li><?}?>
+                                <?if($item["changeable"] == 0){?><li><a href="#"><span class="fa fa-check"></span></a>재선택불가</li><?}?>
+                                <?if($item["changeable"] == 1){?><li><a href="#"><span class="fa fa-check"></span></a>재선택가능</li><?}?>
+                            </ul>
                         </div>
                     </div>
-                <!-- Main -->
-                <main id="main" class="col-md-9">
-                    <!-- reply form -->
+                </div>
+                <div class="col-md-6 col-lg-6 col-sm-6">
+                            <h3 class="">
+                                <?=$typeName?> 참여 정보<br/>
+                            </h3>
+                            <p><?=$item["ques"]?></p>
+                            <br/>
+                            <?if(sizeof($attendedList) <= 0){?>
+                                <?if($item["type"] == "V"){?>
+                                    <? for($e = 0; $e < sizeof($selectionList); $e++){ ?>
+                                        <div target="voting-radio-<?=$e?>" class="jRHelper switch-wrap d-flex justify-content-between genric-btn info-border radius p-3">
+                                            <p><?=$selectionList[$e]["title"]?></p>
+                                            <div class="primary-radio">
+                                                <input type="radio" name="selects" id="voting-radio-<?=$e?>" <?=$e == 0 ? "CHECKED" : ""?> value="<?=$selectionList[$e]["id"]?>" />
+                                                <label for="voting-radio-<?=$e?>"></label>
+                                            </div>
+                                        </div>
+                                    <?}?>
+                                    <br/>
+                                    <button type="button" class="col-12 genric-btn primary-border radius jRevote"><i class="fa fa-edit"></i> 답변 저장</button>
+                                <?}else{?>
+                                    <textarea class="mb-2 form-control placeholder hide-on-focus h-50" id="surveyAnswer" placeholder="답변 내용"></textarea>
+                                    <button type="button" class="col-12 genric-btn primary-border radius jReselect"><i class="fa fa-edit"></i> 답변 저장</button>
+                                <?}?>
+                                <span></span>
+                            <?}else{?>
+                                <?if($item["type"] == "V"){?>
+                                    <? for($e = 0; $e < sizeof($selectionList); $e++){ ?>
+                                        <div target="voting-radio-<?=$e?>" class="jRHelper switch-wrap d-flex justify-content-between genric-btn info-border radius p-3">
+                                            <p><?=$selectionList[$e]["title"]?> (<?=$selectionList[$e]["desc"]?>)</p>
+                                            <div class="primary-radio">
+                                                <input type="radio" name="selects" id="voting-radio-<?=$e?>" <?=$item["changeable"] == 1 ? "" : "DISABLED"?> <?=$selected == $selectionList[$e]["id"] ? "CHECKED" : ""?> value="<?=$selectionList[$e]["id"]?>" />
+                                                <label for="voting-radio-<?=$e?>"></label>
+                                            </div>
+                                        </div>
+                                    <?}?>
+                                    <?if($item["changeable"] == 1){?>
+                                        <br/>
+                                        <button type="button" class="col-12 genric-btn primary-border radius jRevote"><i class="fa fa-refresh"></i> 답변 수정</button>
+                                    <?}?>
+                                <?}else{?>
+                                    <textarea class="mb-2 form-control placeholder hide-on-focus col-12 h-50" id="surveyAnswer" placeholder="답변 내용" <?=$item["changeable"] == 1?"":"disabled"?>><?=$attendedList[0]["answer"]?></textarea>
+                                    <?if($item["changeable"] == 1){?>
+                                        <button type="button" class="col-12 genric-btn primary-border radius jReselect"><i class="fa fa-refresh"></i> 답변 수정</button>
+                                    <?}?>
+                                <?}?>
+                            <?}?>
 
-
-                        <div class="btn-group" role="group" aria-label="Basic example">
-                            <button type="button" class="btn btn-default jBack"><i class="fa fa-times"></i> 이전으로</button>
                         </div>
                     </div>
-                    <!-- /reply form -->
+                </div>
             </div>
-            </main>
-            <!-- /Main -->
-
         </div>
-        <!-- /Row -->
 
+        <div class="text-center mt-3 mb-5">
+            <button class="genric-btn info-border radius jBack"><i class="fa fa-times"></i> 이전으로</button>
+        </div>
     </div>
-    <!-- /Container -->
-
-    </div>
-    <!-- /Blog -->
 
 
 <? include_once $_SERVER["DOCUMENT_ROOT"]."/eVote/web/inc/footer.php"; ?>

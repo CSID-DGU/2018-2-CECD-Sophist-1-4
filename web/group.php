@@ -60,7 +60,7 @@
                         console.log(data);
                         var html = "";
                         for(var w = 0; w < data.length; w++){
-                            html += "<div class='media recommend jRecList'>" + data[w] + "</div>";
+                            html += "<div class='col-12 genric-btn primary-border radius recommend jRecList'>" + data[w] + "</div>";
                         }
                         $(".jRec").html(html);
                     }
@@ -72,69 +72,31 @@
 
         });
     </script>
-    <body>
-    <header>
-        <nav id="nav" class="navbar">
-            <div class="container">
-                <? include_once $_SERVER["DOCUMENT_ROOT"]."/eVote/web/inc/navigator.php"; ?>
 
-                <div class="header-wrapper sm-padding bg-grey">
-                    <div class="container">
-                        <h2>그룹</h2>
-                        <ul class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="index.php">홈</a></li>
-                            <li class="breadcrumb-item">그룹</li>
-                        </ul>
-                    </div>
-                </div>
-
-    </header>
-    <!-- /Header -->
-
-    <!-- Blog -->
-    <div id="blog" class="section">
-        <!-- Container -->
+    <div class="apartment_part">
         <div class="container">
-
-            <!-- Row -->
-            <div class="row tiny-padding">
-
-                <div class="col-md-12 text-right">
-                    <button class="btn btn-default jMyGroup"><i class="fa fa-list"></i> 내 그룹</button>
-                    <button class="btn bg-primary jCGroup"><i class="fa fa-plus"></i> 그룹 생성</button>
+            <div class="row justify-content-between align-content-center">
+                <div class="col-md-8 col-lg-8 col-sm-8">
+                    <div class="section_tittle">
+                        <h1 class="non-bold">그룹</h1>
+                    </div>
                 </div>
-                <br/>
-                <aside id="aside" class="col-md-3">
-                    <div class="widget">
-                        <div class="widget-search">
-                            <input class="search-input jSearchTxt" type="text" value="<?=$_REQUEST["query"]?>" placeholder="그룹 검색">
-                            <button class="search-btn jSearch" type="button"><i class="fa fa-search"></i></button>
-                        </div>
-                        <div class="blog-comments recommend jRec">
-                        </div>
-                    </div>
-                </aside>
-                <!-- Main -->
-                <main id="main" class="col-md-12">
-                    <p style="font-size: 12px;">※ 최상위 그룹만 표시됩니다.</p>
-                    <div class="blog-comments jContainer">
-                    </div>
-
-                    <div class="text-center">
-                    <button class="btn btn-default jLoadMore"><i class="fa fa-spinner"></i> 더 보기</button>
-                    </div>
-                    <!-- blog tags -->
+                <div class="col-md-4 col-lg-4 col-sm-4 text-right mb-3">
+                    <button class="button jCGroup"><i class="fa fa-plus"></i> 추가</button>
+                </div>
+                <div class="widget-search btn-group col-12">
+                    <input class="form-control placeholder hide-on-focus jSearchTxt col-10" type="text" value="<?=$_REQUEST["query"]?>" placeholder="그룹 검색"/>
+                    <button class="button jSearch col-2" type="button"><i class="fa fa-search"></i></button>
+                </div>
+                <div class="col-12 recommend jRec">
+                </div>
             </div>
-            </main>
-            <!-- /Main -->
-
+            <div class="row jContainer">
+            </div>
         </div>
-        <!-- /Row -->
-
+        <div class="text-center mt-3 mb-5">
+            <button class="genric-btn info-border radius jLoadMore"><i class="fa fa-spinner"></i> 더 보기</button>
+        </div>
     </div>
-    <!-- /Container -->
-
-    </div>
-    <!-- /Blog -->
 
 <? include_once $_SERVER["DOCUMENT_ROOT"]."/eVote/web/inc/footer.php"; ?>

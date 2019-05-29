@@ -1,10 +1,20 @@
 <? include_once $_SERVER["DOCUMENT_ROOT"]."/eVote/web/inc/header.php"; ?>
+<? include_once $_SERVER["DOCUMENT_ROOT"]."/eVote/shared/public/classes/GroupRoute.php"; ?>
+<?
+$router = new GroupRoute();
+$list = $router->getTopVoteList();
+?>
 <script>
     $(document).ready(function(){
         if("<?=$_REQUEST["msg"] != ""?>"){
             alert("<?=$_REQUEST["msg"]?>");
             location.href="index.php";
         }
+
+        $(document).on("click", ".jDetail", function(){
+            var id = $(this).attr("roomId");
+            location.href = "roomDetail.php?id=" + id;
+        });
 
         $(".jDashboardGo").click(function(){
             location.href="dashboard.php";
@@ -18,172 +28,127 @@
     });
 </script>
 
-<body>
-	<!-- Header -->
-	<header id="home">
-		<!-- Background Image -->
-		<div class="bg-img" style="background-image: url('./img/background1.jpg');">
-			<div class="overlay"></div>
-		</div>
-		<!-- /Background Image -->
+   <!--::banner part start::-->
+   <section class="banner_part">
+      <div class="container">
+         <div class="row align-content-center">
+            <div class="col-lg-6">
+               <div class="banner_text aling-items-center">
+                  <div class="banner_text_iner">
+                     <h5>당신의 믿음직한 투표 파트너</h5>
+                     <h2 class="non-bold"><?=$CONST_PROJECT_NAME?></h2>
+                     <p>가장 든든하고 빠른 투표 서비스 <?=$CONST_PROJECT_NAME?>과 함께하세요!</p>
+                      <?if(AuthUtil::isLoggedIn()){?>
+                          <a href="dashboard.php" class="btn_1 banner_btn">대시보드</a>
+                      <?}else{?>
+                          <a href="#" class="btn_1 banner_btn jLoginGo">로그인</a>
+                          <a href="#" class="btn_1 banner_btn jJoinGo">간편 회원가입</a>
+                      <?}?>
+                     <div class="d-none d-xl-block banner_social_icon">
+                        <ul class="list-inline">
+                           <li class="list-inline-item"><a href="https://www.facebook.com/pullingpolling"><span class="ti-facebook"></span>facebook</a><span
+                                 class="dot"><i class="fas fa-circle"></i></span></li>
+                           <li class="list-inline-item"><a href="https://twitter.com/pullingpolling1"><span class="ti-twitter-alt"></span>twitter</a><span
+                                 class="dot"><i class="fas fa-circle"></i></span></li>
+                           <li class="list-inline-item"><a href="https://plus.google.com/u/2/100278896118356850382?hl=ko"><span class="ti-google"></span>google+</a></li>
+                        </ul>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+       <a href="room.php?type=A" class="popup-youtube video_popup"><span class="ti-arrow-right"></span></a>
 
-		<!-- Nav -->
-		<nav id="nav" class="navbar nav-transparent">
-			<div class="container">
+   </section>
+   <!--::banner part end::-->
 
-<? include_once $_SERVER["DOCUMENT_ROOT"]."/eVote/web//inc/navigator.php"; ?>
+    <!--::apartment_part start::-->
+    <div class="apartment_part">
+        <div class="container">
+            <div class="row justify-content-between align-content-center">
+                <div class="col-md-8 col-lg-7 col-sm-8">
+                    <div class="section_tittle">
+                        <h1 class="non-bold">Latest</h1>
+                    </div>
+                </div>
+                <div class="col-md-4 col-lg-5 col-sm-4">
+                    <div class="view_more_btn float-right d-none d-md-block">
+                        <a href="room.php?type=A" class="btn_2">더보기 <span class="ti-arrow-right"></span></a>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
 
-		<!-- home wrapper -->
-		<div class="home-wrapper">
-			<div class="container">
-				<div class="row">
+                <?foreach($list as $item){
+                    $madeBy = $item["madeName"];
+                    $typeName = "";
+                    switch ($item["type"]){
+                        case "V" : $typeName = "투표"; break;
+                        case "S" : $typeName = "설문"; break;
+                        default : $typeName = "오류"; break;
+                    }
+                    if($item["madeBy"]==0) $madeBy = "관리자";
+                    ?>
+                    <div class="col-md-4 col-lg-4 col-sm-6">
+                        <div class="single_appartment_part jDetail" roomId="<?=$item["id"]?>" groupId="<?=$item["groupID"]?>">
+                            <div class="appartment_img">
+                                <? if($item["type"]=="V"){ ?>
+                                    <img src="img/ic_vote.png" alt="">
+                                <?}else{?><img src="img/ic_survey.png" alt=""><?}?>
+                                <div class="single_appartment_text">
+                                    <h3 class="non-bold"><?if($item["needsAuth"] == 1){?>
+                                            <i class="fa fa-lock"></i>&nbsp;
+                                        <?}?>
+                                        <?=$typeName?></h3>
+                                    <p><span class="ti-calendar"></span>
+                                        <br/><?=$item["startDate"]?>
+                                        <?if($item["isEndless"] == 0){?><br/><?=$item["endDate"]?><?}?>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="single_appartment_content">
+                                <p>
+                                    <?if($item["groupID"] > 0){?><i class="fa fa-users"></i> <?=$item["groupName"]?><?}?>
+                                    &nbsp;<i class="fa fa-user"></i>&nbsp;<?=$madeBy?>
+                                </p>
+                                <p><?=$item["desc"]?></p>
+                                <a href="#">
+                                    <h5><?if($item["needsAuth"] == 1){?>
+                                            <i class="fa fa-lock"></i>&nbsp;
+                                        <?}?> <?=$item["title"]?></h5></a>
+                                <ul class="list-unstyled">
+                                    <?if($item["groupID"] == 0){?><li><a href="#"><span class="fa fa-users"></span></a>공개</li><?}?>
+                                    <?if($item["groupID"] > 0){?><li><a href="#"><span class="fa fa-lock"></span></a>그룹</li><?}?>
+                                    <?if($item["needsAuth"] == 1){?><li><a href="#"><span class="fa fa-users"></span></a>비공개</li><?}?>
+                                    <?if($item["isEndless"] == 1){?><li><a href="#"><span class="fa fa-clock"></span></a>무기한</li><?}?>
+                                    <?if($item["changeable"] == 0){?><li><a href="#"><span class="fa fa-check"></span></a>재선택불가</li><?}?>
+                                    <?if($item["changeable"] == 1){?><li><a href="#"><span class="fa fa-check"></span></a>재선택가능</li><?}?>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                <?}?>
 
-					<!-- home content -->
-					<div class="col-md-10 col-md-offset-1">
-						<div class="home-content">
-							<h1 class="white-text"><?=$CONST_PROJECT_NAME?></h1>
-							<p class="white-text">
-                                아직도 불편한 설문조사 서비스를 이용하고 계신가요? 보기 힘든 결과 자료를 검토하고 계신가요?
-                                <br/>깨끗하고 빠른 <?=$CONST_PROJECT_NAME?>과 함께 의견을 모아보세요!
-							</p>
-							<?if(AuthUtil::isLoggedIn()){?>
-							<button class="main-btn jDashboardGo">대시보드 바로가기</button>
-							<?}else{?>
-                                <button class="white-btn jLoginGo">로그인</button>
-							    <button class="main-btn jJoinGo">간편 회원가입</button>
-							<?}?>
-						</div>
-					</div>
-					<!-- /home content -->
+            </div>
+        </div>
+    </div>
+    <!--::apartment_part end::-->
 
-				</div>
-			</div>
-		</div>
-		<!-- /home wrapper -->
-
-	</header>
-	<!-- /Header -->
-
-	<!-- About -->
-	<div id="about" class="section md-padding">
-
-		<!-- Container -->
-		<div class="container">
-
-			<!-- Row -->
-			<div class="row">
-
-				<!-- Section header -->
-				<div class="section-header text-center">
-					<h2 class="title"><?=$CONST_PROJECT_NAME?>을 만나보세요!</h2>
-				</div>
-				<!-- /Section header -->
-
-				<!-- about -->
-				<div class="col-md-4">
-					<div class="about">
-						<i class="fa fa-cogs"></i>
-						<h3>빠르고 효율적으로!</h3>
-						<p>직관적인 관리방법과 매우 효과적인 결과 조회 및 통계 서비스를 제공하여<br/>보다 빠르고 효율적으로 의견을 모아볼 수 있습니다.</p>
-<!--						<a href="#">Read more</a>-->
-					</div>
-				</div>
-				<!-- /about -->
-
-				<!-- about -->
-				<div class="col-md-4">
-					<div class="about">
-						<i class="fa fa-magic"></i>
-						<h3>마법은 저희가 부릴게요 :)</h3>
-						<p>간단한 내용만 입력해주세요! 풍부하고 유연한 기능으로 도와드릴게요.</p>
-<!--						<a href="#">Read more</a>-->
-					</div>
-				</div>
-				<!-- /about -->
-
-				<!-- about -->
-				<div class="col-md-4">
-					<div class="about">
-						<i class="fa fa-mobile"></i>
-						<h3>언제 어디서나!</h3>
-						<p>저희 <?=$CONST_PROJECT_NAME?>는 플랫폼을 가리지 않아요~! 언제 어디서든 편리하게 이용해보세요!</p>
-<!--						<a href="#">Read more</a>-->
-					</div>
-				</div>
-				<!-- /about -->
-
-			</div>
-			<!-- /Row -->
-
-		</div>
-		<!-- /Container -->
-
-	</div>
-	<!-- /About -->
-
-	<!-- Numbers -->
-	<div id="numbers" class="section sm-padding">
-
-		<!-- Background Image -->
-		<div class="bg-img" style="background-image: url('./img/background2.jpg');">
-			<div class="overlay"></div>
-		</div>
-		<!-- /Background Image -->
-
-		<!-- Container -->
-		<div class="container">
-
-			<!-- Row -->
-			<div class="row">
-
-				<!-- number -->
-				<div class="col-sm-3 col-xs-6">
-					<div class="number">
-						<i class="fa fa-user"></i>
-						<h3 class="white-text"><span class="counter">1000</span></h3>
-						<span class="white-text">총 이용자</span>
-					</div>
-				</div>
-				<!-- /number -->
-
-				<!-- number -->
-				<div class="col-sm-3 col-xs-6">
-					<div class="number">
-						<i class="fa fa-users"></i>
-						<h3 class="white-text"><span class="counter">10</span></h3>
-						<span class="white-text">총 그룹</span>
-					</div>
-				</div>
-				<!-- /number -->
-
-				<!-- number -->
-				<div class="col-sm-3 col-xs-6">
-					<div class="number">
-						<i class="fa fa-pencil"></i>
-						<h3 class="white-text"><span class="counter">2500</span></h3>
-						<span class="white-text">총 응답수</span>
-					</div>
-				</div>
-				<!-- /number -->
-
-				<!-- number -->
-				<div class="col-sm-3 col-xs-6">
-					<div class="number">
-						<i class="fa fa-file"></i>
-						<h3 class="white-text"><span class="counter">45</span></h3>
-						<span class="white-text">진행된 투표/설문</span>
-					</div>
-				</div>
-				<!-- /number -->
-
-			</div>
-			<!-- /Row -->
-
-		</div>
-		<!-- /Container -->
-
-	</div>
-	<!-- /Numbers -->
-
+    <br/><br/><br/>
+   <!--::cta_part start::-->
+   <div class="cta_part">
+      <div class="container">
+         <div class="row justify-content-center">
+            <div class="col-lg-6">
+               <div class="cta_iner">
+                  <h1 class="non-bold"><?=$CONST_PROJECT_NAME?>의 최근 소식이 궁금하신가요? </h1>
+                  <a href="notice.php" class="cta_btn">공지사항 보기</a>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+   <!--::cta_part end::-->
 
 <? include_once $_SERVER["DOCUMENT_ROOT"]."/eVote/web//inc/footer.php"; ?>

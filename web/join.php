@@ -45,73 +45,38 @@ if(AuthUtil::isLoggedIn()){
             });
         });
     </script>
-    <body>
-    <header>
-        <nav id="nav" class="navbar">
-            <div class="container">
-                <? include_once $_SERVER["DOCUMENT_ROOT"]."/eVote/web/inc/navigator.php"; ?>
-                <div class="header-wrapper sm-padding bg-grey">
-                    <div class="container">
-                        <h2>회원가입</h2>
-                        <ul class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="index.php">홈</a></li>
-                            <li class="breadcrumb-item">회원가입</li>
-                        </ul>
-                    </div>
-                </div>
-    </header>
-    <!-- /Header -->
 
-    <!-- Blog -->
-    <div id="blog" class="section">
-
-        <!-- Container -->
+    <section class="contact-section area-padding">
         <div class="container">
-
-            <!-- Row -->
             <div class="row">
-
-                <!-- Main -->
-                <main id="main" class="col-md-9">
-                    <!-- reply form -->
-                    <div class="reply-form text-center">
-<!--                        <h3 class="title">회원가입</h3>-->
-                        <form>
-                            <input class="input jNameTxt" type="text" placeholder="성명" />
-                            <br/>
-                            <input class="input jEmailTxt" type="email" placeholder="이메일" />
-                            <br/>
-                            <input class="input jPhoneTxt" type="text" placeholder="전화번호" />
-                            <br/>
-                            <input class="input jPasswordTxt" type="password" placeholder="패스워드" />
-                            <br/>
-                            <input class="input jPasswordCTxt" type="password" placeholder="패스워드 확인" />
-                            <br/>
-                            <div class="input selectpicker control-label">
-                                <select id="prd_" class="form-control jSex" name="prd_">
-                                    <option value="N">성별(선택)</option>
-                                    <option value="M">남성</option>
-                                    <option value="F">여성</option>
-                                </select>
+                <div class="col-12">
+                    <h2 class="contact-title">Member Sign Up</h2>
+                </div>
+                <div class="col-lg-6">
+                    <form class="form-contact contact_form" action="contact_process.php" method="post" id="contactForm" novalidate="novalidate">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="form-group">
+                                    <input class="form-control placeholder hide-on-focus jNameTxt" type="text" placeholder="성명" />
+                                    <input class="mt-3 form-control placeholder hide-on-focus jEmailTxt" type="email" placeholder="이메일" />
+                                    <input class="mt-3 form-control placeholder hide-on-focus jPhoneTxt" type="text" placeholder="전화번호" />
+                                    <input class="mt-3 form-control placeholder hide-on-focus jPasswordTxt" type="password" placeholder="패스워드" />
+                                    <input class="mt-3 form-control placeholder hide-on-focus jPasswordCTxt" type="password" placeholder="패스워드 확인" />
+                                    <select id="prd_" class="mt-3 form-control jSex" name="prd_">
+                                        <option value="N">성별(선택)</option>
+                                        <option value="M">남성</option>
+                                        <option value="F">여성</option>
+                                    </select>
+                                </div>
                             </div>
-                            <br/><br/>
-                            <div class="btn-group" role="group" aria-label="Basic example">
-                                <button type="button" class="btn bg-primary jJoin"><i class="fa fa-pencil"></i> 가입하기</button>
-                            </div>
-                        </form>
-                    </div>
-                    <!-- /reply form -->
+                        </div>
+                        <div class="form-group mt-2">
+                            <button type="button" class="button button-contactForm jJoin"><i class="fa fa-sign-in"></i> 가입하기</button>
+                        </div>
+                    </form>
+                </div>
             </div>
-            </main>
-            <!-- /Main -->
-
         </div>
-        <!-- /Row -->
-
-    </div>
-    <!-- /Container -->
-
-    </div>
-    <!-- /Blog -->
+    </section>
 
 <? include_once $_SERVER["DOCUMENT_ROOT"]."/eVote/web/inc/footer.php"; ?>

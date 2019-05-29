@@ -10,15 +10,16 @@ $list = $router->getNoticeList();
     $madeBy = "관리자(".$item["madeName"].")";
     if($item["madeBy"]==0) $madeBy = "관리자";
     ?>
-    <div class="media">
-        <div class="media-body">
-            <h4 class="media-heading jDetail" noticeID="<?=$item["id"]?>">
-                <?=$item["title"]?>
-                <a href="#" class="reply jDetail" noticeID="<?=$item["id"]?>">자세히 <i class="fa fa-sign-in"></i></a>
-            </h4>
-            <span class="small">
-                    <i class="fa fa-user"></i>&nbsp;<?=$madeBy?>&nbsp;&nbsp;
-                    <i class="fa fa-calendar"></i> <?=$item["regDate"]?></span>
+    <div class="col-md-12 mt-2">
+        <div class="single_appartment_part jDetail" noticeID="<?=$item["id"]?>">
+            <div class="single_appartment_content all">
+                <p>
+                    &nbsp;<i class="fa fa-user"></i>&nbsp;<?=$madeBy?>
+                </p>
+                <p><?=$item["regDate"]?></p>
+                <a href="#">
+                    <h5><?=$item["title"]?></h5></a>
+            </div>
         </div>
     </div>
 <?}?>

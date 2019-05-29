@@ -16,36 +16,42 @@ $list = $router->getVoteList();
     }
     if($item["madeBy"]==0) $madeBy = "관리자";
     ?>
-    <div class="media">
-        <div class="media-body">
-            <h4 class="media-heading">
-                <?if($item["needsAuth"] == 1){?>
-                    <i class="fa fa-lock"></i>&nbsp;
-                <?}?>
-                [<?=$typeName?>] <?=$item["title"]?>
-                <span class="time">
-                    <?if($item["groupID"] > 0){?>
-                        <i class="fa fa-users"></i>&nbsp;<?=$item["groupName"]?>&nbsp;&nbsp;
-                    <?}?>
-                    <i class="fa fa-user"></i>&nbsp;<?=$madeBy?>
-                </span>
-                <a href="#" class="reply jDetail" roomId="<?=$item["id"]?>" groupId="<?=$item["groupID"]?>">자세히 <i class="fa fa-sign-in"></i></a>
-            </h4>
-            <p><?=$item["desc"]?></p>
-            <span class="small">
-                <i class="fa fa-calendar"></i>
-                <?=$item["startDate"]?>
-                <?if($item["isEndless"] == 0){?> ~ <?=$item["endDate"]?><?}?>
-            </span>
-        </div>
-        <div class="blog-tags sm-tag">
-            <?if($item["groupID"] == 0){?><a href="#"><i class="fa fa-users"></i>공개 투표</a><?}?>
-            <?if($item["groupID"] > 0){?><a href="#"><i class="fa fa-lock"></i>그룹 투표</a><?}?>
-            <?if($item["needsAuth"] == 1){?><a href="#"><i class="fa fa-users"></i>비공개 그룹</a><?}?>
-            <?if($item["cascadeGroup"] == 1){?><a href="#"><i class="fa fa-chain"></i>하위 그룹 포함</a><?}?>
-            <?if($item["isEndless"] == 1){?><a href="#"><i class="fa fa-clock-o"></i>무기한 투표</a><?}?>
-            <?if($item["changeable"] == 0){?><a href="#"><i class="fa fa-times"></i>재선택 불가</a><?}?>
-            <?if($item["changeable"] == 1){?><a href="#"><i class="fa fa-repeat"></i>재선택 가능</a><?}?>
+    <div class="col-md-4 col-lg-4 col-sm-6">
+        <div class="single_appartment_part jDetail" roomId="<?=$item["id"]?>" groupId="<?=$item["groupID"]?>">
+            <div class="appartment_img">
+                <? if($item["type"]=="V"){ ?>
+                    <img src="img/ic_vote.png" alt="">
+                <?}else{?><img src="img/ic_survey.png" alt=""><?}?>
+                <div class="single_appartment_text">
+                    <h3 class="non-bold"><?if($item["needsAuth"] == 1){?>
+                            <i class="fa fa-lock"></i>&nbsp;
+                        <?}?>
+                        <?=$typeName?></h3>
+                    <p><span class="ti-calendar"></span>
+                        <br/><?=$item["startDate"]?>
+                        <?if($item["isEndless"] == 0){?><br/><?=$item["endDate"]?><?}?>
+                    </p>
+                </div>
+            </div>
+            <div class="single_appartment_content">
+                <p>
+                    <?if($item["groupID"] > 0){?><i class="fa fa-users"></i> <?=$item["groupName"]?><?}?>
+                    &nbsp;<i class="fa fa-user"></i>&nbsp;<?=$madeBy?>
+                </p>
+                <p><?=$item["desc"]?></p>
+                <a href="#">
+                    <h5><?if($item["needsAuth"] == 1){?>
+                            <i class="fa fa-lock"></i>&nbsp;
+                        <?}?> <?=$item["title"]?></h5></a>
+                <ul class="list-unstyled">
+                    <?if($item["groupID"] == 0){?><li><a href="#"><span class="fa fa-users"></span></a>공개</li><?}?>
+                    <?if($item["groupID"] > 0){?><li><a href="#"><span class="fa fa-lock"></span></a>그룹</li><?}?>
+                    <?if($item["needsAuth"] == 1){?><li><a href="#"><span class="fa fa-users"></span></a>비공개</li><?}?>
+                    <?if($item["isEndless"] == 1){?><li><a href="#"><span class="fa fa-clock"></span></a>무기한</li><?}?>
+                    <?if($item["changeable"] == 0){?><li><a href="#"><span class="fa fa-check"></span></a>재선택불가</li><?}?>
+                    <?if($item["changeable"] == 1){?><li><a href="#"><span class="fa fa-check"></span></a>재선택가능</li><?}?>
+                </ul>
+            </div>
         </div>
     </div>
 <?}?>

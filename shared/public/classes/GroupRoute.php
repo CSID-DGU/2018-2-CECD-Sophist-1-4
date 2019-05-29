@@ -34,6 +34,16 @@ class GroupRoute extends Routable {
         return $this->getRow($slt);
     }
 
+    function getTopVoteList($count = 3){
+        $slt = "SELECT *,
+                (SELECT `needsAuth` FROM tblGroup WHERE `id`=`groupID` LIMIT 1) AS needsAuth,
+                (SELECT `title` FROM tblGroup WHERE `id`=`groupID` LIMIT 1) AS groupName, 
+                (SELECT `name` FROM tblUser WHERE `id`=`madeBy` LIMIT 1) AS madeName 
+                FROM tblRoom
+                ORDER BY `regDate` DESC LIMIT {$count}";
+        return $this->getArray($slt);
+    }
+
     function getVoteList(){
         $page = $_REQUEST["page"] == "" ? 1 : $_REQUEST["page"];
         $type = $_REQUEST["type"] == "" ? "A" : $_REQUEST["type"];
@@ -108,7 +118,48 @@ class GroupRoute extends Routable {
         return $this->getArray($slt);
     }
 
+    function addRoom(){
+        $id = $_REQUEST["id"];
+        $title = $_REQUEST["title"];
+        $desc = $_REQUEST["desc"];
+        $ques = $_REQUEST["ques"];
+        $type = $_REQUEST["type"];
+        $groupID = $_REQUEST["groupID"];
+        $startDate = $_REQUEST["startDate"];
+        $endDate = $_REQUEST["endDate"];
+        $madeBy = $_REQUEST["madeBy"] == "" ? "0" : $_REQUEST["madeBy"];
+        $isEndless = $_REQUEST["isEndless"];
+        $changeable = $_REQUEST["changeable"];
+
+        $ins = "INSERT INTO `eVoteDGU`.`tblRoom` 
+                (`groupID`, `type`, `title`, `ques`, `desc`, `madeBy`, `startDate`, `endDate`, `isEndless`, `changeable`, `regDate`)
+                VALUES
+                ('{$groupID}', '{$type}', '{$title}', '{$ques}', '{$desc}', '{$madeBy}', '{$startDate}', '{$endDate}', '{$isEndless}', '{$changeable}', NOW());
+";
+        $this->update($ins);
+
+        $del = "DELETE FROM tblVoteCand WHERE voteID = '{$id}'";
+        $this->update($del);
+
+        $lastKey = $this->mysql_insert_id();
+        if($id != 0) $lastKey = $id;
+
+        if($type == "V") {
+            $candList = json_decode($_REQUEST["tag"]);
+            $candOrder = 0;
+            foreach ($candList as $candItem) {
+                $candIns = "INSERT INTO 
+                     tblVoteCand(`voteID`, `orderNo`, `title`, `regDate`)
+                     VALUES('{$lastKey}', '{$candOrder}', '{$candItem}', NOW())";
+                $this->update($candIns);
+            }
+        }
+
+        return Routable::response(1, "투표/설문 설정이 완료되었습니다.", $lastKey);
+    }
+    
     function addGroup(){
+        $id = $_REQUEST["id"];
         $title = $_REQUEST["title"];
         $desc = $_REQUEST["desc"];
         $authCode = $_REQUEST["authCode"];
@@ -135,7 +186,7 @@ class GroupRoute extends Routable {
             $this->update($upt);
         }
 
-        return Routable::response(1, "그룹 생성이 완료되었습니다.", $lastKey);
+        return Routable::response(1, "그룹 설정이 완료되었습니다.", $lastKey);
     }
 
 }

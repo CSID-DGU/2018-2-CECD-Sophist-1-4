@@ -49,84 +49,56 @@
         });
     });
 </script>
-<body>
-	<header>
-		<nav id="nav" class="navbar">
-			<div class="container">
-                <? include_once $_SERVER["DOCUMENT_ROOT"]."/eVote/web/inc/navigator.php"; ?>
-                <div class="header-wrapper sm-padding bg-grey">
-                    <div class="container">
-                        <h2>안내</h2>
-                        <ul class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="index.php">홈</a></li>
-                            <li class="breadcrumb-item">안내</li>
-                        </ul>
+
+<?
+$madeBy = $item["madeName"];
+if($item["madeBy"]==0) $madeBy = "관리자";
+?>
+
+    <div class="apartment_part">
+        <div class="container">
+            <div class="row justify-content-between align-content-center">
+                <div class="col-md-8 col-lg-8 col-sm-8">
+                    <div class="section_tittle">
+                        <h1 class="non-bold">그룹 상세 정보</h1>
+                        <h5 class="non-bold">본 투표/설문을 이용하기 위해 그룹 가입이 필요합니다.</h5>
                     </div>
                 </div>
-	</header>
-	<!-- /Header -->
-
-	<!-- Blog -->
-	<div id="blog" class="section">
-
-		<!-- Container -->
-		<div class="container">
-
-			<!-- Row -->
-			<div class="row">
-                <div class="reply-form text-center">
-                    <h4 class="title">본 투표/설문 참여를 위해서는 그룹 가입이 필요합니다.</h4>
-                    <p class="tiny-padding">해당 그룹의 상세 페이지에서 가입을 완료한 이후 이용바랍니다.</p>
-                    <?
-                    $madeBy = $item["madeName"];
-                    if($item["madeBy"]==0) $madeBy = "관리자";
-                    ?>
-                    <div class="blog-comments jContainer text-left">
-                        <div class="media">
-                            <div class="media-body">
-                                <h4 class="media-heading">
+            </div>
+            <div class="row mt-3">
+                <div class="col-md-12">
+                    <div class="single_appartment_part jDetail" groupId="<?=$item["id"]?>">
+                        <div class="single_appartment_content all">
+                            <a href="#">
+                                <h5>
                                     <?if($item["needsAuth"] == 1){?>
                                         <i class="fa fa-lock"></i>&nbsp;
-                                    <?}?>
-                                    <?=$item["title"]?>
-                                    <span class="time">
-                                        <i class="fa fa-user"></i>&nbsp;<?=$madeBy?>&nbsp;&nbsp;
-                                        <i class="fa fa-calendar"></i> <?=$item["regDate"]?></span>
-                                </h4>
-                                <p><?=$item["desc"]?></p>
-                            </div>
-                            <div class="blog-tags sm-tag">
+                                    <?}?>&nbsp;<?=$item["title"]?></h5></a>
+                            <p>
+                                &nbsp;<i class="fa fa-user"></i>&nbsp;<?=$madeBy?>
+                            </p>
+                            <p><?=$item["desc"]?></p>
+                            <p><?=$item["regDate"]?></p>
+                            <ul class="list-unstyled mt-0">
                                 <?
-                                $tags = explode(",", $item["tag"]);
-                                foreach ($tags as $tag){
-                                    ?>
-                                    <a href="#"><i class="fa fa-tag"></i><?=$tag?></a>
-                                <?}?>
-                            </div>
+                                if(strlen($item["tag"]) > 0) {
+                                    $tags = explode(",", $item["tag"]);
+                                    foreach ($tags as $tag) {
+                                        ?>
+                                        <li><a href="#"><span class="fa fa-tag"></span></a><?= $tag ?></li>
+                                        <?
+                                    }
+                                }?>
+                            </ul>
                         </div>
                     </div>
-
-                    <div class="btn-group" role="group" aria-label="Basic example">
-                        <button type="button" class="btn btn-default jGJoin"><i class="fa fa-sign-in"></i> 그룹 상세로 이동</button>
-                        <button type="button" class="btn bg-primary jBack"><i class="fa fa-times"></i> 취소</button>
-                    </div>
                 </div>
-                <!-- /reply form -->
-				<!-- Main -->
-				<main id="main" class="col-md-9">
-						<!-- reply form -->
-
-					</div>
-				</main>
-				<!-- /Main -->
-
-			</div>
-			<!-- /Row -->
-
-		</div>
-		<!-- /Container -->
-
-	</div>
-	<!-- /Blog -->
+            </div>
+        </div>
+        <div class="text-center mt-3 mb-5">
+            <button type="button" class="genric-btn primary-border radius jGJoin"><i class="fa fa-link"></i> 그룹 상세정보</button>
+            <button type="button" class="genric-btn info-border radius jBack"><i class="fa fa-times"></i> 이전으로</button>
+        </div>
+    </div>
 
 <? include_once $_SERVER["DOCUMENT_ROOT"]."/eVote/web/inc/footer.php"; ?>

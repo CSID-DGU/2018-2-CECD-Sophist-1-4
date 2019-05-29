@@ -7,30 +7,34 @@ $router = new GroupRoute();
 $list = $router->getGroupList();
 ?>
 <?foreach($list as $item){
-    $madeBy = $item["madeName"];
+    $madeBy = "관리자(".$item["madeName"].")";
     if($item["madeBy"]==0) $madeBy = "관리자";
     ?>
-    <div class="media">
-        <div class="media-body">
-            <h4 class="media-heading">
-                <?if($item["needsAuth"] == 1){?>
-                    <i class="fa fa-lock"></i>&nbsp;
-                <?}?>
-                <?=$item["title"]?>
-                <span class="time">
-                                        <i class="fa fa-user"></i>&nbsp;<?=$madeBy?>&nbsp;&nbsp;
-                                        <i class="fa fa-calendar"></i> <?=$item["regDate"]?></span>
-                <a href="#" class="reply jDetail" groupId="<?=$item["id"]?>">자세히 <i class="fa fa-sign-in"></i></a>
-            </h4>
-            <p><?=$item["desc"]?></p>
-        </div>
-        <div class="blog-tags sm-tag">
-            <?
-            $tags = explode(",", $item["tag"]);
-            foreach ($tags as $tag){
-                ?>
-                <a href="#"><i class="fa fa-tag"></i><?=$tag?></a>
-            <?}?>
+    <div class="col-md-12 mt-2">
+        <div class="single_appartment_part jDetail" groupId="<?=$item["id"]?>">
+            <div class="single_appartment_content all">
+                <a href="#">
+                    <h5>
+                        <?if($item["needsAuth"] == 1){?>
+                            <i class="fa fa-lock"></i>&nbsp;
+                        <?}?>&nbsp;<?=$item["title"]?></h5></a>
+                <p>
+                    &nbsp;<i class="fa fa-user"></i>&nbsp;<?=$madeBy?>
+                </p>
+                <p><?=$item["desc"]?></p>
+                <p><?=$item["regDate"]?></p>
+                <ul class="list-unstyled mt-0">
+                    <?
+                    if(strlen($item["tag"]) > 0) {
+                        $tags = explode(",", $item["tag"]);
+                        foreach ($tags as $tag) {
+                            ?>
+                            <li><a href="#"><span class="fa fa-tag"></span></a><?= $tag ?></li>
+                            <?
+                        }
+                    }?>
+                </ul>
+            </div>
         </div>
     </div>
 <?}?>

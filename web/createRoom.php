@@ -18,21 +18,110 @@ $list = $router->getMyGroupList(AuthUtil::getLoggedInfo()->id);
 ?>
 
 <script>
-
     $(document).ready(function(){
 
-        var tags = [];
+        $(".jBack").click(function(){
+            history.back();
+        });
 
-        $(".jAuthCode").hide();
+        $(".jGen").click(function(){
+            var rType = $(".jTypeSelect").val(); // type
+            var groupId = $(".jGroupID").val(); // groupID
+            var title = $(".jTitle").val(); // title
+            var desc = $(".jDesc").val(); // desc
+            var ques = $(".jQues").val(); // ques
+            var madeBy = $(".jMadeBy").val(); // madeBy
+            var startDate = $("[name=jSD]").val() + " " + $("[name=jST]").val(); // startDate
+            var endDate = $("[name=jED]").val() + " " + $("[name=jET]").val();; // endDate
+            var isEndless = $("#chk1").prop("checked") ? 1 : 0; // isEndless
+            var changeable = $("#chk2").prop("checked") ? 1 : 0; // changeable
 
-        $(".jNeedsAuth").change(function(){
-            if($(this).prop("checked")){
-                $(".jAuthCode").fadeIn();
+            if(!verifyText(rType, "투표 혹은 설문을 선택하세요.")) return;
+            if(!verifyText(title, "제목을 입력하세요.")) return;
+            if(!verifyText($(".jSD").val(), "시작일자를 선택하세요.")) return;
+            if(!verifyText($(".jST").val(), "시작시간을 선택하세요.")) return;
+            if(!isEndless){
+                if(!verifyText($(".jED").val(), "종료일자을 선택하세요.")) return;
+                if(!verifyText($(".jET").val(), "종료시간을 선택하세요.")) return;
+            }
+
+            callJson(
+                "/eVote/shared/public/route.php?F=GroupRoute.addRoom",
+                {
+                    id : "<?=$_REQUEST["id"] == "" ? "0" : $_REQUEST["id"]?>",
+                    type : rType,
+                    groupID : groupId,
+                    title : title,
+                    desc : desc,
+                    ques : ques,
+                    madeBy : madeBy,
+                    startDate : startDate,
+                    endDate : endDate,
+                    isEndless : isEndless,
+                    changeable : changeable,
+                    tag : JSON.stringify(tags)
+                }
+                , function(data){
+                    if(data.returnCode > 0){
+                        alert(data.returnMessage);
+                        if(data.returnCode > 1){
+                        }else{
+                            location.href = "roomDetail.php?id=" + data.data;
+                        }
+                    }else{
+                        alert("오류가 발생하였습니다.\n관리자에게 문의하세요.");
+                    }
+                }
+            );
+        });
+
+        $(".pickadate").pickadate({
+            formatSubmit: 'yyyy-mm-dd',
+            hiddenName: true,
+            min: new Date(),
+            closeOnSelect: true
+        });
+
+        $(".pickatime").pickatime({
+            formatSubmit: 'HH:i:00',
+            hiddenName: true
+        });
+
+        $(".jEndless").change(function(){
+            var status = $(this).prop("checked");
+            if(status == true) $(".jDateArea").fadeOut();
+            else $(".jDateArea").fadeIn();
+        });
+
+        $(".jTypeSelect").change(function(){
+            var status = $(this).val();
+            if(status == "V") $(".jTagArea").fadeIn();
+            else $(".jTagArea").fadeOut();
+        });
+
+        $(".jRHelper").click(function(e){
+            var tg = $(this).attr("target");
+            $("#" + tg).prop("checked", !$("#" + tg).prop("checked"));
+            if($("#chk1").prop("checked")){
+                $(".jED").fadeOut();
+                $(".jET").fadeOut();
             }else{
-                $(".jAuthCode").fadeOut();
+                $(".jED").fadeIn();
+                $(".jET").fadeIn();
             }
         });
 
+        $(".jEndless").change(function(){
+            if($(this).prop("checked")){
+                $(".jED").fadeOut();
+                $(".jET").fadeOut();
+            }else{
+                $(".jED").fadeIn();
+                $(".jET").fadeIn();
+            }
+        });
+
+        var tags = [];
         $(".jAddTag").click(function(){
             var tag = $(".jTag").val();
             if(tag == ""){
@@ -66,192 +155,82 @@ $list = $router->getMyGroupList(AuthUtil::getLoggedInfo()->id);
             refreshTag();
         }
 
-        $(".jBack").click(function(){
-            history.back();
-        });
-
-        $(".jGen").click(function(){
-            alert($(".startDate").val());
-
-
-            var title = $(".jTitle").val();
-            var desc = $(".jDesc").val();
-            var authCode = $(".jAuthCode").val();
-            var rootId = 0;
-            var parentId = 0;
-            var needsAuth = $(".jNeedsAuth").prop("checked") == true ? 1 : 0;
-            var madeBy = $(".jMadeBy").val();
-            var tag = tags.toString();
-
-            if(title == ""){
-                alert("그룹명을 입력하세요.");
-                return;
-            }
-
-            if(needsAuth == 1 && authCode == ""){
-                alert("비공개 그룹 인증코드를 입력하세요.");
-                return;
-            }
-
-            if(needsAuth == 0){
-                authCode = "";
-            }
-
-            callJson(
-                "/eVote/shared/public/route.php?F=GroupRoute.addGroup",
-                {
-                    title : title,
-                    desc : desc,
-                    authCode : authCode,
-                    rootId : rootId,
-                    parentId : parentId,
-                    needsAuth : needsAuth,
-                    madeBy : madeBy,
-                    tag : tag
-                }
-                , function(data){
-                    if(data.returnCode > 0){
-                        alert(data.returnMessage);
-                        if(data.returnCode > 1){
-                        }else{
-                            location.href = "groupDetail.php?id=" + data.data;
-                        }
-                    }else{
-                        alert("오류가 발생하였습니다.\n관리자에게 문의하세요.");
-                    }
-                }
-            )
-        });
-
-        $(".pickadate").pickadate({
-            formatSubmit: 'yyyy-mm-dd',
-            hiddenName: true
-        });
-        $(".pickatime").pickatime({
-            formatSubmit: 'HH:i',
-            hiddenName: true,
-            name: "test"
-        });
-
-        $(".jEndless").change(function(){
-            var status = $(this).prop("checked");
-            if(status == true) $(".jDateArea").fadeOut();
-            else $(".jDateArea").fadeIn();
-        });
-
         function refreshTag(){
             var container = $(".jTagContainer");
             var html = "";
             for(var e = 0; e < tags.length; e++){
-                html += "<a href='#' class='jRemove' tag='" + tags[e] + "'><i class='fa fa-times'></i>" + tags[e] + "</a> ";
+                html += "<a href='#' class='col-12 jRemove genric-btn primary-border radius mt-3' tag='" + tags[e] + "'><i class='fa fa-times'></i> " + (e+1) + ". " + tags[e] + "</a> ";
             }
             container.html(html);
         }
 
     });
 </script>
-<header>
-    <nav id="nav" class="navbar">
-        <div class="container">
-            <? include_once $_SERVER["DOCUMENT_ROOT"]."/eVote/web/inc/navigator.php"; ?>
 
-            <div class="header-wrapper sm-padding bg-grey">
-                <div class="container">
-                    <h2>투표/설문 생성</h2>
-                    <ul class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="index.php">홈</a></li>
-                        <li class="breadcrumb-item"><a href="room.php?type=A">투표/설문</a></li>
-                        <li class="breadcrumb-item">투표/설문 생성</li>
-                    </ul>
-                </div>
-            </div>
-
-</header>
-<!-- /Header -->
-
-<!-- Blog -->
-<div id="blog" class="section">
-    <!-- Container -->
+<section class="contact-section area-padding">
     <div class="container">
-
-        <!-- Row -->
-        <div class="row tiny-padding">
-            <br/>
-            <!-- Main -->
-            <main id="main" class="col-md-12">
-
-                <div class="reply-form text-center">
-                    <h3 class="title">투표/설문 생성 정보</h3>
-                    <form>
-
-                        <br/>
-                        <input class="input jTitle" type="text" placeholder="제목"/>
-                        <br/>
-                        <div class="input selectpicker control-label">
-                            <select class="form-control">
-                                <option>투표/설문 선택</option>
-                                <option>투표</option>
-                                <option>설문</option>
-                            </select>
-                        </div>
-                        <br/>
-                        <textarea class="input jDesc" placeholder="투표/설문 설명"></textarea>
-                        <br/>
-
-                        <div class="input jDateArea">
-                            <input class="pickadate" type="text" name="startDate" placeholder="시작일 선택" readonly/>
-                            <input class="pickatime" type="text" name="startTime" placeholder="시작시간 선택" readonly/>
-
-                            ~
-
-                            <input class="pickadate" type="text" name="endtDate" placeholder="종료일 선택" readonly/>
-                            <input class="pickatime" type="text" name="endTime" placeholder="종료시간 선택" readonly/>
-                        </div>
-                        <br/>
-
-                        <div class="input form-check text-left" style="margin-bottom: 0;">
-                            <input type="checkbox" class="jEndless form-check-input" id="chk1">
-                            <label class="form-check-label" for="chk1">무기한 설정</label>
-                        </div>
-                        <br/>
-
-                        <div class="input form-check text-left" style="margin-bottom: 0;">
-                            <input type="checkbox" class="jChangeable form-check-input" id="chk2">
-                            <label class="form-check-label" for="chk2">재선택 가능</label>
-                        </div>
-
-
-                        <input class="input jAuthCode" type="text" placeholder="비공개 그룹 인증 코드" />
-                        <input class="input jMadeBy" type="hidden" value="<?=AuthUtil::getLoggedInfo()->id?>" />
-                        <br/>
-                        <aside id="aside" class="input">
-                            <div class="widget" style="margin-bottom: 20px;">
-                                <div class="widget-search">
-                                    <input class="search-input jTag" type="text" placeholder="태그" />
-                                    <button class="search-btn jAddTag" type="button"><i class="fa fa-plus"></i></button>
-                                </div>
+        <div class="row">
+            <div class="col-12">
+                <h2 class="contact-title">투표/설문 설정</h2>
+            </div>
+            <div class="col-lg-12">
+                <form class="">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <select id="prd_" class="mt-3 form-control jGroupID">
+                                    <option value="0">전체 대상</option>
+                                    <? foreach ($list as $item){?>
+                                    <option value="<?=$item["id"]?>"><?=$item["title"]?></option>
+                                    <?}?>
+                                </select>
+                                <select id="prd_" class="mt-3 form-control jTypeSelect">
+                                    <option value="">투표/설문 선택</option>
+                                    <option value="V">투표</option>
+                                    <option value="S">설문</option>
+                                </select>
+                                <input class="jMadeBy" type="hidden" value="<?=AuthUtil::getLoggedInfo()->id?>" />
+                                <input class="mt-3 form-control placeholder hide-on-focus jTitle" type="text" placeholder="제목" />
+                                <input class="mt-3 form-control placeholder hide-on-focus jDesc" type="text" placeholder="부가 설명 내용" />
+                                <input class="mt-3 form-control placeholder hide-on-focus jQues" type="text" placeholder="질문 내용" />
+                                <input class="mt-3 form-control placeholder hide-on-focus pickadate jSD" name="jSD" type="text" placeholder="시작일자" readonly />
+                                <input class="mt-3 form-control placeholder hide-on-focus pickatime jST" name="jST" type="text" placeholder="시작시간" readonly />
+                                <input class="mt-3 form-control placeholder hide-on-focus pickadate jED" name="jED" type="text" placeholder="종료일자" readonly />
+                                <input class="mt-3 form-control placeholder hide-on-focus pickatime jET" name="jET" type="text" placeholder="종료시간" readonly />
                             </div>
-                            <div class="blog-tags sm-tag jTagContainer">
-                            </div>
-                        </aside>
-                        <br/>
-                        <div class="btn-group" role="group" aria-label="Basic example">
-                            <button type="button" class="btn bg-primary jGen"><i class="fa fa-pencil"></i> 생성하기</button>
-                            <button type="button" class="btn btn-default jBack"><i class="fa fa-list"></i> 목록으로</button>
                         </div>
-                    </form>
-                </div>
+                    </div>
+                    <div target="chk1" class="switch-wrap d-flex justify-content-between genric-btn info-border radius p-3 jRHelper">
+                        <p>무기한 설정</p>
+                        <div class="confirm-switch">
+                            <input type="checkbox" class="jEndless" id="chk1" />
+                            <label for="chk1"></label>
+                        </div>
+                    </div>
+                    <div target="chk2" class="switch-wrap d-flex justify-content-between genric-btn info-border radius p-3 jRHelper">
+                        <p>재선택 가능 설정</p>
+                        <div class="confirm-switch">
+                            <input type="checkbox" class="jChangeable" id="chk2" />
+                            <label for="chk2"></label>
+                        </div>
+                    </div>
+
+                    <div class="btn-group w-100 jTagArea" style="display: none;">
+                        <input class="form-control placeholder hide-on-focus jTag col-10" type="text" placeholder="선택지 내용을 입력 후 추가"/>
+                        <button class="button jAddTag col-2" type="button"><i class="fa fa-plus"></i></button>
+                    </div>
+                    <div class="blog-tags sm-tag jTagContainer">
+                    </div>
+
+                    <div class="form-group mt-5">
+                        <button type="button" class="genric-btn primary-border radius jGen"><i class="fa fa-plus"></i> 추가하기</button>
+                        <button type="button" class="genric-btn primary-border radius jBack"><i class="fa fa-times"></i> 이전으로</button>
+                    </div>
+
+                </form>
+            </div>
         </div>
-        </main>
-        <!-- /Main -->
-
     </div>
-    <!-- /Row -->
-
-</div>
-<!-- /Container -->
-
-</div>
-<!-- /Blog -->
+</section>
 
 <? include_once $_SERVER["DOCUMENT_ROOT"]."/eVote/web/inc/footer.php"; ?>
