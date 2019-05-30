@@ -32,6 +32,7 @@ $userInfo = $router->getUser(AuthUtil::getLoggedInfo()->id);
             <div class="row">
                 <div class="col-12 text-right">
                     <a href="dashboard.php" class="genric-btn info-border radius"><i class="fa fa-list"></i> 대시보드</a>
+                    <a href="myGroup.php" class="genric-btn info-border radius"><i class="fa fa-users"></i> 내 그룹</a>&nbsp;
                 </div>
                 <div class="col-12">
                     <p class="mt-3"><i class="fa fa-mail-bulk"></i> 이메일</p>

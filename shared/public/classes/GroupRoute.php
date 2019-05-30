@@ -75,6 +75,28 @@ class GroupRoute extends Routable {
         return $this->getArray($slt);
     }
 
+    function getMyVoteList(){
+        $id = AuthUtil::getLoggedInfo()->id;
+        $page = $_REQUEST["page"] == "" ? 1 : $_REQUEST["page"];
+        $type = $_REQUEST["type"] == "" ? "A" : $_REQUEST["type"];
+        $query = $_REQUEST["query"];
+
+        $whereStmt = "madeBy='{$id}' AND isDeleted=0 AND 1=1 ";
+        if($type != "A") $whereStmt .= "AND `type` = '{$type}'";
+        if($query != ""){
+            $whereStmt .= " AND `title` LIKE '%{$query}%'";
+        }
+
+        $startLimit = ($page - 1) * 6;
+        $slt = "SELECT *,
+                (SELECT `needsAuth` FROM tblGroup WHERE `id`=`groupID` LIMIT 1) AS needsAuth,
+                (SELECT `title` FROM tblGroup WHERE `id`=`groupID` LIMIT 1) AS groupName, 
+                (SELECT `name` FROM tblUser WHERE `id`=`madeBy` LIMIT 1) AS madeName 
+                FROM tblRoom WHERE {$whereStmt}
+                ORDER BY `regDate` DESC LIMIT {$startLimit}, 6";
+        return $this->getArray($slt);
+    }
+
     function getVote(){
         $id = $_REQUEST["id"];
         $slt = "SELECT *,

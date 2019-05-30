@@ -75,7 +75,7 @@ $dashInfo = $web->getDashboardInfo();
                     </div>
                 </div>
                 <div class="btn-group mb-3">
-                    <a href="myGroup.php" class="genric-btn info-border radius">내 그룹</a>&nbsp;
+                    <a href="myGroup.php" class="genric-btn info-border radius"><i class="fa fa-users"></i> 내 그룹</a>&nbsp;
                 </div>
                 <div class="row">
                     <div class="col-md-4 col-lg-4 col-sm-4">
@@ -135,9 +135,9 @@ $dashInfo = $web->getDashboardInfo();
 
                 </div>
                 <div class="btn-group mt-3">
-                    <a href="#" class="genric-btn primary-border radius">투표 결과 집계</a>&nbsp;
-                    <a href="#" class="genric-btn primary-border radius">설문 결과 집계</a>&nbsp;
-                    <a href="#" class="genric-btn primary-border radius">그룹 통계 조회</a>&nbsp;
+                    <a href="myRoom.php?type=V" class="genric-btn primary-border radius"><i class="fa fa-list"></i> 투표 결과 집계</a>&nbsp;
+                    <a href="myRoom.php?type=S" class="genric-btn primary-border radius"><i class="fa fa-list"></i> 설문 결과 집계</a>&nbsp;
+                    <a href="#" class="genric-btn primary-border radius"><i class="fa fa-eye"></i> 그룹 통계 조회</a>&nbsp;
                 </div>
             </div>
         </div>
