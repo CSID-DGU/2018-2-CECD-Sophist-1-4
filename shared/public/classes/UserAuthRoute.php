@@ -17,6 +17,7 @@ class UserAuthRoute extends Routable {
                 AuthUtil::requestLogin($val);
                 $upt = "UPDATE tblUser SET accessDate=NOW() WHERE `id`='{$val["id"]}'";
                 $this->update($upt);
+                $this->addHistory(AuthUtil::getLoggedInfo()->id, "로그인하였습니다.");
                 return Routable::response(1, "정상적으로 로그인되었습니다.", $firstFlag);
             }
         }else{
@@ -30,6 +31,7 @@ class UserAuthRoute extends Routable {
         if($val != null){
             $upt = "UPDATE tblUser SET `status`=1 WHERE `id`='{$val["id"]}'";
             $this->update($upt);
+            $this->addHistory($val["id"], "이메일 인증이 완료되었습니다.");
             $retVal = array(
                 "redirect" => true,
                 "url" => "http://".$_SERVER["HTTP_HOST"]."/eVote/web/index.php?msg=인증이%20완료되었습니다."
@@ -67,6 +69,7 @@ class UserAuthRoute extends Routable {
             $ins = "INSERT INTO tblUser(email, `password`, `name`, `phone`, `sex`, regDate)
                     VALUES ('{$email}', '{$pwd}', '{$name}', '{$phone}', '{$sex}', NOW())";
             $this->update($ins);
+            $lsKey = $this->mysql_insert_id();
             $link = "http://".$_SERVER["HTTP_HOST"]."/eVote/shared/public/route.php?F=UserAuthRoute.authMail&authCode=".urlencode($this->encryptAES256($email));
             $sender = new EmailSender();
             $sender->sendMailTo(
@@ -74,6 +77,8 @@ class UserAuthRoute extends Routable {
                 "아래 링크를 클릭하여 인증을 완료해주세요.<br/><a href='$link'>인증 링크</a><br/>본 서비스를 신청하지 않으셨다면 즉시 본 이메일로 회신바랍니다.",
                 $email, $name
                 );
+
+            $this->addHistory($lsKey, $email." 이메일로 회원 가입하였습니다.");
             return Routable::response(1, "가입 처리가 완료되었습니다.\n입력하신 이메일로 인증 링크가 발송되었습니다.");
         }
     }

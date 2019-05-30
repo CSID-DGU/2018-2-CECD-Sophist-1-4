@@ -4,6 +4,17 @@ include_once $_SERVER["DOCUMENT_ROOT"]."/eVote/shared/public/classes/Routable.ph
 
 class WebInfoRoute extends Routable {
 
+    function getDashboardInfo(){
+        $sql = "SELECT 
+                (SELECT COUNT(*) FROM tblVoteSelection WHERE `userId`=6 AND voteID IN (SELECT `id` FROM tblRoom WHERE isDeleted=0)) AS cntVote,
+                (SELECT COUNT(*) FROM tblSurvey WHERE `userId`=6 AND voteID IN (SELECT `id` FROM tblRoom WHERE isDeleted=0)) AS cntSurvey,
+                (SELECT COUNT(*) FROM tblRoom WHERE madeBy=6 AND isDeleted=0 AND `type`='V') AS cntMVote,
+                (SELECT COUNT(*) FROM tblRoom WHERE madeBy=6 AND isDeleted=0 AND `type`='S') AS cntMSurvey
+                FROM DUAL
+              ";
+        return $this->getRow($sql);
+    }
+
     function deleteFaq(){
         if(AuthUtil::getLoggedInfo()->isAdmin != 1){
             return self::response(0, "Permission Denied");

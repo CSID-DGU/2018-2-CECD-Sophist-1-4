@@ -8,7 +8,7 @@
 
             function loadMore(page){
                 loadPageInto(
-                    "/eVote/web/ajaxPages/ajaxGroupList.php",
+                    "/eVote/web/ajaxPages/ajaxMyGroupList.php",
                     {
                         page : page,
                         query : "<?=$_REQUEST["query"]?>"
@@ -34,41 +34,11 @@
                 location.href = "groupDetail.php?id=" + id;
             });
 
-            $(".jSearch").click(function(){
-                var searchText = encodeURI($(".jSearchTxt").val());
-                location.href = "group.php?query=" + searchText;
-            });
-
-            $(document).on("click", ".jRecList", function(){
-                $(".jSearchTxt").val($(this).html());
-                $(".jRec").html("");
-            });
-
-            $(".jSearchTxt").keyup(function(){
-                if($(this).val().trim() == ""){
-                    $(".jRec").html("");
-                    return;
-                }
-                callJsonIgnoreError(
-                    "/eVote/web/ajaxPages/ajaxRecommendation.php",
-                    {
-                        key : $(this).val(),
-                        table : "tblGroup",
-                        col : "title"
-                    },
-                    function(data){
-                        console.log(data);
-                        var html = "";
-                        for(var w = 0; w < data.length; w++){
-                            html += "<div class='col-12 genric-btn primary-border radius recommend jRecList'>" + data[w] + "</div>";
-                        }
-                        $(".jRec").html(html);
-                    }
-                );
-            });
-
-            buttonLink(".jMyGroup", "myGroup.php");
             buttonLink(".jCGroup", "createGroup.php");
+
+            $(".jBack").click(function(){
+                history.back();
+            });
 
         });
     </script>
@@ -82,12 +52,8 @@
                     </div>
                 </div>
                 <div class="col-12 mb-3 text-right">
-                    <button class="genric-btn info-border radius jMyGroup"><i class="fa fa-users"></i> 내 그룹</button>
+                    <button class="genric-btn info-border radius jBack"><i class="fa fa-times"></i> 이전으로</button>
                     <button class="genric-btn primary-border radius jCGroup"><i class="fa fa-plus"></i> 추가</button>
-                </div>
-                <div class="widget-search btn-group col-12">
-                    <input class="form-control placeholder hide-on-focus jSearchTxt col-10" type="text" value="<?=$_REQUEST["query"]?>" placeholder="그룹 검색"/>
-                    <button class="button jSearch col-2" type="button"><i class="fa fa-search"></i></button>
                 </div>
                 <div class="col-12 recommend jRec">
                 </div>

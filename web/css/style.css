@@ -4299,6 +4299,13 @@ h6 {
   background-size: cover;
 }
 
+.blog_bg.alter{
+  background-image: url("../img/blog_bg_alter.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
 /* line 4, E:/161 Real estate/161_Real_state_html/sass/_breadcrumb.scss */
 .breadcrumb {
   position: relative;
@@ -4324,6 +4331,10 @@ h6 {
   height: 400px;
   width: 100%;
   display: table;
+}
+
+.breadcrumb .breadcrumb_iner.slim {
+  height: 300px;
 }
 
 /* line 23, E:/161 Real estate/161_Real_state_html/sass/_breadcrumb.scss */

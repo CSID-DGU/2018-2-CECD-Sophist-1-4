@@ -14,6 +14,27 @@ class Routable extends Databases {
         return $this->decryptAES256("r8e5JO53po+YjINxOCQWpg==");
     }
 
+    function addHistory($userId, $content){
+        $sql = "INSERT INTO tblHistory(`userId`, `content`) VALUES('{$userId}', '{$content}')";
+        $this->update($sql);
+    }
+
+    function getHistoryOf($userId){
+        $page = $_REQUEST["page"] == "" ? 1 : $_REQUEST["page"];
+        $query = $_REQUEST["query"];
+        $whereStmt = "`userId`='{$userId}' AND 1=1 ";
+        if($query != ""){
+            $whereStmt .= " AND `title` LIKE '%{$query}%'";
+        }
+
+        $startLimit = ($page - 1) * 6;
+        $slt = "SELECT * 
+                FROM tblHistory
+                WHERE {$whereStmt}
+                ORDER BY `regDate` DESC LIMIT {$startLimit}, 6";
+        return $this->getArray($slt);
+    }
+
     function getRecommendation($key, $table, $col, $count = 10){
         $slt = "SELECT `{$col}` FROM `{$table}` WHERE `{$col}` LIKE '%{$key}%' ORDER BY `{$col}` DESC LIMIT {$count}";
         $arr = $this->getArray($slt);

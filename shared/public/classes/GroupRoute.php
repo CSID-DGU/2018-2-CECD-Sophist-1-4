@@ -101,6 +101,12 @@ class GroupRoute extends Routable {
 
         $this->update($del);
         $this->update($sql);
+        
+        if($type == "V"){
+            $this->addHistory(AuthUtil::getLoggedInfo()->id, $voteID."번 투표의 ".$answer."번을 선택하였습니다.");
+        }else{
+            $this->addHistory(AuthUtil::getLoggedInfo()->id, $voteID."번 설문에 답변하였습니다.");
+        }
         return Routable::response(1, "저장되었습니다.");
     }
 
@@ -120,11 +126,22 @@ class GroupRoute extends Routable {
         return $this->getArray($sql);
     }
 
-    function getMyGroupList($id){
-        $slt = "SELECT * 
-                FROM tblGroup 
-                WHERE `id` IN 
-                (SELECT groupID FROM tblGroupMember WHERE userID='{$id}') ORDER BY `title` DESC";
+    function getMyGroupList(){
+        $id = AuthUtil::getLoggedInfo()->id;
+        $page = $_REQUEST["page"] == "" ? 1 : $_REQUEST["page"];
+        $query = $_REQUEST["query"];
+        $whereStmt = "isDeleted=0 AND 1=1 AND `parentId`=0 AND `id` IN 
+                (SELECT groupID FROM tblGroupMember WHERE userID='{$id}') ";
+        if($query != ""){
+            $whereStmt .= " AND `title` LIKE '%{$query}%'";
+        }
+
+        $startLimit = ($page - 1) * 6;
+        $slt = "SELECT *, 
+                (SELECT `name` FROM tblUser WHERE `id`=`madeBy` LIMIT 1) AS madeName 
+                FROM tblGroup
+                WHERE {$whereStmt}
+                ORDER BY `title` ASC LIMIT {$startLimit}, 6";
         return $this->getArray($slt);
     }
 
@@ -137,6 +154,7 @@ class GroupRoute extends Routable {
         $groupID = $_REQUEST["groupID"];
         $startDate = $_REQUEST["startDate"];
         $endDate = $_REQUEST["endDate"];
+        if(trim($endDate) == "") $endDate = $startDate;
         $madeBy = $_REQUEST["madeBy"] == "" ? "0" : $_REQUEST["madeBy"];
         $isEndless = $_REQUEST["isEndless"];
         $changeable = $_REQUEST["changeable"];
@@ -180,6 +198,8 @@ class GroupRoute extends Routable {
             }
         }
 
+        if($id != 0) $this->addHistory(AuthUtil::getLoggedInfo()->id, $lastKey."번 투표/설문을 수정하였습니다.");
+        else $this->addHistory(AuthUtil::getLoggedInfo()->id, $lastKey."번 투표/설문을 설정하였습니다.");
         return Routable::response(1, "투표/설문 설정이 완료되었습니다.", $lastKey);
     }
 
@@ -187,7 +207,7 @@ class GroupRoute extends Routable {
         $id = $_REQUEST["id"];
         $upt = "UPDATE tblRoom SET isDeleted=1 WHERE `id`='{$id}'";
         $this->update($upt);
-
+        $this->addHistory(AuthUtil::getLoggedInfo()->id, $id."번 투표/설문을 삭제하였습니다.");
         return Routable::response(1, "삭제되었습니다.");
     }
 
@@ -203,6 +223,7 @@ class GroupRoute extends Routable {
             $upt = "UPDATE tblGroup SET isDeleted=1 WHERE `id`='{$id}'";
             $this->update($upt);
 
+            $this->addHistory(AuthUtil::getLoggedInfo()->id, $id."번 그룹을 삭제하였습니다.");
             return Routable::response(1, "삭제되었습니다.");
         }
     }
@@ -238,6 +259,8 @@ class GroupRoute extends Routable {
         $ins = "INSERT INTO tblGroupMember(`groupId`, `userId`, `regDate`) VALUES('{$lastKey}', '{$madeBy}', NOW())";
         $this->update($ins);
 
+        $this->addHistory(AuthUtil::getLoggedInfo()->id, $title." 그룹을 설정하였습니다.");
+
         return Routable::response(1, "그룹 설정이 완료되었습니다.", $lastKey);
     }
 
@@ -246,6 +269,7 @@ class GroupRoute extends Routable {
         $userID = AuthUtil::getLoggedInfo()->id;
         $del = "DELETE FROM tblGroupMember WHERE groupId='{$groupID}' AND userId='{$userID}'";
         $this->update($del);
+        $this->addHistory(AuthUtil::getLoggedInfo()->id, $groupID."번 그룹을 탈퇴하였습니다.");
         return Routable::response(1, "탈퇴하였습니다.");
     }
 
@@ -254,6 +278,7 @@ class GroupRoute extends Routable {
         $userID = $_REQUEST["userId"];
         $del = "DELETE FROM tblGroupMember WHERE groupId='{$groupID}' AND userId='{$userID}'";
         $this->update($del);
+        $this->addHistory(AuthUtil::getLoggedInfo()->id, $groupID."번 그룹에서 ".$userID."번 회원을 강퇴하였습니다.");
         return Routable::response(1, "강퇴하였습니다.");
     }
 
@@ -269,6 +294,7 @@ class GroupRoute extends Routable {
         }else{
             $ins = "INSERT INTO tblGroupMember(`groupId`, `userId`, `regDate`) VALUES('{$groupID}', '{$userID}', NOW())";
             $this->update($ins);
+            $this->addHistory(AuthUtil::getLoggedInfo()->id, $groupID."번 그룹에 가입하였습니다.");
             return Routable::response(1, "가입되었습니다.");
         }
     }
