@@ -221,7 +221,7 @@ class GroupRoute extends Routable {
         $slt = "SELECT COUNT(*) AS rn FROM tblGroup WHERE `title` = '{$title}' AND parentId='{$parentId}'";
         $sameTitle = $this->getValue($slt, "rn");
         if($sameTitle > 0){
-            return Routable::response(2, "동일한 그룹명이 동일 계층에 존재합니다.");
+            return Routable::response(2, "동일한 그룹명이 존재합니다.");
         }
 
         $ins = "INSERT INTO tblGroup(`title`, `desc`, `authCode`, `rootId`, `parentId`, `needsAuth`, `madeBy`, `tag`, `regDate`)
@@ -234,6 +234,9 @@ class GroupRoute extends Routable {
             $upt = "UPDATE tblGroup SET `rootId` = '{$lastKey}' WHERE `id` = '{$lastKey}'";
             $this->update($upt);
         }
+
+        $ins = "INSERT INTO tblGroupMember(`groupId`, `userId`, `regDate`) VALUES('{$lastKey}', '{$madeBy}', NOW())";
+        $this->update($ins);
 
         return Routable::response(1, "그룹 설정이 완료되었습니다.", $lastKey);
     }

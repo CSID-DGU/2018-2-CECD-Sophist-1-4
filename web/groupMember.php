@@ -7,6 +7,10 @@ $list = $router->getMyGroupList(AuthUtil::getLoggedInfo()->id);
 $item = $router->getGroup();
 $memList = $router->getGroupMemberList($_REQUEST["id"]);
 $isJoined = $router->isJoined($_REQUEST["id"], AuthUtil::getLoggedInfo()->id);
+
+if(!$isJoined){
+    echo "<script>alert('비정상적인 접근입니다.'); history.back();</script>";
+}
 ?>
 
     <script>
@@ -244,8 +248,11 @@ if($item["madeBy"]==0) $madeBy = "관리자";
                 $cnt = 1;
                 foreach ($memList as $memItem){
                     $nameRow  = mb_substr($memItem["name"],0,1).str_repeat('*',mb_strlen($memItem["name"]) - 2).mb_substr($memItem["name"],-1,1);
-//                    $emailRow = mb_substr($memItem["email"],0,5).str_repeat('*',mb_strlen($memItem["email"]) - 5).mb_substr($memItem["email"],-1,0);
+                    $emailRowAlter = mb_substr($memItem["email"],0,5).str_repeat('*',mb_strlen($memItem["email"]) - 5).mb_substr($memItem["email"],-1,0);
                     $emailRow = $memItem["email"];
+                    if($item["madeBy"] != AuthUtil::getLoggedInfo()->id){
+                        $emailRow = $emailRowAlter;
+                    }
                     ?>
                 <div class="col-md-12">
                     <div class="single_appartment_part">
@@ -255,10 +262,12 @@ if($item["madeBy"]==0) $madeBy = "관리자";
                                     <?=$cnt++?>.&nbsp;
                                     <i class="fa fa-user"></i>
                                 &nbsp;<?=$nameRow?>(<?=$emailRow?>)</p></a>
+                            <?if($item["madeBy"] == AuthUtil::getLoggedInfo()->id){?>
                             <div class="col-12 text-right">
                                 <a href="mailto:<?=$memItem["email"]?>" class="genric-btn info-border radius"><i class="fa fa-envelope" ></i> 메일</a>
                                 <button class="genric-btn danger-border radius jKick" userId="<?=$memItem["id"]?>"><i class="fa fa-times" ></i> 강퇴</button>
                             </div>
+                            <?}?>
                         </div>
                     </div>
                 </div>

@@ -85,6 +85,10 @@ $list = $router->getMyGroupList(AuthUtil::getLoggedInfo()->id);
                     authCode = "";
                 }
 
+                if(!confirm("그룹 정보는 수정할 수 없습니다.\n이대로 진행하시겠습니까?")){
+                    return;
+                }
+
                 callJson(
                     "/eVote/shared/public/route.php?F=GroupRoute.addGroup",
                     {

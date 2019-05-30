@@ -218,6 +218,10 @@ if($item["madeBy"]==0) $madeBy = "관리자";
                 <div class="col-12 text-right mb-3">
                     <button class="genric-btn info-border radius jManageMember">멤버 관리</button>
                 </div>
+                <?}else if($isJoined){?>
+                    <div class="col-12 text-right mb-3">
+                        <button class="genric-btn info-border radius jManageMember">멤버 보기</button>
+                    </div>
                 <?}?>
             </div>
             <div class="row">
