@@ -199,12 +199,10 @@ if($item["madeBy"]==0) $madeBy = "관리자";
                 </div>
             </div>
         </div>
-
-        <div class="text-center mt-3 mb-5">
-            <?if($item["madeBy"] == AuthUtil::getLoggedInfo()->id){?><button class="genric-btn primary-border radius jModify"><i class="fa fa-edit"></i> 재설정</button><?}?>
-            <button class="genric-btn info-border radius jBack"><i class="fa fa-times"></i> 이전으로</button>
-        </div>
     </div>
-
+    <div class="text-center mt-5 mb-5">
+        <?if($item["madeBy"] == AuthUtil::getLoggedInfo()->id){?><button class="genric-btn primary-border radius jModify"><i class="fa fa-edit"></i> 재설정</button><?}?>
+        <button class="genric-btn info-border radius jBack"><i class="fa fa-times"></i> 이전으로</button>
+    </div>
 
 <? include_once $_SERVER["DOCUMENT_ROOT"]."/eVote/web/inc/footer.php"; ?>

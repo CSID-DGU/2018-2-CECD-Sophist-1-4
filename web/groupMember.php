@@ -5,6 +5,7 @@
 $router = new GroupRoute();
 $list = $router->getMyGroupList(AuthUtil::getLoggedInfo()->id);
 $item = $router->getGroup();
+$memList = $router->getGroupMemberList($_REQUEST["id"]);
 $isJoined = $router->isJoined($_REQUEST["id"], AuthUtil::getLoggedInfo()->id);
 ?>
 
@@ -196,7 +197,29 @@ $isJoined = $router->isJoined($_REQUEST["id"], AuthUtil::getLoggedInfo()->id);
                 container.html(html);
             }
 
-            buttonLink(".jManageMember", "groupMember.php?id=<?=$_REQUEST["id"]?>");
+            $(".jKick").click(function(e){
+                if(confirm("해당 회원을 그룹에서 강퇴하시겠습니까?")){
+                    var userId = $(this).attr("userId");
+                    callJson(
+                        "/eVote/shared/public/route.php?F=GroupRoute.kickUser",
+                        {
+                            userId : userId,
+                            groupId : "<?=$_REQUEST["id"]?>"
+                        }
+                        , function(data){
+                            if(data.returnCode > 0){
+                                alert(data.returnMessage);
+                                if(data.returnCode > 1){
+                                }else{
+                                    location.reload();
+                                }
+                            }else{
+                                alert("오류가 발생하였습니다.\n관리자에게 문의하세요.");
+                            }
+                        }
+                    )
+                }
+            });
 
         });
     </script>
@@ -212,63 +235,37 @@ if($item["madeBy"]==0) $madeBy = "관리자";
                 <div class="col-md-8 col-lg-8 col-sm-8">
                     <div class="section_tittle">
                         <h1 class="non-bold">그룹 상세 정보</h1>
+                        <h5>총 <?=sizeof($memList)?>명의 그룹 멤버</h5>
                     </div>
                 </div>
-                <?if($item["madeBy"] == AuthUtil::getLoggedInfo()->id){?>
-                <div class="col-12 text-right mb-3">
-                    <button class="genric-btn info-border radius jManageMember">멤버 관리</button>
-                </div>
-                <?}?>
             </div>
             <div class="row">
+                <?
+                $cnt = 1;
+                foreach ($memList as $memItem){
+                    $nameRow  = mb_substr($memItem["name"],0,1).str_repeat('*',mb_strlen($memItem["name"]) - 2).mb_substr($memItem["name"],-1,1);
+//                    $emailRow = mb_substr($memItem["email"],0,5).str_repeat('*',mb_strlen($memItem["email"]) - 5).mb_substr($memItem["email"],-1,0);
+                    $emailRow = $memItem["email"];
+                    ?>
                 <div class="col-md-12">
-                    <div class="single_appartment_part jDetail" groupId="<?=$item["id"]?>">
+                    <div class="single_appartment_part">
                         <div class="single_appartment_content all">
                             <a href="#">
-                                <h5>
-                                    <?if($item["needsAuth"] == 1){?>
-                                        <i class="fa fa-lock"></i>&nbsp;
-                                    <?}?>&nbsp;<?=$item["title"]?>
-                                    <?if($item["needsAuth"] == 1 && $item["madeBy"] == AuthUtil::getLoggedInfo()->id){?>(<?=$item["authCode"]?>)<?}?>
-                                </h5></a>
-                            <p>
-                                &nbsp;<i class="fa fa-user"></i>&nbsp;<?=$madeBy?>
-                            </p>
-                            <p><?=$item["desc"]?></p>
-                            <p><?=$item["regDate"]?></p>
-                            <ul class="list-unstyled mt-0">
-                                <?
-                                if(strlen($item["tag"]) > 0) {
-                                    $tags = explode(",", $item["tag"]);
-                                    foreach ($tags as $tag) {
-                                        ?>
-                                        <li><a href="#"><span class="fa fa-tag"></span></a><?= $tag ?></li>
-                                        <?
-                                    }
-                                }?>
-                            </ul>
-                            <?if($item["madeBy"] != AuthUtil::getLoggedInfo()->id){?>
-                                <?if(!$isJoined){?>
-                                    <div class="col-12 mt-3">
-                                    <?if($item["needsAuth"] == 1){?>
-                                        <input class="form-control placeholder hide-on-focus col-12" id="authText" type="text" placeholder="가입인증코드" />
-                                    <?}?>
-                                        <button class="mt-3 genric-btn info-border radius jMem col-12"><i class="fa fa-edit"></i> 가입하기</button>
-                                    </div>
-                                <?}else{?>
-                                    <button class="mt-3 genric-btn danger-border radius jMemD col-12"><i class="fa fa-edit"></i> 탈퇴하기</button>
-                                <?}?>
-                            <?}?>
+                                <p class="mb-0">
+                                    <?=$cnt++?>.&nbsp;
+                                    <i class="fa fa-user"></i>
+                                &nbsp;<?=$nameRow?>(<?=$emailRow?>)</p></a>
+                            <div class="col-12 text-right">
+                                <a href="mailto:<?=$memItem["email"]?>" class="genric-btn info-border radius"><i class="fa fa-envelope" ></i> 메일</a>
+                                <button class="genric-btn danger-border radius jKick" userId="<?=$memItem["id"]?>"><i class="fa fa-times" ></i> 강퇴</button>
+                            </div>
                         </div>
                     </div>
                 </div>
+                <?}?>
             </div>
         </div>
         <div class="text-center mt-3 mb-5">
-            <?if($item["madeBy"] == AuthUtil::getLoggedInfo()->id){?>
-                <button class="genric-btn danger-border radius jDel"><i class="fa fa-check"></i> 삭제하기</button>
-            <?}else{?>
-            <?}?>
             <button class="genric-btn info-border radius jBack"><i class="fa fa-times"></i> 이전으로</button>
         </div>
     </div>

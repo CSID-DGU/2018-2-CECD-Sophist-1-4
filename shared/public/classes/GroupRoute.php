@@ -39,6 +39,11 @@ class GroupRoute extends Routable {
         return $this->getRow($slt);
     }
 
+    function getGroupMemberList($groupId){
+        $sql = "SELECT `id`, `name`, `email` FROM tblUser WHERE `id` IN (SELECT userId FROM tblGroupMember WHERE groupId = '{$groupId}') ORDER BY `name`";
+        return $this->getArray($sql);
+    }
+
     function getTopVoteList($count = 3){
         $slt = "SELECT *,
                 (SELECT `needsAuth` FROM tblGroup WHERE `id`=`groupID` LIMIT 1) AS needsAuth,
@@ -239,6 +244,14 @@ class GroupRoute extends Routable {
         $del = "DELETE FROM tblGroupMember WHERE groupId='{$groupID}' AND userId='{$userID}'";
         $this->update($del);
         return Routable::response(1, "탈퇴하였습니다.");
+    }
+
+    function kickUser(){
+        $groupID = $_REQUEST["groupId"];
+        $userID = $_REQUEST["userId"];
+        $del = "DELETE FROM tblGroupMember WHERE groupId='{$groupID}' AND userId='{$userID}'";
+        $this->update($del);
+        return Routable::response(1, "강퇴하였습니다.");
     }
 
     function joinGroup(){
