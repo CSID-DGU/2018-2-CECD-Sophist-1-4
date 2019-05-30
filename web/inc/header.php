@@ -66,6 +66,12 @@ $CONST_DESC = "아직도 불편한 설문조사 서비스를 이용하고 계신
 <script type="text/javascript" src="js/legacy.js"></script>
 <script type="text/javascript" src="js/picker.date.js"></script>
 <script type="text/javascript" src="js/picker.time.js"></script>
+<script type="text/javascript" src="js/chartist.min.js"></script>
+
+<script src="js/jspdf.min.js"></script>
+<script src="js/html2canvas.min.js"></script>
+
+<link type="text/css" rel="stylesheet" href="css/chartist.min.css"/>
 <link type="text/css" rel="stylesheet" href="css/default.css"/>
 <link type="text/css" rel="stylesheet" href="css/default.date.css"/>
 <link type="text/css" rel="stylesheet" href="css/default.time.css"/>

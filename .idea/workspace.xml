@@ -6,13 +6,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7a708afb-bd89-490b-b167-97aaeae173a6" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/ajaxPages/ajaxMyRoomList.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/myRoom.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/myRoomDetail.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/css/Chart.min.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/Chart.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/canvasjs.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/html2canvas.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/jspdf.min.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/shared/public/classes/GroupRoute.php" afterPath="$PROJECT_DIR$/shared/public/classes/GroupRoute.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/dashboard.php" afterPath="$PROJECT_DIR$/web/dashboard.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/profile.php" afterPath="$PROJECT_DIR$/web/profile.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/inc/header.php" afterPath="$PROJECT_DIR$/web/inc/header.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/myRoomDetail.php" afterPath="$PROJECT_DIR$/web/myRoomDetail.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -23,16 +24,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="index.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/index.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="114">
-              <caret line="6" column="8" lean-forward="true" selection-start-line="6" selection-start-column="8" selection-end-line="6" selection-end-column="8" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="dashboard.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/dashboard.php">
           <provider selected="true" editor-type-id="text-editor">
@@ -138,9 +129,11 @@
       <file leaf-file-name="myRoomDetail.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/web/myRoomDetail.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="399">
-              <caret line="106" column="65" lean-forward="false" selection-start-line="106" selection-start-column="65" selection-end-line="106" selection-end-column="65" />
-              <folding />
+            <state relative-caret-position="620">
+              <caret line="124" column="23" lean-forward="true" selection-start-line="124" selection-start-column="23" selection-end-line="124" selection-end-column="23" />
+              <folding>
+                <element signature="e#4582#4614#0#HTML" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -190,13 +183,13 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="CSS File" />
         <option value="JavaScript File" />
       </list>
     </option>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>hr</find>
       <find>hr/</find>
       <find>&lt;hr</find>
       <find>btn</find>
@@ -226,6 +219,7 @@
       <find>page</find>
       <find>getMy</find>
       <find>room.php</find>
+      <find>탈퇴</find>
     </findStrings>
     <replaceStrings>
       <replace>mailInfo</replace>
@@ -244,10 +238,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/shared/bases/modules/email/Email.php" />
-        <option value="$PROJECT_DIR$/shared/bases/modules/email/class.phpmailer.php" />
-        <option value="$PROJECT_DIR$/shared/bases/modules/email/EmailSender.php" />
-        <option value="$PROJECT_DIR$/web/ajaxPages/ajaxRecommendation.php" />
         <option value="$PROJECT_DIR$/web/js/AjaxUtil.js" />
         <option value="$PROJECT_DIR$/web/survey.php" />
         <option value="$PROJECT_DIR$/web/ajaxPages/ajaxVoteList.php" />
@@ -274,7 +264,6 @@
         <option value="$PROJECT_DIR$/web/groupAccess.php" />
         <option value="$PROJECT_DIR$/web/admin.php" />
         <option value="$PROJECT_DIR$/web/login.php" />
-        <option value="$PROJECT_DIR$/web/inc/header.php" />
         <option value="$PROJECT_DIR$/web/index.php" />
         <option value="$PROJECT_DIR$/web/roomDetail.php" />
         <option value="$PROJECT_DIR$/web/warn_email.php" />
@@ -294,6 +283,11 @@
         <option value="$PROJECT_DIR$/web/ajaxPages/ajaxMyRoomList.php" />
         <option value="$PROJECT_DIR$/web/dashboard.php" />
         <option value="$PROJECT_DIR$/web/myRoom.php" />
+        <option value="$PROJECT_DIR$/web/css/Chart.min.css" />
+        <option value="$PROJECT_DIR$/web/js/Chart.min.js" />
+        <option value="$PROJECT_DIR$/web/js/jspdf.min.js" />
+        <option value="$PROJECT_DIR$/web/js/html2canvas.min.js" />
+        <option value="$PROJECT_DIR$/web/inc/header.php" />
         <option value="$PROJECT_DIR$/web/myRoomDetail.php" />
       </list>
     </option>
@@ -306,8 +300,8 @@
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
-    <option name="x" value="813" />
-    <option name="width" value="1114" />
+    <option name="x" value="819" />
+    <option name="width" value="1108" />
     <option name="height" value="1047" />
   </component>
   <component name="ProjectLevelVcsManager">
@@ -414,18 +408,19 @@
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../solveme" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../main" />
     <property name="nodejs_interpreter_path" value="C:/Program Files/nodejs/node" />
     <property name="SearchEverywhereHistoryKey" value="s&#9;FILE&#9;file://C:/xampp/htdocs/eVote/web/css/style.css&#10;sty&#9;FILE&#9;file://C:/xampp/htdocs/eVote/web/css/style.css&#10;das&#9;FILE&#9;file://C:/xampp/htdocs/eVote/web/dashboard.php&#10;dash&#9;FILE&#9;file://C:/xampp/htdocs/eVote/web/dashboard.php&#10;warn&#9;FILE&#9;file://C:/xampp/htdocs/eVote/web/warn_email.php&#10;group&#9;FILE&#9;file://C:/xampp/htdocs/eVote/web/group.php" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\xampp\htdocs\eVote\web\js" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\eVote\web\js" />
       <recent name="C:\xampp\htdocs\eVote\web" />
       <recent name="C:\xampp\htdocs\eVote\web\ajaxPages" />
-      <recent name="C:\xampp\htdocs\eVote\web\js" />
       <recent name="C:\xampp\htdocs\eVote\shared\public\classes" />
     </key>
   </component>
@@ -476,17 +471,17 @@
       <workItem from="1558278295112" duration="456000" />
       <workItem from="1559098813715" duration="38559000" />
       <workItem from="1559179763809" duration="3727000" />
-      <workItem from="1559246104278" duration="8233000" />
+      <workItem from="1559246104278" duration="11710000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="125903000" />
+    <option name="totallyTimeSpent" value="129380000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="813" y="0" width="1114" height="1047" extended-state="0" />
+    <frame x="819" y="0" width="1108" height="1047" extended-state="0" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21766849" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21886447" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -516,34 +511,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/web/inc/navigator.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="38" column="33" lean-forward="true" selection-start-line="38" selection-start-column="33" selection-end-line="38" selection-end-column="33" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/index_n.php" />
-    <entry file="file://$PROJECT_DIR$/web/index_b.php" />
-    <entry file="file://$PROJECT_DIR$/web/css/style.map">
-      <provider editor-type-id="sourcemapFileViewerProvider">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/faq.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="11" column="0" lean-forward="true" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/web/ajaxPages/ajaxNoticeList.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="418">
@@ -674,14 +641,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/inc/header.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2356">
-          <caret line="124" column="109" lean-forward="false" selection-start-line="124" selection-start-column="109" selection-end-line="124" selection-end-column="109" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/web/roomDetail.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3268">
@@ -702,14 +661,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="4674">
           <caret line="246" column="18" lean-forward="false" selection-start-line="246" selection-start-column="18" selection-end-line="246" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/groupDetail.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="209" column="31" lean-forward="false" selection-start-line="209" selection-start-column="31" selection-end-line="209" selection-end-column="31" />
           <folding />
         </state>
       </provider>
@@ -871,14 +822,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/myGroup.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="19">
-          <caret line="22" column="18" lean-forward="true" selection-start-line="22" selection-start-column="18" selection-end-line="22" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/web/profile.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="532">
@@ -894,23 +837,6 @@
         <state relative-caret-position="871">
           <caret line="48" column="50" lean-forward="false" selection-start-line="48" selection-start-column="50" selection-end-line="48" selection-end-column="50" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/dashboard.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="118" column="56" lean-forward="true" selection-start-line="118" selection-start-column="56" selection-end-line="118" selection-end-column="56" />
-          <folding>
-            <element signature="e#2745#2751#0#HTML" expanded="true" />
-            <element signature="e#3695#3701#1#HTML" expanded="true" />
-            <element signature="e#4717#4723#1#HTML" expanded="true" />
-            <element signature="e#5702#5708#1#HTML" expanded="true" />
-            <element signature="e#6060#6066#0#HTML" expanded="true" />
-            <element signature="e#6195#6201#0#HTML" expanded="true" />
-            <element signature="e#6313#6319#0#HTML" expanded="true" />
-            <element signature="e#6641#6661#0#HTML" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -983,6 +909,65 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/web/css/Chart.min.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="521" lean-forward="false" selection-start-line="0" selection-start-column="521" selection-end-line="0" selection-end-column="521" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/js/Chart.min.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="114">
+          <caret line="6" column="156598" lean-forward="false" selection-start-line="6" selection-start-column="156598" selection-end-line="6" selection-end-column="156598" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/myGroup.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="19">
+          <caret line="22" column="18" lean-forward="true" selection-start-line="22" selection-start-column="18" selection-end-line="22" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/js/canvasjs.min.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/groupDetail.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="264">
+          <caret line="253" column="85" lean-forward="true" selection-start-line="253" selection-start-column="85" selection-end-line="253" selection-end-column="85" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/dashboard.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="118" column="56" lean-forward="true" selection-start-line="118" selection-start-column="56" selection-end-line="118" selection-end-column="56" />
+          <folding>
+            <element signature="e#2745#2751#0#HTML" expanded="true" />
+            <element signature="e#3695#3701#1#HTML" expanded="true" />
+            <element signature="e#4717#4723#1#HTML" expanded="true" />
+            <element signature="e#5702#5708#1#HTML" expanded="true" />
+            <element signature="e#6060#6066#0#HTML" expanded="true" />
+            <element signature="e#6195#6201#0#HTML" expanded="true" />
+            <element signature="e#6313#6319#0#HTML" expanded="true" />
+            <element signature="e#6641#6661#0#HTML" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/web/myRoom.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="627">
@@ -991,11 +976,41 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/web/js/jspdf.min.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="821">
+          <caret line="148" column="55" lean-forward="false" selection-start-line="148" selection-start-column="55" selection-end-line="148" selection-end-column="55" />
+          <folding>
+            <element signature="n#!!doc" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/js/html2canvas.min.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="133">
+          <caret line="7" column="4837" lean-forward="false" selection-start-line="7" selection-start-column="4837" selection-end-line="7" selection-end-column="4837" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/inc/header.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="9" column="1" lean-forward="false" selection-start-line="9" selection-start-column="1" selection-end-line="9" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/web/myRoomDetail.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="399">
-          <caret line="106" column="65" lean-forward="false" selection-start-line="106" selection-start-column="65" selection-end-line="106" selection-end-column="65" />
-          <folding />
+        <state relative-caret-position="620">
+          <caret line="124" column="23" lean-forward="true" selection-start-line="124" selection-start-column="23" selection-end-line="124" selection-end-column="23" />
+          <folding>
+            <element signature="e#4582#4614#0#HTML" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

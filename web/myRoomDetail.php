@@ -34,7 +34,24 @@ if($item["groupID"] != 0){
 
     <script>
 
+        var cache_width = $('#renderPDF').width(); //Criado um cache do CSS
+        var a4 = [595.28, 841.89]; // Widht e Height de uma folha a4
+
         $(document).ready(function(){
+            var animals = ['Dog','Cat','Cow','Snake'];
+
+            var data = {
+                series: [5, 3, 4, 1]
+            };
+
+            var sum = function(a, b) { return a + b };
+
+            new Chartist.Pie('.ct-chart', data, {
+                labelInterpolationFnc: function(value, idx) {
+                    var percentage = Math.round(value / data.series.reduce(sum) * 100) + '%';
+                    return animals[idx] + ' (' + percentage + ')';
+                }
+            });
 
             $(".jRevote").click(function(){
                 callJson(
@@ -85,6 +102,20 @@ if($item["groupID"] != 0){
 
             buttonLink(".jModify", "createRoom.php?id=<?=$_REQUEST["id"]?>");
 
+            // Making PDF
+//            $("#renderPDF").width((a4[0] * 1.33333) - 80).css('max-width', 'none');
+//
+//            html2canvas($('#renderPDF'), {
+//                onrendered: function (canvas) {
+//                    var img = canvas.toDataURL("image/jpeg", 1.0);
+//                    //var doc = new jsPDF({ unit: 'px', format: 'a4' });//this line error
+//                    var doc = new jsPDF('portrait'); // portrait / landscape
+//                    doc.addImage(img, 'JPEG', 0, 0);
+//                    doc.save('<?//=$item["title"]?>//_통계문서.pdf');
+//                    //Retorna ao CSS normal
+//                    $('#renderPDF').width(cache_width);
+//                }
+//            });
         });
     </script>
 
@@ -100,7 +131,7 @@ if($item["madeBy"]==0) $madeBy = "관리자";
 ?>
 
     <div class="apartment_part">
-        <div class="container">
+        <div class="container" id="renderPDF" style="background-color: white;">
             <div class="row justify-content-between align-content-center">
                 <div class="col-md-8 col-lg-8 col-sm-8">
                     <div class="section_tittle">
@@ -153,49 +184,7 @@ if($item["madeBy"]==0) $madeBy = "관리자";
                             </h3>
                             <p><?=$item["ques"]?></p>
                             <br/>
-                            <?if(sizeof($attendedList) <= 0){?>
-                                <?if($item["type"] == "V"){?>
-                                    <? for($e = 0; $e < sizeof($selectionList); $e++){ ?>
-                                        <div target="voting-radio-<?=$e?>" class="jRHelper switch-wrap d-flex justify-content-between genric-btn info-border radius p-3">
-                                            <p><?=$selectionList[$e]["title"]?></p>
-                                            <div class="primary-radio">
-                                                <input type="radio" name="selects" id="voting-radio-<?=$e?>" <?=$e == 0 ? "CHECKED" : ""?> value="<?=$selectionList[$e]["id"]?>" />
-                                                <label for="voting-radio-<?=$e?>"></label>
-                                            </div>
-                                        </div>
-                                    <?}?>
-                                    <br/>
-                                    <button type="button" class="col-12 genric-btn primary-border radius jRevote"><i class="fa fa-edit"></i> 답변 저장</button>
-                                <?}else{?>
-                                    <textarea class="mb-2 form-control placeholder hide-on-focus h-50" id="surveyAnswer" placeholder="답변 내용"></textarea>
-                                    <button type="button" class="col-12 genric-btn primary-border radius jReselect"><i class="fa fa-edit"></i> 답변 저장</button>
-                                <?}?>
-                                <span></span>
-                            <?}else{?>
-                                <?if($item["type"] == "V"){?>
-                                    <? for($e = 0; $e < sizeof($selectionList); $e++){ ?>
-                                        <div target="voting-radio-<?=$e?>" class="jRHelper switch-wrap d-flex justify-content-between genric-btn info-border radius p-3">
-                                            <p><?=$selectionList[$e]["title"]?></p>
-                                            <div class="primary-radio">
-                                                <input type="radio" name="selects" id="voting-radio-<?=$e?>" <?=$item["changeable"] == 1 ? "" : "DISABLED"?> <?=$selected == $selectionList[$e]["id"] ? "CHECKED" : ""?> value="<?=$selectionList[$e]["id"]?>" />
-                                                <label for="voting-radio-<?=$e?>"></label>
-                                            </div>
-                                        </div>
-                                    <?}?>
-                                    <?if($item["changeable"] == 1){?>
-                                        <br/>
-                                        <button type="button" class="col-12 genric-btn primary-border radius jRevote"><i class="fa fa-refresh"></i> 답변 수정</button>
-                                    <?}?>
-                                <?}else{?>
-                                    <textarea class="mb-2 form-control placeholder hide-on-focus col-12 h-50" id="surveyAnswer" placeholder="답변 내용" <?=$item["changeable"] == 1?"":"disabled"?>><?=$attendedList[0]["answer"]?></textarea>
-                                    <?if($item["changeable"] == 1){?>
-                                        <button type="button" class="col-12 genric-btn primary-border radius jReselect"><i class="fa fa-refresh"></i> 답변 수정</button>
-                                    <?}?>
-                                <?}?>
-                            <?}?>
-
-                        </div>
-                    </div>
+                    <div class="ct-chart h-75"></div>
                 </div>
             </div>
         </div>
