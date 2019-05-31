@@ -103,6 +103,8 @@ switch ($item["type"]){
 }
 if($item["madeBy"]==0) $madeBy = "관리자";
 ?>
+    <div id="fb-root"></div>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/ko_KR/sdk.js#xfbml=1&version=v3.3&appId=2224111927873126&autoLogAppEvents=1"></script>
 
     <div class="apartment_part">
         <div class="container">
@@ -112,6 +114,7 @@ if($item["madeBy"]==0) $madeBy = "관리자";
                         <h1 class="non-bold"><?=$typeName?> 상세 정보</h1>
                     </div>
                 </div>
+                <div class="fb-share-button col-4 text-right" data-href="http://picklecode.co.kr/eVote/web/roomDetail.php?id=10" data-layout="button_count" data-size="large"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fpicklecode.co.kr%2FeVote%2Fweb%2FroomDetail.php%3Fid%3D<?=$_REQUEST["id"]?>&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">공유하기</a></div>
             </div>
             <div class="row">
                 <div class="col-md-6 col-lg-6 col-sm-6">

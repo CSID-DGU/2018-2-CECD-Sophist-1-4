@@ -1,8 +1,8 @@
 <?
 include_once $_SERVER["DOCUMENT_ROOT"]."/eVote/shared/bases/utils/AuthUtil.php";
 $CONST_PROJECT_NAME = "풀링폴링";
-$CONST_TITLE_POSTFIX = " :: 깨끗하고 빠른 의견수렴 서비스";
-$CONST_DESC_SHORT = "깨끗하고 빠른 의견수렴 서비스";
+$CONST_TITLE_POSTFIX = " :: 깨끗하고 빠른 전자투표 서비스";
+$CONST_DESC_SHORT = "깨끗하고 빠른 전자투표 서비스";
 $CONST_DESC = "아직도 불편한 설문조사 서비스를 이용하고 계신가요? 지금 바로 풀링폴링과 함께 하세요!";
 ?>
 
@@ -14,11 +14,16 @@ $CONST_DESC = "아직도 불편한 설문조사 서비스를 이용하고 계신
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
+    <? if($_SERVER["PHP_SELF"] == "/eVote/web/roomDetail.php"){?>
+        <meta property="og:url" content="http://picklecode.co.kr/eVote/web/roomDetail.php?id=<?=$_REQUEST["id"]?>">
+        <meta property="og:title" content="<?=$CONST_PROJECT_NAME?> - 투표상세보기">
+    <?}else{?>
+        <meta property="og:title" content="<?=$CONST_PROJECT_NAME?>">
+    <?}?>
     <meta property="og:title" content="<?=$CONST_PROJECT_NAME?>">
     <meta name="description" content="<?=$CONST_DESC?>">
     <meta property="og:description" content="<?=$CONST_DESC_SHORT?>">
-    <meta property="og:image" content="http://picklecode.co.kr/eVote/web/img/logo.png">
+    <meta property="og:image" content="http://picklecode.co.kr/eVote/web/img/app.png">
 
     <title><?=$CONST_PROJECT_NAME.$CONST_TITLE_POSTFIX?></title>
 
