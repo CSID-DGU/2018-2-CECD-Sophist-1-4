@@ -19,6 +19,11 @@ $list = $router->getMyGroupList(AuthUtil::getLoggedInfo()->id);
 
 $item = $router->getVote();
 
+if($item["type"] == "V"){
+    $selectionList = $router->getCandidates($_REQUEST["id"]);
+    $selected = $attendedList[0]["selected"];
+}
+
 if($_REQUEST["id"] != "" && $item["madeBy"] != AuthUtil::getLoggedInfo()->id){
     echo "<script>alert('비정상적인 접근입니다.'); history.back();</script>";
 }
@@ -175,6 +180,15 @@ if($_REQUEST["id"] != "" && $item["madeBy"] != AuthUtil::getLoggedInfo()->id){
             if(flag) tags.push(title)
             refreshTag();
         }
+
+        <?
+        if($item["type"] == "V"){
+            foreach ($selectionList as $canItem){
+        ?>
+        addTag("<?=$canItem["title"]?>");
+        <?
+        }}
+        ?>
 
         function removeTag(title){
             var temp = [];

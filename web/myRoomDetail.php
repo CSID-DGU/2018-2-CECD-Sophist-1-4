@@ -10,11 +10,23 @@ if(!AuthUtil::isLoggedIn()){
 //    echo "<script>location.href='index.php';</script>";
 //}
 $router = new GroupRoute();
+
 $item = $router->getVote();
 $attendedList = $router->getAttendedInfo($_REQUEST["id"], $item["type"]);
 $typeName = "";
 $selectionList = "";
 $selected = -1;
+
+if($item["type"] == "V") {
+    $statRes = $router->getVoteStat($_REQUEST["id"]);
+    $stat = $statRes["percent"];
+}else{
+    $statRes = $router->getSurveyStat($_REQUEST["id"]);
+}
+
+if($item["madeBy"] != AuthUtil::getLoggedInfo()->id){
+    echo "<script>alert('비정상적인 접근입니다.'); history.back();</script>";
+}
 
 if($item["type"] == "V"){
     $selectionList = $router->getCandidates($_REQUEST["id"]);
@@ -43,10 +55,27 @@ if($item["groupID"] != 0){
         var a4 = [595.28, 841.89]; // Widht e Height de uma folha a4
 
         $(document).ready(function(){
-            var animals = ['Dog','Cat','Cow','Snake'];
+            <?if($item["type"] == "V"){?>
+            var animals = [
+                <?
+                    foreach ($stat as $sItem){
+                ?>
+                    "<?=$sItem["title"]?>",
+                <?
+                }
+                ?>
+            ];
 
             var data = {
-                series: [5, 3, 4, 1]
+                series: [
+                    <?
+                    foreach ($stat as $sItem){
+                    ?>
+                    <?=$sItem["count"]?>,
+                    <?
+                    }
+                    ?>
+                ]
             };
 
             var sum = function(a, b) { return a + b };
@@ -55,6 +84,36 @@ if($item["groupID"] != 0){
                 labelInterpolationFnc: function(value, idx) {
                     var percentage = Math.round(value / data.series.reduce(sum) * 100) + '%';
                     return animals[idx] + ' (' + percentage + ')';
+                }
+            });
+
+            <?}?>
+
+            new Chartist.Line('.ct-chart-line', {
+                labels: [
+                    <?
+                    foreach ($statRes["date"] as $dItem => $dValue){
+                    ?>
+                    "<?=$dItem?>",
+                    <?
+                    }
+                    ?>
+                ],
+                series: [
+                    [
+                        <?
+                        foreach ($statRes["date"] as $dItem => $dValue){
+                        ?>
+                        <?=$dValue?>,
+                        <?
+                        }
+                        ?>
+                    ]
+                ]
+            }, {
+                fullWidth: true,
+                chartPadding: {
+                    right: 40
                 }
             });
 
@@ -189,13 +248,85 @@ if($item["madeBy"]==0) $madeBy = "관리자";
                             </h3>
                             <p><?=$item["ques"]?></p>
                             <br/>
+                    <?if($item["type"] == "V"){?>
                     <div class="ct-chart h-75"></div>
+                    <?}else{?>
+                        <h5 class="non-bold"><i class="fa fa-list"></i> 빈출 음절 순위</h5>
+                        <?
+                        $limitLoop = sizeof($statRes["words"]) > 5 ? 5 : sizeof($statRes["words"]);
+                        foreach($statRes["words"] as $wKey => $wValue){
+                            if($limitLoop <= 0) break;
+                        ?>
+                            <span class="col-12 genric-btn radius success-border mt-2"><i class="fa fa-users"></i> <?=$wValue?>회 / <?=$wKey?></span>
+                    <?
+                            $limitLoop--;
+                        }
+                    }?>
+                </div>
+                <div class="col-12 mt-5">
+                    <span class="col-12 genric-btn radius success-border"><i class="fa fa-users"></i> 총 참여 : <?=$statRes["count"]?></span>
+                </div>
+                <?if($item["type"] == "V"){?>
+                    <div class="col-12 mt-5 h-100">
+                        <h4>일자별 참여</h4>
+                        <div class="ct-chart-line h-75"></div>
+                    </div>
+                    <div class="col-12 mt-5 h-100">
+                        <h4>선택 항목별 참여</h4>
+                        <?
+                        $max = 0;
+                        foreach ($stat as $sItem){
+                            if($max <= $sItem["count"]) $max = $sItem["count"];
+                            ?>
+                            <span class="mt-3 col-12 genric-btn info-border radius"><?=$sItem["count"]?> : <?=$sItem["title"]?></span>
+                            <?
+                        }
+                        ?>
+                    </div>
+                    <div class="col-12 mt-5 h-100">
+                        <h4>최대 득표 항목</h4>
+                        <?if($max == 0){?>
+                            <span class="mt-3 col-12 genric-btn danger-border radius"><i class="fa fa-times"></i> 참여 인원 없음</span>
+                        <?}else{?>
+                            <?
+                            foreach ($stat as $sItem){
+                                if($max == $sItem["count"]) {
+                                    ?>
+                                    <span class="mt-3 col-12 genric-btn danger-border radius"><?= $sItem["count"] ?>회
+                                        &nbsp;: <?= $sItem["title"] ?></span>
+                                    <?
+                                }
+                            }
+                            ?>
+                        <?}?>
+                    </div>
+                <?}else{?>
+                    <div class="col-12 mt-5 h-100">
+                        <h4>일자별 참여</h4>
+                        <div class="ct-chart-line h-75"></div>
+                    </div>
+                <?}?>
+                <div class="col-12 mt-5 h-100">
+                    <h4>참여 내역</h4>
+                    <?
+                    foreach ($statRes["raw"] as $rItem){
+                        ?>
+                    <?if($item["type"] == "V"){?>
+                            <span class="mt-3 col-12 genric-btn info-border radius"><?=$rItem["regDate"]?> / <?=$rItem["orderNo"] + 1?>번 선택됨</span>
+                        <?}else{?>
+                            <span class="mt-3 col-12 genric-btn info-border radius"><?=$rItem["regDate"]?><br/><hr style="margin:0;" /><?=$rItem["answer"]?></span>
+                        <?}?>
+                        <?
+                    }
+                    if(sizeof($statRes["raw"]) == 0){
+                    ?>
+                        <span class="mt-3 col-12 genric-btn danger-border radius"><i class="fa fa-times"></i> 참여 인원 없음</span>
+                    <?}?>
                 </div>
             </div>
         </div>
     </div>
     <div class="text-center mt-5 mb-5">
-        <?if($item["madeBy"] == AuthUtil::getLoggedInfo()->id){?><button class="genric-btn primary-border radius jModify"><i class="fa fa-edit"></i> 재설정</button><?}?>
         <button class="genric-btn info-border radius jBack"><i class="fa fa-times"></i> 이전으로</button>
     </div>
 

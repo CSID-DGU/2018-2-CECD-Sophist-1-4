@@ -4,6 +4,75 @@ include_once $_SERVER["DOCUMENT_ROOT"]."/eVote/shared/public/classes/Routable.ph
 
 class GroupRoute extends Routable {
 
+    function getVoteStat($id){
+        $sql = "SELECT *,
+                DATE(regDate) AS rDate,
+                (SELECT `orderNo` FROM tblVoteCand WHERE tblVoteCand.`id`=selected) AS orderNo,
+                (SELECT `title` FROM tblVoteCand WHERE tblVoteCand.`id`=selected) AS title
+                 FROM tblVoteSelection WHERE voteID = '{$id}' AND applied=1 ORDER BY regDate ASC";
+        $arr = $this->getArray($sql);
+
+        $dateArr = array();
+        $final = array();
+        $res = array();
+        for($e = 0; $e < sizeof($arr); $e++){
+            $item = $arr[$e];
+            $res[$item["orderNo"]]["title"] = $item["title"];
+            if($res[$item["orderNo"]]["count"] == "") $res[$item["orderNo"]]["count"] = 0;
+            $res[$item["orderNo"]]["count"] = $res[$item["orderNo"]]["count"] + 1;
+            if($dateArr[$item["rDate"]] == "") $dateArr[$item["rDate"]] = 0;
+            $dateArr[$item["rDate"]]++;
+        }
+
+        $final["date"] = $dateArr;
+        $final["percent"] = $res;
+        $final["count"] = sizeof($arr);
+        $final["raw"] = $arr;
+
+        return $final;
+    }
+
+    function getKeywordStat($sentencesArray){
+        $retVal = array();
+        $tempSentence = array();
+        foreach ($sentencesArray as $st) {
+            preg_match_all("|(?<hangul>[가-힣]+)|u", $st, $tempSentence);
+            foreach ($tempSentence["hangul"] as $word){
+                if($retVal[$word] == "") $retVal[$word] = 0;
+                $retVal[$word]++;
+            }
+        }
+
+        ksort($retVal);
+        arsort($retVal);
+
+        return $retVal;
+    }
+
+    function getSurveyStat($id){
+        $sql = "SELECT *,
+                DATE(regDate) AS rDate
+                 FROM tblSurvey WHERE voteID = '{$id}' ORDER BY regDate ASC";
+        $arr = $this->getArray($sql);
+
+        $sentences = array();
+        $dateArr = array();
+        $final = array();
+        for($e = 0; $e < sizeof($arr); $e++){
+            $item = $arr[$e];
+            $sentences[$e] = $item["answer"];
+            if($dateArr[$item["rDate"]] == "") $dateArr[$item["rDate"]] = 0;
+            $dateArr[$item["rDate"]]++;
+        }
+
+        $final["date"] = $dateArr;
+        $final["count"] = sizeof($arr);
+        $final["raw"] = $arr;
+        $final["words"] = $this->getKeywordStat($sentences);
+
+        return $final;
+    }
+
     function isJoined($groupID, $userID){
         $slt = "SELECT COUNT(*) AS rn FROM tblGroupMember WHERE groupId='{$groupID}' AND userId='{$userID}'";
         return $this->getValue($slt, "rn") > 0;
