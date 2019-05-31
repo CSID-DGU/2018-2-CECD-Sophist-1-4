@@ -24,7 +24,7 @@
                 , function(data){
                     if(data.returnCode > 0){
                         if(data.returnCode > 1){
-                            alert(data.returnMessage);
+                            swal("정보", data.returnMessage, "info");
                         }else{
                             location.href = "index.php?fl=" + data.data;
                         }
