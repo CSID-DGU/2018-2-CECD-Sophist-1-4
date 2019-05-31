@@ -66,7 +66,7 @@ if($item["groupID"] != 0){
                             alert(data.returnMessage);
                             location.reload();
                         }else{
-                            alert("오류가 발생하였습니다.\n관리자에게 문의하세요.");
+                            swal("정보", "오류가 발생하였습니다.\n관리자에게 문의하세요.", "warning");
                         }
                     }
                 );
@@ -85,7 +85,7 @@ if($item["groupID"] != 0){
                             alert(data.returnMessage);
                             location.reload();
                         }else{
-                            alert("오류가 발생하였습니다.\n관리자에게 문의하세요.");
+                            swal("정보", "오류가 발생하였습니다.\n관리자에게 문의하세요.", "warning");
                         }
                     }
                 );

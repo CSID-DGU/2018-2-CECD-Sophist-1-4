@@ -30,4 +30,17 @@
         </div>
     </div>
 
+    <div class="cta_part">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-6">
+                    <div class="cta_iner">
+                        <h1 class="non-bold">원하시는 답변이 없어 고민이신가요?</h1>
+                        <a href="mailto:pullingpolling@gmail.com" class="cta_btn">1 : 1 메일 문의</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
 <? include_once $_SERVER["DOCUMENT_ROOT"]."/eVote/web/inc/footer.php"; ?>

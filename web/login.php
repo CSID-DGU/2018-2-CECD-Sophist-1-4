@@ -12,7 +12,7 @@
 
         $(".jLog").click(function(){
             if($(".jEmailTxt").val() == "" || $(".jPasswordTxt").val() == ""){
-                alert("회원 정보를 입력하세요.");
+                swal("정보", "로그인 정보를 입력하세요.", "info");
                 return;
             }
             callJson(
@@ -29,7 +29,7 @@
                             location.href = "index.php?fl=" + data.data;
                         }
                     }else{
-                        alert("오류가 발생하였습니다.\n관리자에게 문의하세요.");
+                        swal("정보", "오류가 발생하였습니다.\n관리자에게 문의하세요.", "warning");
                     }
                 }
             )

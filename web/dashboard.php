@@ -14,6 +14,8 @@ $dashInfo = $web->getDashboardInfo();
 ?>
     <script>
         $(document).ready(function(){
+            showSnackBar("<?=$userInfo["name"]?>님, 환영합니다.");
+
             var currentPage = 1;
             var isFinal = false;
 

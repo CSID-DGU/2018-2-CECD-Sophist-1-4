@@ -14,7 +14,7 @@
                         alert(data.returnMessage);
                         location.href = "index.php";
                     }else{
-                        alert("오류가 발생하였습니다.\n관리자에게 문의하세요.");
+                        swal("정보", "오류가 발생하였습니다.\n관리자에게 문의하세요.", "warning");
                     }
                 }
             );

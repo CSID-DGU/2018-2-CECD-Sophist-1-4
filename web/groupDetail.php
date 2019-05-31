@@ -76,7 +76,7 @@ $isJoined = $router->isJoined($_REQUEST["id"], AuthUtil::getLoggedInfo()->id);
                                     location.href = "group.php";
                                 }
                             }else{
-                                alert("오류가 발생하였습니다.\n관리자에게 문의하세요.");
+                                swal("정보", "오류가 발생하였습니다.\n관리자에게 문의하세요.", "warning");
                             }
                         }
                     );
@@ -107,12 +107,12 @@ $isJoined = $router->isJoined($_REQUEST["id"], AuthUtil::getLoggedInfo()->id);
                 var tag = tags.toString();
 
                 if(title == ""){
-                    alert("그룹명을 입력하세요.");
+                    swal("정보", "그룹명을 입력하세요.", "info");
                     return;
                 }
 
                 if(needsAuth == 1 && authCode == ""){
-                    alert("비공개 그룹 인증코드를 입력하세요.");
+                    swal("정보", "비공개 그룹 인증코드를 입력하세요.", "info");
                     return;
                 }
 
@@ -140,7 +140,7 @@ $isJoined = $router->isJoined($_REQUEST["id"], AuthUtil::getLoggedInfo()->id);
                                 location.href = "groupDetail.php?id=" + data.data;
                             }
                         }else{
-                            alert("오류가 발생하였습니다.\n관리자에게 문의하세요.");
+                            swal("정보", "오류가 발생하였습니다.\n관리자에게 문의하세요.", "warning");
                         }
                     }
                 );
@@ -161,7 +161,7 @@ $isJoined = $router->isJoined($_REQUEST["id"], AuthUtil::getLoggedInfo()->id);
                                 location.reload();
                             }
                         }else{
-                            alert("오류가 발생하였습니다.\n관리자에게 문의하세요.");
+                            swal("정보", "오류가 발생하였습니다.\n관리자에게 문의하세요.", "warning");
                         }
                     }
                 );
@@ -181,7 +181,7 @@ $isJoined = $router->isJoined($_REQUEST["id"], AuthUtil::getLoggedInfo()->id);
                                 location.reload();
                             }
                         }else{
-                            alert("오류가 발생하였습니다.\n관리자에게 문의하세요.");
+                            swal("정보", "오류가 발생하였습니다.\n관리자에게 문의하세요.", "warning");
                         }
                     }
                 );

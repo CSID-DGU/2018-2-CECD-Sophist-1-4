@@ -13,11 +13,11 @@ if(AuthUtil::isLoggedIn()){
                     || $(".jNameTxt").val() == ""
                     || $(".jPasswordTxt").val() == ""
                     || $(".jSex").val() == ""){
-                    alert("회원 정보를 모두 입력하세요.");
+                    swal("정보", "회원 정보를 모두 입력하시기 바랍니다.", "info");
                     return;
                 }
                 if($(".jPasswordTxt").val() != $(".jPasswordCTxt").val()){
-                    alert("패스워드 확인이 일치하지 않습니다.");
+                    swal("정보", "패스워드 확인이 일치하지 않습니다.", "info");
                     return;
                 }
 
@@ -38,7 +38,7 @@ if(AuthUtil::isLoggedIn()){
                                 location.href = "index.php";
                             }
                         }else{
-                            alert("오류가 발생하였습니다.\n관리자에게 문의하세요.");
+                            swal("정보", "오류가 발생하였습니다.\n관리자에게 문의하세요.", "warning");
                         }
                     }
                 )
