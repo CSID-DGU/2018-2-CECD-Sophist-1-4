@@ -17,7 +17,7 @@ $list = $router->getVoteList();
     if($item["madeBy"]==0) $madeBy = "관리자";
     ?>
     <div class="col-md-4 col-lg-4 col-sm-6 mt-3">
-        <div class="single_appartment_part jDetail" roomId="<?=$item["id"]?>" groupId="<?=$item["groupID"]?>">
+        <div class="single_appartment_part jDetail" endl="<?=$item["isEndless"]?>" done="<?=$item["done"]?>" st="<?=$item["st"]?>" roomId="<?=$item["id"]?>" groupId="<?=$item["groupID"]?>">
             <div class="appartment_img">
                 <? if($item["type"]=="V"){ ?>
                     <img src="img/ic_vote.png" alt="">

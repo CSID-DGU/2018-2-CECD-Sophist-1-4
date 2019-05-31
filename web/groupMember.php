@@ -265,7 +265,9 @@ if($item["madeBy"]==0) $madeBy = "관리자";
                             <?if($item["madeBy"] == AuthUtil::getLoggedInfo()->id){?>
                             <div class="col-12 text-right">
                                 <a href="mailto:<?=$memItem["email"]?>" class="genric-btn info-border radius"><i class="fa fa-envelope" ></i> 메일</a>
+                                <?if($memItem["id"] != $item["madeBy"]){?>
                                 <button class="genric-btn danger-border radius jKick" userId="<?=$memItem["id"]?>"><i class="fa fa-times" ></i> 강퇴</button>
+                                <?}?>
                             </div>
                             <?}?>
                         </div>

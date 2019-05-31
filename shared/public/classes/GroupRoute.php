@@ -45,7 +45,7 @@ class GroupRoute extends Routable {
     }
 
     function getTopVoteList($count = 3){
-        $slt = "SELECT *,
+        $slt = "SELECT *, NOW() > endDate AS done, NOW() >= startDate AS st,
                 (SELECT `needsAuth` FROM tblGroup WHERE `id`=`groupID` LIMIT 1) AS needsAuth,
                 (SELECT `title` FROM tblGroup WHERE `id`=`groupID` LIMIT 1) AS groupName, 
                 (SELECT `name` FROM tblUser WHERE `id`=`madeBy` LIMIT 1) AS madeName 
@@ -66,7 +66,7 @@ class GroupRoute extends Routable {
         }
 
         $startLimit = ($page - 1) * 6;
-        $slt = "SELECT *,
+        $slt = "SELECT *, NOW() > endDate AS done, NOW() >= startDate AS st,
                 (SELECT `needsAuth` FROM tblGroup WHERE `id`=`groupID` LIMIT 1) AS needsAuth,
                 (SELECT `title` FROM tblGroup WHERE `id`=`groupID` LIMIT 1) AS groupName, 
                 (SELECT `name` FROM tblUser WHERE `id`=`madeBy` LIMIT 1) AS madeName 
@@ -125,7 +125,7 @@ class GroupRoute extends Routable {
         $this->update($sql);
         
         if($type == "V"){
-            $this->addHistory(AuthUtil::getLoggedInfo()->id, $voteID."번 투표의 ".$answer."번을 선택하였습니다.");
+            $this->addHistory(AuthUtil::getLoggedInfo()->id, $voteID."번 투표에 답변하였습니다.");
         }else{
             $this->addHistory(AuthUtil::getLoggedInfo()->id, $voteID."번 설문에 답변하였습니다.");
         }

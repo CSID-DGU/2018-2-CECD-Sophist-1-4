@@ -32,9 +32,10 @@ if(AuthUtil::isLoggedIn()){
                     }
                     , function(data){
                         if(data.returnCode > 0){
-                            alert(data.returnMessage);
                             if(data.returnCode > 1){
+                                swal("정보", data.returnMessage, "info");
                             }else{
+                                alert(data.returnMessage);
                                 location.href = "index.php";
                             }
                         }else{

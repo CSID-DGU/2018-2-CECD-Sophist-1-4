@@ -61,7 +61,7 @@ class WebInfoRoute extends Routable {
         $slt = "SELECT `id`, `title`, `madeBy`, `filePath`, `uptDate`, `regDate`,
                 (SELECT `name` FROM tblUser WHERE `id`=`madeBy` LIMIT 1) AS madeName 
                 FROM tblNotice WHERE {$whereStmt}
-                ORDER BY `regDate` DESC LIMIT {$startLimit}, 5";
+                ORDER BY tblNotice.`regDate` DESC LIMIT {$startLimit}, 5";
         return $this->getArray($slt);
     }
 

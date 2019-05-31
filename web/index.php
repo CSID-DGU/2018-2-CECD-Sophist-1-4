@@ -16,6 +16,18 @@ $list = $router->getTopVoteList();
 
         $(document).on("click", ".jDetail", function(){
             var id = $(this).attr("roomId");
+            var st = $(this).attr("st");
+            var done = $(this).attr("done");
+            var endl = $(this).attr("endl");
+
+            if(st == "0"){
+                swal("정보", "시작되지 않은 항목입니다.", "info");
+                return;
+            }
+            if(done == "1" && endl == "0"){
+                swal("정보", "마감된 항목입니다.", "info");
+                return;
+            }
             location.href = "roomDetail.php?id=" + id;
         });
 
@@ -94,7 +106,7 @@ $list = $router->getTopVoteList();
                     if($item["madeBy"]==0) $madeBy = "관리자";
                     ?>
                     <div class="col-md-4 col-lg-4 col-sm-6">
-                        <div class="single_appartment_part jDetail" roomId="<?=$item["id"]?>" groupId="<?=$item["groupID"]?>">
+                        <div class="single_appartment_part jDetail" endl="<?=$item["isEndless"]?>" done="<?=$item["done"]?>" st="<?=$item["st"]?>" roomId="<?=$item["id"]?>" groupId="<?=$item["groupID"]?>">
                             <div class="appartment_img">
                                 <? if($item["type"]=="V"){ ?>
                                     <img src="img/ic_vote.png" alt="">

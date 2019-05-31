@@ -41,6 +41,19 @@ if($_REQUEST["type"] == ""){
 
             $(document).on("click", ".jDetail", function(){
                 var id = $(this).attr("roomId");
+                var st = $(this).attr("st");
+                var done = $(this).attr("done");
+                var endl = $(this).attr("endl");
+
+                if(st == "0"){
+                    swal("정보", "시작되지 않은 항목입니다.", "info");
+                    return;
+                }
+                if(done == "1" && endl == "0"){
+                    swal("정보", "마감된 항목입니다.", "info");
+                    return;
+                }
+
                 location.href = "roomDetail.php?id=" + id;
             });
 
