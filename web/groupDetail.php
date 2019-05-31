@@ -251,7 +251,7 @@ if($item["madeBy"]==0) $madeBy = "관리자";
                                     }
                                 }?>
                             </ul>
-                            <?if($item["madeBy"] != AuthUtil::getLoggedInfo()->id){?>
+                            <?if($item["madeBy"] != AuthUtil::getLoggedInfo()->id && AuthUtil::isLoggedIn()){?>
                                 <?if(!$isJoined){?>
                                     <div class="col-12 mt-3">
                                     <?if($item["needsAuth"] == 1){?>
