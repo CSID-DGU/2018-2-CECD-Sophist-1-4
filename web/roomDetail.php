@@ -114,7 +114,7 @@ if($item["madeBy"]==0) $madeBy = "관리자";
                         <h1 class="non-bold"><?=$typeName?> 상세 정보</h1>
                     </div>
                 </div>
-                <div class="fb-share-button col-4 text-right" data-href="http://picklecode.co.kr/eVote/web/roomDetail.php?id=10" data-layout="button_count" data-size="large"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fpicklecode.co.kr%2FeVote%2Fweb%2FroomDetail.php%3Fid%3D<?=$_REQUEST["id"]?>&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">공유하기</a></div>
+<!--                <div class="fb-share-button col-4 text-right" data-href="http://picklecode.co.kr/eVote/web/roomDetail.php?id=10" data-layout="button_count" data-size="large"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fpicklecode.co.kr%2FeVote%2Fweb%2FroomDetail.php%3Fid%3D--><?//=$_REQUEST["id"]?><!--&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">공유하기</a></div>-->
             </div>
             <div class="row">
                 <div class="col-md-6 col-lg-6 col-sm-6">
@@ -209,7 +209,7 @@ if($item["madeBy"]==0) $madeBy = "관리자";
         </div>
     </div>
     <div class="text-center mt-5 mb-5">
-        <?if($item["madeBy"] == AuthUtil::getLoggedInfo()->id){?><button class="genric-btn primary-border radius jModify"><i class="fa fa-edit"></i> 재설정</button><?}?>
+        <?if($item["madeBy"] == AuthUtil::getLoggedInfo()->id){?><button class="genric-btn primary-border radius jModify"><i class="fa fa-edit"></i> 조회 및 관리</button><?}?>
         <button class="genric-btn info-border radius jBack"><i class="fa fa-times"></i> 이전으로</button>
     </div>
 

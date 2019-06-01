@@ -80,6 +80,11 @@ if($_REQUEST["id"] != "" && $item["madeBy"] != AuthUtil::getLoggedInfo()->id){
                 if(!verifyText($(".jET").val(), "종료시간을 선택하세요.")) return;
             }
 
+            if(tags.length <= 1){
+                swal("정보", "선택지를 2개 이상 입력하세요.", "info");
+                return;
+            }
+
             callJson(
                 "/eVote/shared/public/route.php?F=GroupRoute.addRoom",
                 {
@@ -279,7 +284,9 @@ if($_REQUEST["id"] != "" && $item["madeBy"] != AuthUtil::getLoggedInfo()->id){
                         <?if($_REQUEST["id"] != "" && $item["madeBy"] == AuthUtil::getLoggedInfo()->id){?>
                         <button type="button" class="genric-btn danger-border radius jDel"><i class="fa fa-check"></i> 삭제하기</button>
                         <?}?>
+                        <?if($_REQUEST["id"] == ""){?>
                         <button type="button" class="genric-btn primary-border radius jGen"><i class="fa fa-plus"></i> 설정하기</button>
+                        <?}?>
                         <button type="button" class="genric-btn primary-border radius jBack"><i class="fa fa-times"></i> 이전으로</button>
                     </div>
 
