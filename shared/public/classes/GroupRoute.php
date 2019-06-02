@@ -113,6 +113,13 @@ class GroupRoute extends Routable {
         return $this->getArray($sql);
     }
 
+    function getRawTopVoteList($count = 3){
+        $slt = "SELECT *  
+                FROM tblRoom WHERE isDeleted=0
+                ORDER BY `regDate` DESC LIMIT {$count}";
+        return $this->getArray($slt);
+    }
+
     function getTopVoteList($count = 3){
         $slt = "SELECT *, NOW() > endDate AS done, NOW() >= startDate AS st,
                 (SELECT `needsAuth` FROM tblGroup WHERE `id`=`groupID` LIMIT 1) AS needsAuth,
@@ -144,6 +151,24 @@ class GroupRoute extends Routable {
         return $this->getArray($slt);
     }
 
+    function getRawVoteList(){
+        $page = $_REQUEST["page"] == "" ? 1 : $_REQUEST["page"];
+        $type = $_REQUEST["type"] == "" ? "A" : $_REQUEST["type"];
+        $query = $_REQUEST["query"];
+
+        $whereStmt = "isDeleted=0 AND 1=1 ";
+        if($type != "A") $whereStmt .= "AND `type` = '{$type}'";
+        if($query != ""){
+            $whereStmt .= " AND `title` LIKE '%{$query}%'";
+        }
+
+        $startLimit = ($page - 1) * 6;
+        $slt = "SELECT *  
+                FROM tblRoom WHERE {$whereStmt}
+                ORDER BY `regDate` DESC LIMIT {$startLimit}, 6";
+        return $this->getArray($slt);
+    }
+
     function getMyVoteList(){
         $id = AuthUtil::getLoggedInfo()->id;
         $page = $_REQUEST["page"] == "" ? 1 : $_REQUEST["page"];
@@ -164,6 +189,12 @@ class GroupRoute extends Routable {
                 FROM tblRoom WHERE {$whereStmt}
                 ORDER BY `regDate` DESC LIMIT {$startLimit}, 6";
         return $this->getArray($slt);
+    }
+
+    function getRawVote(){
+        $id = $_REQUEST["id"];
+        $sql = "SELECT * FROM tblRoom WHERE `id`='{$id}'";
+        return $this->getRow($sql);
     }
 
     function getVote(){
@@ -288,6 +319,13 @@ class GroupRoute extends Routable {
                 $candOrder++;
             }
         }
+
+        $rowSQL = "SELECT * FROM tblRoom WHERE `id`='{$lastKey}'";
+        $rowToHash = $this->getRow($rowSQL);
+        $res = GethHelper::writeRowHash($rowToHash);
+        $resAddr = $res["result"];
+        $upt = "UPDATE tblRoom SET thash='{$resAddr}' WHERE `id`='{$lastKey}'";
+        $this->update($upt);
 
         if($id != 0) $this->addHistory(AuthUtil::getLoggedInfo()->id, $lastKey."번 투표/설문을 수정하였습니다.");
         else $this->addHistory(AuthUtil::getLoggedInfo()->id, $lastKey."번 투표/설문을 설정하였습니다.");

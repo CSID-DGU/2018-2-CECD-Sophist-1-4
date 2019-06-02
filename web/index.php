@@ -1,8 +1,16 @@
 <? include_once $_SERVER["DOCUMENT_ROOT"]."/eVote/web/inc/header.php"; ?>
+<? include_once $_SERVER["DOCUMENT_ROOT"]."/eVote/shared/public/classes/GethHelper.php"; ?>
 <? include_once $_SERVER["DOCUMENT_ROOT"]."/eVote/shared/public/classes/GroupRoute.php"; ?>
 <?
 $router = new GroupRoute();
 $list = $router->getTopVoteList();
+$rawList = $router->getRawTopVoteList();
+for($q = 0; $q < sizeof($list); $q++){
+    $tv = $rawList[$q];
+    if(!GethHelper::verifyAction($tv["thash"], $tv)){
+        $list[$q]["fabricated"] = true;
+    }
+}
 ?>
 <script>
     $(document).ready(function(){
@@ -122,7 +130,7 @@ $list = $router->getTopVoteList();
                                     </p>
                                 </div>
                             </div>
-                            <div class="single_appartment_content">
+                            <div class="single_appartment_content <?=$item["fabricated"] ? "red" : ""?>">
                                 <p>
                                     <?if($item["groupID"] > 0){?><i class="fa fa-users"></i> <?=$item["groupName"]?><?}?>
                                     &nbsp;<i class="fa fa-user"></i>&nbsp;<?=$madeBy?>

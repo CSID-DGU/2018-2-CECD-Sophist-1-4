@@ -87,29 +87,22 @@ class GethHelper extends Routable {
         );
     }
 
-    static function formatHistoryData($action, $id, $by, $what, $extra){
-        return "HISTORY-".$action."-".$id."-".$by."-".$what."-".$extra;
+    static function verifyAction($hashAddr, $row){
+        $res = self::getTransactionExtra($hashAddr);
+        unset($row["thash"]);
+        $rowHash = sha1(serialize($row));
+        return $res == $rowHash;
     }
 
-    static function writeByApp($action, $id, $by, $what, $extra){
-        return GethHelper::writeOnBase(GethHelper::formatHistoryData($action, $id, $by, $what, $extra));
+    static function writeRowHash($row){
+        unset($row["thash"]);
+        $rowHash = sha1(serialize($row));
+        return self::writeOnBase($rowHash);
     }
 
-    static function verifyAction($hash, $action, $id, $by, $what, $extra){
-        $res = GethHelper::getTransaction($hash);
-        $comp = GethHelper::formatHistoryData($action, $id, $by, $what, $extra);
-        return hex2bin(substr($res["result"]["input"], 2)) == $comp;
-    }
-
-    function ver(){
-        return self::verifyAction(
-            "0x247cbf7d3943e62909f13f62d685c240f53ed007e09f6c15cd0c036f6325d3d3",
-            "create", 5, "new", "room", "aa"
-        );
-    }
-
-    function txTT(){
-        return GethHelper::writeByApp("create", 5, "new", "room", "aa");
+    static function getTransactionExtra($hashAddr){
+        $res = GethHelper::getTransaction($hashAddr);
+        return hex2bin(substr($res["result"]["input"], 2));
     }
 
 }

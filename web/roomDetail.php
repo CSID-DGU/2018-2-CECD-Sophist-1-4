@@ -1,4 +1,5 @@
 <? include_once $_SERVER["DOCUMENT_ROOT"]."/eVote/web/inc/header.php"; ?>
+<? include_once $_SERVER["DOCUMENT_ROOT"]."/eVote/shared/public/classes/GethHelper.php"; ?>
 <? include_once $_SERVER["DOCUMENT_ROOT"]."/eVote/shared/public/classes/GroupRoute.php"; ?>
 <?
 if(!AuthUtil::isLoggedIn()){
@@ -15,6 +16,7 @@ $attendedList = $router->getAttendedInfo($_REQUEST["id"], $item["type"]);
 $typeName = "";
 $selectionList = "";
 $selected = -1;
+$verify = GethHelper::verifyAction($item["thash"], $router->getRawVote());
 
 if($item["type"] == "V"){
     $selectionList = $router->getCandidates($_REQUEST["id"]);
@@ -35,6 +37,7 @@ if($item["groupID"] != 0){
         echo "<script>location.href='groupAccess.php?id={$item["groupID"]}';</script>";
     }
 }
+
 ?>
 
     <script>
@@ -50,6 +53,10 @@ if($item["groupID"] != 0){
                 alert("마감된 항목입니다.");
                 location.href = "room.php?type=A";
                 return;
+            }
+
+            if("<?=$verify?>" != "1"){
+                showSnackBar("본 투표/설문의 데이터가 위변조되었을 수 있습니다.");
             }
 
             $(".jRevote").click(function(){
@@ -145,7 +152,7 @@ if($item["madeBy"]==0) $madeBy = "관리자";
                                 </p>
                             </div>
                         </div>
-                        <div class="single_appartment_content">
+                        <div class="single_appartment_content <?=$verify ? "" : "red"?>">
                             <p>
                                 <?if($item["groupID"] > 0){?><i class="fa fa-users"></i> <?=$item["groupName"]?><?}?>
                                 &nbsp;<i class="fa fa-user"></i>&nbsp;<?=$madeBy?>
@@ -163,6 +170,9 @@ if($item["madeBy"]==0) $madeBy = "관리자";
                                 <?if($item["changeable"] == 0){?><li><a href="#"><span class="fa fa-check"></span></a>재선택불가</li><?}?>
                                 <?if($item["changeable"] == 1){?><li><a href="#"><span class="fa fa-check"></span></a>재선택가능</li><?}?>
                             </ul>
+                            <?if($verify == 0){?>
+                            <p>※ 데이터 위변조 가능성 있음</p>
+                            <?}?>
                         </div>
                     </div>
                 </div>
