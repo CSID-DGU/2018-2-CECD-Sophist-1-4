@@ -67,6 +67,35 @@
                 location.href = "noticeDetail.php?id=" + id;
             });
 
+            $(document).on("click", ".jModifyNotice", function(){
+                var id = $(this).attr("noticeID");
+                location.href = "createNotice.php?id=" + id;
+            });
+
+            $(document).on("click", ".jDeleteNotice", function(){
+                var id = $(this).attr("noticeID");
+                if(confirm("정말 삭제하시겠습니까?")){
+                    callJson(
+                        "/eVote/shared/public/route.php?F=WebInfoRoute.deleteNotice",
+                        {
+                            id : id
+                        }
+                        , function(data){
+                            if(data.returnCode > 0){
+                                if(data.returnCode > 1){
+                                    swal("정보", data.returnMessage, "info");
+                                }else{
+                                    alert(data.returnMessage);
+                                    location.reload();
+                                }
+                            }else{
+                                swal("정보", "오류가 발생하였습니다.\n관리자에게 문의하세요.", "warning");
+                            }
+                        }
+                    );
+                }
+            });
+
             buttonLink(".jMyGroup", "myGroup.php");
             buttonLink(".jCGroup", "createGroup.php");
 
@@ -81,6 +110,11 @@
                         <h1 class="non-bold">공지사항</h1>
                     </div>
                 </div>
+                <?if(AuthUtil::getLoggedInfo()->isAdmin == 1){?>
+                <div class="col-12 mb-3 text-right">
+                    <a href="createNotice.php" class="genric-btn primary-border radius"><i class="fa fa-plus"></i> 추가</a>
+                </div>
+                <?}?>
                 <div class="widget-search btn-group col-12">
                     <input class="form-control placeholder hide-on-focus jSearchTxt col-10" type="text" value="<?=$_REQUEST["query"]?>" placeholder="공지사항 검색"/>
                     <button class="button jSearch col-2" type="button"><i class="fa fa-search"></i></button>

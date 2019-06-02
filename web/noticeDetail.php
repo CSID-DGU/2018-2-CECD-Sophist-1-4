@@ -32,7 +32,7 @@ if($item["madeBy"] != 0) $madeName .= "(".$item["madeName"].")";
                 <div class="col-lg-8 posts-list">
                     <div class="single-post">
                         <div class="blog_details">
-                            <h2><?=$item["title"]?></h2>
+                            <h2 class="non-bold"><?=$item["title"]?></h2>
                             <ul class="blog-info-link mt-3 mb-4">
                                 <li><a href="#"><i class="far fa-user"></i> <?=$madeName?></a></li>
                                 <li><a href="#"><i class="far fa-clock"></i> <?=$item["regDate"]?></a></li>

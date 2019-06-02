@@ -49,6 +49,38 @@ class WebInfoRoute extends Routable {
         return $this->getArray("SELECT * FROM tblFaq ORDER BY `title` ASC");
     }
 
+    function deleteNotice(){
+        if(AuthUtil::getLoggedInfo()->isAdmin != 1){
+            return self::response(2, "비정상적인 요청입니다.");
+        }
+        
+        $id = $_REQUEST["id"];
+        $del = "DELETE FROM tblNotice WHERE `id`='{$id}'";
+        $this->update($del);
+
+        return self::response(1, "삭제되었습니다.");
+    }
+
+    function upsertNotice(){
+        if(AuthUtil::getLoggedInfo()->isAdmin != 1){
+            return self::response(0, "Permission Denied");
+        }
+
+        $id = $_REQUEST["id"];
+        $title = $_REQUEST["title"];
+        $content = $_REQUEST["desc"];
+        $madeBy = $_REQUEST["madeBy"];
+
+        $ins = "
+                INSERT INTO tblNotice(`id`, `title`, `desc`, `madeBy`, `regDate`)
+                VALUES ('{$id}', '{$title}', '{$content}', '{$madeBy}', NOW())
+                ON DUPLICATE KEY UPDATE `title` = '{$title}', `desc` = '{$content}';
+        ";
+        $this->update($ins);
+
+        return self::response(1, "저장되었습니다.");
+    }
+    
     function getNoticeList(){
         $page = $_REQUEST["page"] == "" ? 1 : $_REQUEST["page"];
         $query = $_REQUEST["query"];
