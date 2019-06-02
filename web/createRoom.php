@@ -80,7 +80,7 @@ if($_REQUEST["id"] != "" && $item["madeBy"] != AuthUtil::getLoggedInfo()->id){
                 if(!verifyText($(".jET").val(), "종료시간을 선택하세요.")) return;
             }
 
-            if(tags.length <= 1){
+            if(tags.length <= 1 && rType == "V"){
                 swal("정보", "선택지를 2개 이상 입력하세요.", "info");
                 return;
             }

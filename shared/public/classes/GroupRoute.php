@@ -260,7 +260,23 @@ class GroupRoute extends Routable {
 
         $this->update($del);
         $this->update($sql);
-        
+
+        if($type == "V") {
+            $rowSQL = "SELECT * FROM tblVoteSelection WHERE `voteID`='{$voteID}' AND `userID` = '{$userID}'";
+        }else{
+            $rowSQL = "SELECT * FROM tblSurvey WHERE `voteID`='{$voteID}' AND `userID` = '{$userID}'";
+        }
+        $rowToHash = $this->getRow($rowSQL);
+        $res = GethHelper::writeRowHash($rowToHash);
+        $resAddr = $res["result"];
+        if($type == "V") {
+            $upt = "UPDATE tblVoteSelection SET thash='{$resAddr}' WHERE `voteID`='{$voteID}' AND `userID` = '{$userID}'";
+        }else{
+            $upt = "UPDATE tblSurvey SET thash='{$resAddr}' WHERE `voteID`='{$voteID}' AND `userID` = '{$userID}'";
+        }
+
+        $this->update($upt);
+
         if($type == "V"){
             $this->addHistory(AuthUtil::getLoggedInfo()->id, $voteID."번 투표에 답변하였습니다.");
         }else{

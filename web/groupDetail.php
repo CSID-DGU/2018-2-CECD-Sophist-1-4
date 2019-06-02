@@ -160,7 +160,7 @@ $isJoined = $router->isJoined($_REQUEST["id"], AuthUtil::getLoggedInfo()->id);
                     }
                     , function(data){
                         if(data.returnCode > 0){
-                            alert(data.returnMessage);
+                            swal("정보", data.returnMessage, "info");
                             if(data.returnCode > 1){
                             }else{
                                 location.reload();

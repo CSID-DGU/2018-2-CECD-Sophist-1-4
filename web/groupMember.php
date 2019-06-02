@@ -254,7 +254,7 @@ if($item["madeBy"]==0) $madeBy = "관리자";
                         $emailRow = $emailRowAlter;
                     }
                     ?>
-                <div class="col-md-12">
+                <div class="col-md-12 mt-1">
                     <div class="single_appartment_part">
                         <div class="single_appartment_content all">
                             <a href="#">
