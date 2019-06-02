@@ -168,7 +168,7 @@ class GroupRoute extends Routable {
 
     function getVote(){
         $id = $_REQUEST["id"];
-        $slt = "SELECT *,
+        $slt = "SELECT *, NOW() > endDate AS done, NOW() >= startDate AS st,
                 (SELECT `needsAuth` FROM tblGroup WHERE `id`=`groupID` LIMIT 1) AS needsAuth,
                 (SELECT `title` FROM tblGroup WHERE `id`=`groupID` LIMIT 1) AS groupName, 
                 (SELECT `name` FROM tblUser WHERE `id`=`madeBy` LIMIT 1) AS madeName 

@@ -41,6 +41,17 @@ if($item["groupID"] != 0){
 
         $(document).ready(function(){
 
+            if("<?=$item["st"]?>" == "0"){
+                alert("시작되지 않은 항목입니다.");
+                history.back();
+                return;
+            }
+            if("<?=$item["done"]?>" == "1" && "<?=$item["isEndless"]?>" == "0"){
+                alert("마감한 항목입니다.");
+                history.back();
+                return;
+            }
+
             $(".jRevote").click(function(){
                 callJson(
                     "/eVote/shared/public/route.php?F=GroupRoute.attendSurvey",

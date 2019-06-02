@@ -78,7 +78,8 @@ if($_REQUEST["type"] == ""){
                     {
                         key : $(this).val(),
                         table : "tblRoom",
-                        col : "title"
+                        col : "title",
+                        where : "`isDeleted` = 0"
                     },
                     function(data){
                         console.log(data);

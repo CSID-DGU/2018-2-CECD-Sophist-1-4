@@ -54,13 +54,14 @@
                     {
                         key : $(this).val(),
                         table : "tblGroup",
-                        col : "title"
+                        col : "title",
+                        where : "`isDeleted` = 0"
                     },
                     function(data){
                         console.log(data);
                         var html = "";
                         for(var w = 0; w < data.length; w++){
-                            html += "<div class='col-12 genric-btn primary-border radius recommend jRecList'>" + data[w] + "</div>";
+                            html += "<div class='col-12 genric-btn primary-border radius recommend jRecList mt-1'>" + data[w] + "</div>";
                         }
                         $(".jRec").html(html);
                     }

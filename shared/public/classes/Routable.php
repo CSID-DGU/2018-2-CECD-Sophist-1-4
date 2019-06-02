@@ -35,8 +35,16 @@ class Routable extends Databases {
         return $this->getArray($slt);
     }
 
-    function getRecommendation($key, $table, $col, $count = 10){
-        $slt = "SELECT `{$col}` FROM `{$table}` WHERE `{$col}` LIKE '%{$key}%' ORDER BY `{$col}` DESC LIMIT {$count}";
+    function getRecommendation($key, $table, $col, $count = 10, $where = "1=1"){
+        if($count == ""){
+            $count = 10;
+        }
+
+        if($where == ""){
+            $where = "1=1";
+        }
+
+        $slt = "SELECT `{$col}` FROM `{$table}` WHERE `{$col}` LIKE '%{$key}%' AND {$where} ORDER BY `{$col}` DESC LIMIT {$count}";
         $arr = $this->getArray($slt);
 
         if(sizeof($arr) == 0) return array();

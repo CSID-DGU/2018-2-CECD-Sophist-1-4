@@ -85,6 +85,10 @@ if($_REQUEST["id"] != "" && $item["madeBy"] != AuthUtil::getLoggedInfo()->id){
                 return;
             }
 
+            if(!confirm("등록 이후에는 수정할 수 없습니다.\n이대로 진행하시겠습니까?")){
+                return;
+            }
+
             callJson(
                 "/eVote/shared/public/route.php?F=GroupRoute.addRoom",
                 {
