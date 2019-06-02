@@ -321,9 +321,15 @@ if($item["madeBy"]==0) $madeBy = "관리자";
                     foreach ($statRes["raw"] as $rItem){
                         ?>
                     <?if($item["type"] == "V"){?>
-                            <span class="mt-3 col-12 genric-btn info-border radius"><?=$rItem["regDate"]?> / <?=$rItem["orderNo"] + 1?>번 선택됨</span>
+                            <span class="mt-3 col-12 genric-btn <?=$rItem["fabricated"]?"danger-border":"info-border"?> radius"><?=$rItem["regDate"]?> / <?=$rItem["orderNo"] + 1?>번 선택됨</span>
+                            <?if($rItem["fabricated"]){?>
+                            <p>※ 데이터 위변조 가능성 있음</p>
+                            <?}?>
                         <?}else{?>
-                            <span class="mt-3 col-12 genric-btn info-border radius"><?=$rItem["regDate"]?><br/><hr style="margin:0;" /><?=$rItem["answer"]?></span>
+                            <span class="mt-3 col-12 genric-btn <?=$rItem["fabricated"]?"danger-border":"info-border"?> radius"><?=$rItem["regDate"]?><br/><hr style="margin:0;" /><?=$rItem["answer"]?></span>
+                            <?if($rItem["fabricated"]){?>
+                                <p>※ 데이터 위변조 가능성 있음</p>
+                            <?}?>
                         <?}?>
                         <?
                     }

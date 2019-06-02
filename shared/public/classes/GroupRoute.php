@@ -12,6 +12,10 @@ class GroupRoute extends Routable {
                  FROM tblVoteSelection WHERE voteID = '{$id}' AND applied=1 ORDER BY regDate ASC";
         $arr = $this->getArray($sql);
 
+        $sqlR = "SELECT *
+                 FROM tblVoteSelection WHERE voteID = '{$id}' AND applied=1 ORDER BY regDate ASC";
+        $arrR = $this->getArray($sqlR);
+
         $dateArr = array();
         $final = array();
         $res = array();
@@ -22,6 +26,11 @@ class GroupRoute extends Routable {
             $res[$item["orderNo"]]["count"] = $res[$item["orderNo"]]["count"] + 1;
             if($dateArr[$item["rDate"]] == "") $dateArr[$item["rDate"]] = 0;
             $dateArr[$item["rDate"]]++;
+            if(!GethHelper::verifyAction($item["thash"], $arrR[$e])){
+                $arr[$e]["fabricated"] = true;
+            }else{
+                $arr[$e]["fabricated"] = false;
+            }
         }
 
         $final["date"] = $dateArr;
@@ -55,6 +64,10 @@ class GroupRoute extends Routable {
                  FROM tblSurvey WHERE voteID = '{$id}' ORDER BY regDate ASC";
         $arr = $this->getArray($sql);
 
+        $sqlR = "SELECT * 
+                 FROM tblSurvey WHERE voteID = '{$id}' ORDER BY regDate ASC";
+        $arrR = $this->getArray($sqlR);
+
         $sentences = array();
         $dateArr = array();
         $final = array();
@@ -63,6 +76,11 @@ class GroupRoute extends Routable {
             $sentences[$e] = $item["answer"];
             if($dateArr[$item["rDate"]] == "") $dateArr[$item["rDate"]] = 0;
             $dateArr[$item["rDate"]]++;
+            if(!GethHelper::verifyAction($item["thash"], $arrR[$e])){
+                $arr[$e]["fabricated"] = true;
+            }else{
+                $arr[$e]["fabricated"] = false;
+            }
         }
 
         $final["date"] = $dateArr;
@@ -186,6 +204,25 @@ class GroupRoute extends Routable {
                 (SELECT `needsAuth` FROM tblGroup WHERE `id`=`groupID` LIMIT 1) AS needsAuth,
                 (SELECT `title` FROM tblGroup WHERE `id`=`groupID` LIMIT 1) AS groupName, 
                 (SELECT `name` FROM tblUser WHERE `id`=`madeBy` LIMIT 1) AS madeName 
+                FROM tblRoom WHERE {$whereStmt}
+                ORDER BY `regDate` DESC LIMIT {$startLimit}, 6";
+        return $this->getArray($slt);
+    }
+
+    function getMyRawVoteList(){
+        $id = AuthUtil::getLoggedInfo()->id;
+        $page = $_REQUEST["page"] == "" ? 1 : $_REQUEST["page"];
+        $type = $_REQUEST["type"] == "" ? "A" : $_REQUEST["type"];
+        $query = $_REQUEST["query"];
+
+        $whereStmt = "madeBy='{$id}' AND isDeleted=0 AND 1=1 ";
+        if($type != "A") $whereStmt .= "AND `type` = '{$type}'";
+        if($query != ""){
+            $whereStmt .= " AND `title` LIKE '%{$query}%'";
+        }
+
+        $startLimit = ($page - 1) * 6;
+        $slt = "SELECT * 
                 FROM tblRoom WHERE {$whereStmt}
                 ORDER BY `regDate` DESC LIMIT {$startLimit}, 6";
         return $this->getArray($slt);

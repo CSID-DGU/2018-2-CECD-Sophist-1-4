@@ -1,3 +1,4 @@
+<? include_once $_SERVER["DOCUMENT_ROOT"]."/eVote/shared/public/classes/GethHelper.php"; ?>
 <? include_once $_SERVER["DOCUMENT_ROOT"]."/eVote/shared/public/classes/GroupRoute.php"; ?>
 <?
 //if(AuthUtil::isLoggedIn()){
@@ -5,6 +6,13 @@
 //}
 $router = new GroupRoute();
 $list = $router->getMyVoteList();
+$rawList = $router->getMyRawVoteList();
+for($q = 0; $q < sizeof($list); $q++){
+    $tv = $rawList[$q];
+    if(!GethHelper::verifyAction($tv["thash"], $tv)){
+        $list[$q]["fabricated"] = true;
+    }
+}
 ?>
 <?foreach($list as $item){
     $madeBy = $item["madeName"];
@@ -33,7 +41,7 @@ $list = $router->getMyVoteList();
                     </p>
                 </div>
             </div>
-            <div class="single_appartment_content">
+            <div class="single_appartment_content <?=$item["fabricated"] ? "red" : ""?>">
                 <p>
                     <?if($item["groupID"] > 0){?><i class="fa fa-users"></i> <?=$item["groupName"]?><?}?>
                     &nbsp;<i class="fa fa-user"></i>&nbsp;<?=$madeBy?>
