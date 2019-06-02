@@ -8,6 +8,14 @@ if($_REQUEST["type"] == ""){
 
         $(document).ready(function(){
 
+            var initMsg = "투표/설문 목록입니다.";
+            switch ("<?=$_REQUEST["type"]?>"){
+                case "A": initMsg = "투표/설문 목록입니다."; break;
+                case "V": initMsg = "투표 목록입니다."; break;
+                case "S": initMsg = "설문 목록입니다."; break;
+            }
+            showSnackBar(initMsg);
+
             var currentPage = 1;
             var isFinal = false;
 

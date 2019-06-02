@@ -139,7 +139,7 @@ $dashInfo = $web->getDashboardInfo();
                 <div class="btn-group mt-3">
                     <a href="myRoom.php?type=V" class="genric-btn primary-border radius"><i class="fa fa-list"></i> 투표 집계</a>&nbsp;
                     <a href="myRoom.php?type=S" class="genric-btn primary-border radius"><i class="fa fa-list"></i> 설문 집계</a>&nbsp;
-                    <a href="#" class="genric-btn primary-border radius"><i class="fa fa-eye"></i> 그룹 통계</a>&nbsp;
+<!--                    <a href="#" class="genric-btn primary-border radius"><i class="fa fa-eye"></i> 그룹 통계</a>&nbsp;-->
                 </div>
             </div>
         </div>

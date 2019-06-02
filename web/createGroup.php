@@ -19,8 +19,10 @@ $list = $router->getMyGroupList(AuthUtil::getLoggedInfo()->id);
             $(".jNeedsAuth").change(function(){
                 if($(this).prop("checked")){
                     $(".jAuthCode").fadeIn();
+                    showSnackBar("비공개 그룹으로 설정되었습니다.");
                 }else{
                     $(".jAuthCode").fadeOut();
+                    showSnackBar("비공개 그룹이 해제되었습니다.");
                 }
             });
 
@@ -129,8 +131,10 @@ $list = $router->getMyGroupList(AuthUtil::getLoggedInfo()->id);
                 $("#" + tg).prop("checked", !$("#" + tg).prop("checked"));
                 if($("#" + tg).prop("checked")){
                     $(".jAuthCode").fadeIn();
+                    showSnackBar("비공개 그룹으로 설정되었습니다.");
                 }else{
                     $(".jAuthCode").fadeOut();
+                    showSnackBar("비공개 그룹이 해제되었습니다.");
                 }
             });
 

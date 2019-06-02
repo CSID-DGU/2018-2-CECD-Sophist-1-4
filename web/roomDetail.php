@@ -43,12 +43,12 @@ if($item["groupID"] != 0){
 
             if("<?=$item["st"]?>" == "0"){
                 alert("시작되지 않은 항목입니다.");
-                history.back();
+                location.href = "room.php?type=A";
                 return;
             }
             if("<?=$item["done"]?>" == "1" && "<?=$item["isEndless"]?>" == "0"){
-                alert("마감한 항목입니다.");
-                history.back();
+                alert("마감된 항목입니다.");
+                location.href = "room.php?type=A";
                 return;
             }
 
