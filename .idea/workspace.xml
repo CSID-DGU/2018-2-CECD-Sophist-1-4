@@ -6,12 +6,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7a708afb-bd89-490b-b167-97aaeae173a6" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/createNotice.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/ajaxPages/ajaxUserList.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/shared/public/classes/WebInfoRoute.php" afterPath="$PROJECT_DIR$/shared/public/classes/WebInfoRoute.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/ajaxPages/ajaxNoticeList.php" afterPath="$PROJECT_DIR$/web/ajaxPages/ajaxNoticeList.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/notice.php" afterPath="$PROJECT_DIR$/web/notice.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/noticeDetail.php" afterPath="$PROJECT_DIR$/web/noticeDetail.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/admin.php" afterPath="$PROJECT_DIR$/web/admin.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -45,39 +43,51 @@
       <file leaf-file-name="notice.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/notice.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="73" column="0" lean-forward="true" selection-start-line="73" selection-start-column="0" selection-end-line="73" selection-end-column="0" />
+            <state relative-caret-position="164">
+              <caret line="68" column="0" lean-forward="true" selection-start-line="68" selection-start-column="0" selection-end-line="68" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="WebInfoRoute.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="WebInfoRoute.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/shared/public/classes/WebInfoRoute.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="549">
-              <caret line="76" column="67" lean-forward="false" selection-start-line="76" selection-start-column="67" selection-end-line="76" selection-end-column="67" />
+            <state relative-caret-position="753">
+              <caret line="143" column="37" lean-forward="false" selection-start-line="143" selection-start-column="37" selection-end-line="143" selection-end-column="37" />
               <folding>
-                <marker date="1559447072647" expanded="true" signature="180:709" ph="SELECT (SELE... DUAL" />
-                <marker date="1559447072647" expanded="true" signature="205:318" ph="SELECT COUNT... tblVoteSelection" />
-                <marker date="1559447072647" expanded="true" signature="275:317" ph="SELECT `id` tblRoom" />
-                <marker date="1559447072647" expanded="true" signature="349:455" ph="SELECT COUNT... tblSurvey" />
-                <marker date="1559447072647" expanded="true" signature="412:454" ph="SELECT `id` tblRoom" />
-                <marker date="1559447072647" expanded="true" signature="488:562" ph="SELECT COUNT... tblRoom" />
-                <marker date="1559447072647" expanded="true" signature="594:668" ph="SELECT COUNT... tblRoom" />
-                <marker date="1559447072647" expanded="true" signature="966:1005" ph="DELETE FROM " />
-                <marker date="1559447072647" expanded="true" signature="1382:1536" ph="INSERT INTO tblFaq... " />
-                <marker date="1559447072647" expanded="true" signature="1537:1590" ph="UPDATE `titl... " />
-                <marker date="1559447072647" expanded="true" signature="1745:1786" ph="SELECT * FRO... tblFaq" />
-                <marker date="1559447072647" expanded="true" signature="1999:2039" ph="DELETE FROM " />
-                <marker date="1559447072647" expanded="true" signature="2456:2633" ph="INSERT INTO tblFaq... " />
-                <marker date="1559447072647" expanded="true" signature="2634:2684" ph="UPDATE `titl... " />
-                <marker date="1559447072647" expanded="true" signature="3097:3371" ph="SELECT *, (S... tblGroup" />
-                <marker date="1559447072647" expanded="true" signature="3461:3617" ph="SELECT * FRO... tblNotice" />
-                <marker date="1559447072647" expanded="true" signature="3742:3790" ph="SELECT `hit`... tblNotice" />
-                <marker date="1559447072647" expanded="true" signature="3861:3901" ph="UPDATE tblNo... " />
-                <marker date="1559447072647" expanded="true" signature="3861:3922" ph="UPDATE tblNo... " />
+                <marker date="1559449373008" expanded="true" signature="180:709" ph="SELECT (SELE... DUAL" />
+                <marker date="1559449373008" expanded="true" signature="205:318" ph="SELECT COUNT... tblVoteSelection" />
+                <marker date="1559449373008" expanded="true" signature="275:317" ph="SELECT `id` tblRoom" />
+                <marker date="1559449373008" expanded="true" signature="349:455" ph="SELECT COUNT... tblSurvey" />
+                <marker date="1559449373008" expanded="true" signature="412:454" ph="SELECT `id` tblRoom" />
+                <marker date="1559449373008" expanded="true" signature="488:562" ph="SELECT COUNT... tblRoom" />
+                <marker date="1559449373008" expanded="true" signature="594:668" ph="SELECT COUNT... tblRoom" />
+                <marker date="1559449373008" expanded="true" signature="966:1005" ph="DELETE FROM " />
+                <marker date="1559449373008" expanded="true" signature="1382:1536" ph="INSERT INTO tblFaq... " />
+                <marker date="1559449373008" expanded="true" signature="1537:1590" ph="UPDATE `titl... " />
+                <marker date="1559449373008" expanded="true" signature="1745:1786" ph="SELECT * FRO... tblFaq" />
+                <marker date="1559449373008" expanded="true" signature="1999:2039" ph="DELETE FROM " />
+                <marker date="1559449373008" expanded="true" signature="2456:2633" ph="INSERT INTO tblFaq... " />
+                <marker date="1559449373008" expanded="true" signature="2634:2684" ph="UPDATE `titl... " />
+                <marker date="1559449373008" expanded="true" signature="3185:3302" ph="SELECT * FRO... tblUser" />
+                <marker date="1559449373008" expanded="true" signature="3663:3937" ph="SELECT *, (S... tblGroup" />
+                <marker date="1559449373008" expanded="true" signature="4027:4183" ph="SELECT * FRO... tblNotice" />
+                <marker date="1559449373008" expanded="true" signature="4308:4356" ph="SELECT `hit`... tblNotice" />
+                <marker date="1559449373008" expanded="true" signature="4427:4467" ph="UPDATE tblNo... " />
+                <marker date="1559449373008" expanded="true" signature="4427:4488" ph="UPDATE tblNo... " />
+                <marker date="1559449373008" expanded="true" signature="4755:4811" ph="UPDATE tblUs... " />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ajaxUserList.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/web/ajaxPages/ajaxUserList.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="494">
+              <caret line="26" column="55" lean-forward="false" selection-start-line="26" selection-start-column="55" selection-end-line="26" selection-end-column="55" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -92,11 +102,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="admin.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="admin.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/web/admin.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="19">
-              <caret line="1" column="54" lean-forward="false" selection-start-line="1" selection-start-column="54" selection-end-line="1" selection-end-column="54" />
+            <state relative-caret-position="373">
+              <caret line="80" column="2" lean-forward="false" selection-start-line="80" selection-start-column="2" selection-end-line="80" selection-end-column="2" />
               <folding />
             </state>
           </provider>
@@ -105,8 +115,8 @@
       <file leaf-file-name="createRoom.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/createRoom.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="192">
-              <caret line="239" column="37" lean-forward="true" selection-start-line="239" selection-start-column="37" selection-end-line="239" selection-end-column="37" />
+            <state relative-caret-position="2453">
+              <caret line="263" column="26" lean-forward="true" selection-start-line="263" selection-start-column="26" selection-end-line="263" selection-end-column="26" />
               <folding />
             </state>
           </provider>
@@ -144,7 +154,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>$list</find>
       <find>addRoom</find>
       <find>$item</find>
       <find>join</find>
@@ -174,6 +183,7 @@
       <find>words</find>
       <find>word</find>
       <find>$stat</find>
+      <find>noticeID</find>
     </findStrings>
     <replaceStrings>
       <replace>mailInfo</replace>
@@ -192,7 +202,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/web/ajaxPages/ajaxVoteList.php" />
         <option value="$PROJECT_DIR$/web/vote.php" />
         <option value="$PROJECT_DIR$/web/inc/navigator.php" />
         <option value="$PROJECT_DIR$/../index.php" />
@@ -206,7 +215,6 @@
         <option value="$PROJECT_DIR$/web/inc/footer.php" />
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/web/groupAccess.php" />
-        <option value="$PROJECT_DIR$/web/admin.php" />
         <option value="$PROJECT_DIR$/web/warn_email.php" />
         <option value="$PROJECT_DIR$/web/css/style.css" />
         <option value="$PROJECT_DIR$/shared/public/classes/UserAuthRoute.php" />
@@ -242,7 +250,9 @@
         <option value="$PROJECT_DIR$/web/noticeDetail.php" />
         <option value="$PROJECT_DIR$/web/notice.php" />
         <option value="$PROJECT_DIR$/web/createNotice.php" />
+        <option value="$PROJECT_DIR$/web/ajaxPages/ajaxUserList.php" />
         <option value="$PROJECT_DIR$/shared/public/classes/WebInfoRoute.php" />
+        <option value="$PROJECT_DIR$/web/admin.php" />
       </list>
     </option>
   </component>
@@ -254,8 +264,8 @@
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
-    <option name="x" value="888" />
-    <option name="width" value="1039" />
+    <option name="x" value="881" />
+    <option name="width" value="1046" />
     <option name="height" value="1047" />
   </component>
   <component name="ProjectLevelVcsManager">
@@ -363,9 +373,9 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\eVote\web\ajaxPages" />
       <recent name="C:\xampp\htdocs\eVote\web" />
       <recent name="C:\xampp\htdocs\eVote\web\js" />
-      <recent name="C:\xampp\htdocs\eVote\web\ajaxPages" />
       <recent name="C:\xampp\htdocs\eVote\shared\public\classes" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -426,17 +436,17 @@
       <workItem from="1559311914614" duration="1465000" />
       <workItem from="1559392529173" duration="824000" />
       <workItem from="1559393423671" duration="62000" />
-      <workItem from="1559441612766" duration="4879000" />
+      <workItem from="1559441612766" duration="7165000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="146945000" />
+    <option name="totallyTimeSpent" value="149231000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="888" y="0" width="1039" height="1047" extended-state="0" />
+    <frame x="881" y="0" width="1046" height="1047" extended-state="0" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23362659" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23203884" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -466,7 +476,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/web/index_backup.html" />
     <entry file="file://$PROJECT_DIR$/web/etheTest.php" />
     <entry file="file://$PROJECT_DIR$/web/blog.html">
       <provider selected="true" editor-type-id="text-editor">
@@ -835,14 +844,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/admin.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="19">
-          <caret line="1" column="54" lean-forward="false" selection-start-line="1" selection-start-column="54" selection-end-line="1" selection-end-column="54" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/web/group.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="378">
@@ -883,22 +884,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/createRoom.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="192">
-          <caret line="239" column="37" lean-forward="true" selection-start-line="239" selection-start-column="37" selection-end-line="239" selection-end-column="37" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/notice.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="73" column="0" lean-forward="true" selection-start-line="73" selection-start-column="0" selection-end-line="73" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/web/createNotice.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="133">
@@ -907,31 +892,65 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/web/notice.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="164">
+          <caret line="68" column="0" lean-forward="true" selection-start-line="68" selection-start-column="0" selection-end-line="68" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/createRoom.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2453">
+          <caret line="263" column="26" lean-forward="true" selection-start-line="263" selection-start-column="26" selection-end-line="263" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/ajaxPages/ajaxUserList.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="494">
+          <caret line="26" column="55" lean-forward="false" selection-start-line="26" selection-start-column="55" selection-end-line="26" selection-end-column="55" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/shared/public/classes/WebInfoRoute.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="549">
-          <caret line="76" column="67" lean-forward="false" selection-start-line="76" selection-start-column="67" selection-end-line="76" selection-end-column="67" />
+        <state relative-caret-position="753">
+          <caret line="143" column="37" lean-forward="false" selection-start-line="143" selection-start-column="37" selection-end-line="143" selection-end-column="37" />
           <folding>
-            <marker date="1559447072647" expanded="true" signature="180:709" ph="SELECT (SELE... DUAL" />
-            <marker date="1559447072647" expanded="true" signature="205:318" ph="SELECT COUNT... tblVoteSelection" />
-            <marker date="1559447072647" expanded="true" signature="275:317" ph="SELECT `id` tblRoom" />
-            <marker date="1559447072647" expanded="true" signature="349:455" ph="SELECT COUNT... tblSurvey" />
-            <marker date="1559447072647" expanded="true" signature="412:454" ph="SELECT `id` tblRoom" />
-            <marker date="1559447072647" expanded="true" signature="488:562" ph="SELECT COUNT... tblRoom" />
-            <marker date="1559447072647" expanded="true" signature="594:668" ph="SELECT COUNT... tblRoom" />
-            <marker date="1559447072647" expanded="true" signature="966:1005" ph="DELETE FROM " />
-            <marker date="1559447072647" expanded="true" signature="1382:1536" ph="INSERT INTO tblFaq... " />
-            <marker date="1559447072647" expanded="true" signature="1537:1590" ph="UPDATE `titl... " />
-            <marker date="1559447072647" expanded="true" signature="1745:1786" ph="SELECT * FRO... tblFaq" />
-            <marker date="1559447072647" expanded="true" signature="1999:2039" ph="DELETE FROM " />
-            <marker date="1559447072647" expanded="true" signature="2456:2633" ph="INSERT INTO tblFaq... " />
-            <marker date="1559447072647" expanded="true" signature="2634:2684" ph="UPDATE `titl... " />
-            <marker date="1559447072647" expanded="true" signature="3097:3371" ph="SELECT *, (S... tblGroup" />
-            <marker date="1559447072647" expanded="true" signature="3461:3617" ph="SELECT * FRO... tblNotice" />
-            <marker date="1559447072647" expanded="true" signature="3742:3790" ph="SELECT `hit`... tblNotice" />
-            <marker date="1559447072647" expanded="true" signature="3861:3901" ph="UPDATE tblNo... " />
-            <marker date="1559447072647" expanded="true" signature="3861:3922" ph="UPDATE tblNo... " />
+            <marker date="1559449373008" expanded="true" signature="180:709" ph="SELECT (SELE... DUAL" />
+            <marker date="1559449373008" expanded="true" signature="205:318" ph="SELECT COUNT... tblVoteSelection" />
+            <marker date="1559449373008" expanded="true" signature="275:317" ph="SELECT `id` tblRoom" />
+            <marker date="1559449373008" expanded="true" signature="349:455" ph="SELECT COUNT... tblSurvey" />
+            <marker date="1559449373008" expanded="true" signature="412:454" ph="SELECT `id` tblRoom" />
+            <marker date="1559449373008" expanded="true" signature="488:562" ph="SELECT COUNT... tblRoom" />
+            <marker date="1559449373008" expanded="true" signature="594:668" ph="SELECT COUNT... tblRoom" />
+            <marker date="1559449373008" expanded="true" signature="966:1005" ph="DELETE FROM " />
+            <marker date="1559449373008" expanded="true" signature="1382:1536" ph="INSERT INTO tblFaq... " />
+            <marker date="1559449373008" expanded="true" signature="1537:1590" ph="UPDATE `titl... " />
+            <marker date="1559449373008" expanded="true" signature="1745:1786" ph="SELECT * FRO... tblFaq" />
+            <marker date="1559449373008" expanded="true" signature="1999:2039" ph="DELETE FROM " />
+            <marker date="1559449373008" expanded="true" signature="2456:2633" ph="INSERT INTO tblFaq... " />
+            <marker date="1559449373008" expanded="true" signature="2634:2684" ph="UPDATE `titl... " />
+            <marker date="1559449373008" expanded="true" signature="3185:3302" ph="SELECT * FRO... tblUser" />
+            <marker date="1559449373008" expanded="true" signature="3663:3937" ph="SELECT *, (S... tblGroup" />
+            <marker date="1559449373008" expanded="true" signature="4027:4183" ph="SELECT * FRO... tblNotice" />
+            <marker date="1559449373008" expanded="true" signature="4308:4356" ph="SELECT `hit`... tblNotice" />
+            <marker date="1559449373008" expanded="true" signature="4427:4467" ph="UPDATE tblNo... " />
+            <marker date="1559449373008" expanded="true" signature="4427:4488" ph="UPDATE tblNo... " />
+            <marker date="1559449373008" expanded="true" signature="4755:4811" ph="UPDATE tblUs... " />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/admin.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="373">
+          <caret line="80" column="2" lean-forward="false" selection-start-line="80" selection-start-column="2" selection-end-line="80" selection-end-column="2" />
+          <folding />
         </state>
       </provider>
     </entry>

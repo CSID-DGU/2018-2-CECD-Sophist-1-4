@@ -80,7 +80,23 @@ class WebInfoRoute extends Routable {
 
         return self::response(1, "저장되었습니다.");
     }
-    
+
+    function getUserList(){
+        $page = $_REQUEST["page"] == "" ? 1 : $_REQUEST["page"];
+        $query = $_REQUEST["query"];
+        $whereStmt = "1=1 ";
+        if($query != ""){
+            $whereStmt .= " AND `email` LIKE '%{$query}%' ";
+//            $whereStmt .= " AND (`email` LIKE '%{$query}%' OR `name` LIKE '%{$query}%') ";
+        }
+
+        $startLimit = ($page - 1) * 5;
+        $slt = "SELECT *  
+                FROM tblUser WHERE {$whereStmt}
+                ORDER BY `name` ASC LIMIT {$startLimit}, 5";
+        return $this->getArray($slt);
+    }
+
     function getNoticeList(){
         $page = $_REQUEST["page"] == "" ? 1 : $_REQUEST["page"];
         $query = $_REQUEST["query"];
@@ -110,6 +126,22 @@ class WebInfoRoute extends Routable {
         $hitVal = $this->getValue($slt, "hit") + 1;
         $upt = "UPDATE tblNotice SET `hit` = '{$hitVal}' WHERE `id` = '{$id}'";
         $this->update($upt);
+    }
+
+    function setAdmin(){
+        if(AuthUtil::getLoggedInfo()->isAdmin != 1){
+            return self::response(0, "Permission Denied");
+        }
+
+        $id = $_REQUEST["id"];
+        $set = $_REQUEST["set"];
+        $sql = "UPDATE tblUser SET isAdmin='{$set}' WHERE `id` = '{$id}'";
+        $this->update($sql);
+
+        $msg = $id."번 회원이 관리자로 설정되었습니다.";
+        if($set == "0") $msg = $id."번 회원이 관리자 해제되었습니다.";
+        
+        return self::response(1, $msg);
     }
 
 }
